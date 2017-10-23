@@ -1,0 +1,5 @@
+C:\Intesa\QPortal\QlikSenseSession\bin\Release\QlikSenseSession.dll
+C:\Intesa\QPortal\QlikSenseSession\bin\Release\QlikSenseSession.pdb
+C:\Intesa\QPortal\QlikSenseSession\obj\Release\QlikSenseSession.csprojResolveAssemblyReference.cache
+C:\Intesa\QPortal\QlikSenseSession\obj\Release\QlikSenseSession.dll
+C:\Intesa\QPortal\QlikSenseSession\obj\Release\QlikSenseSession.pdb

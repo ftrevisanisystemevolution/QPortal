@@ -1,0 +1,10 @@
+C:\Intesa\QS_SessionAPI\QlikSenseSession\bin\Debug\QlikSenseSession.dll
+C:\Intesa\QS_SessionAPI\QlikSenseSession\bin\Debug\QlikSenseSession.pdb
+C:\Intesa\QS_SessionAPI\QlikSenseSession\obj\Debug\QlikSenseSession.csprojResolveAssemblyReference.cache
+C:\Intesa\QS_SessionAPI\QlikSenseSession\obj\Debug\QlikSenseSession.dll
+C:\Intesa\QS_SessionAPI\QlikSenseSession\obj\Debug\QlikSenseSession.pdb
+C:\Intesa\QlikSensePortal\QlikSenseSession\bin\Debug\QlikSenseSession.dll
+C:\Intesa\QlikSensePortal\QlikSenseSession\bin\Debug\QlikSenseSession.pdb
+C:\Intesa\QlikSensePortal\QlikSenseSession\obj\Debug\QlikSenseSession.csprojResolveAssemblyReference.cache
+C:\Intesa\QlikSensePortal\QlikSenseSession\obj\Debug\QlikSenseSession.dll
+C:\Intesa\QlikSensePortal\QlikSenseSession\obj\Debug\QlikSenseSession.pdb

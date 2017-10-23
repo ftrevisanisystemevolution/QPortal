@@ -1,0 +1,209 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="container-fluid nopaddinglr">
+    <div class="row">
+        <div id="ifr" class="collapse embed-responsive">
+            <iframe id="frame" src="" frameborder="0" scrolling="no"></iframe>
+        </div>
+    </div>
+</div>
+
+<div class="jumbotron collapse in" id="farms" style="background-color: white; background-image: url('../../Content/Images/bgcharts2.jpeg');background-repeat:no-repeat;background-size:cover;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="thumbnail block-card">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h4 class="caption-text" style="text-align:left">Farm DOF</h4>
+                                <h5 class="caption-text">Ambiente Istituzionale</h5>
+                            </div>
+                            <div class="col-md-8 text-right">
+                                <img src="~/Content/Images/appNull2.png" style="width:216px;height:210px;" />
+                            </div>
+                        </div>                        
+                    </div>
+                    <hr class="separator-line" />                    
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <button class="btn btn-success buttonhome" onclick="">
+                                    <i class="fa fa-folder-o"></i> Archivio Report
+                                </button>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <button class="btn btn-success buttonhome" onclick="openIframe()" data-toggle="collapse" data-target="#ifr">
+                                    <i class="fa fa-chevron-right"></i> Entra nell'Hub
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="thumbnail block-card">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h4 class="caption-text" style="text-align:left">Farm DOF</h4>
+                                <h5 class="caption-text">Self Service Analysis</h5>
+                            </div>
+                            <div class="col-md-8 text-right">
+                                <img src="~/Content/Images/appNull2.png" style="width:216px;height:210px;" />
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="separator-line" />
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <button class="btn btn-success buttonhome" onclick="">
+                                    <i class="fa fa-share-square-o"></i> Distribuisci
+                                </button>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <button class="btn btn-success buttonhome" onclick="">
+                                    <i class="fa fa-plus-square-o"></i> Nuovo Report
+                                </button>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <button class="btn btn-success buttonhome" onclick="openIframe()" data-toggle="collapse" data-target="#ifr">
+                                    <i class="fa fa-chevron-right"></i> Entra nell'Hub
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="thumbnail block-card">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h4 class="caption-text" style="text-align:left">Farm CLB</h4>
+                                <h5 class="caption-text">Ambiente Istituzionale</h5>
+                            </div>
+                            <div class="col-md-8 text-right">
+                                <img src="~/Content/Images/appNull2.png" style="width:216px;height:210px;" />
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="separator-line" />    
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <button class="btn btn-default disabled buttonhome" onclick="">
+                                    <i class="fa fa-folder-o"></i> Archivio Report
+                                </button>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <button class="btn btn-success buttonhome" onclick="openIframe()" data-toggle="collapse" data-target="#ifr">
+                                    <i class="fa fa-chevron-right"></i> Entra nell'Hub
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="thumbnail block-card">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h4 class="caption-text" style="text-align:left">Farm CLB</h4>
+                                <h5 class="caption-text">Self Service Analysis</h5>
+                            </div>
+                            <div class="col-md-8 text-right">
+                                <img src="~/Content/Images/appNull2.png" style="width:216px;height:210px;" />
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="separator-line" />
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <button class="btn btn-default disabled buttonhome" onclick="">
+                                    <i class="fa fa-share-square-o"></i> Distribuisci
+                                </button>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <button class="btn btn-default disabled buttonhome" onclick="">
+                                    <i class="fa fa-plus-square-o"></i> Nuovo Report
+                                </button>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <button class="btn btn-default disabled buttonhome" onclick="openIframe()" data-toggle="collapse" data-target="#ifr">
+                                    <i class="fa fa-chevron-right"></i> Entra nell'Hub
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+
+        //$(document).ready(function () {
+
+        function setIframeSize() {
+            $('#farms').collapse();
+
+            var theIframe = document.querySelector("#frame"); //select the iframe element
+
+            var w = window,
+                d = document,
+                e = d.documentElement,
+                g = d.getElementsByTagName('body')[0],
+                x = w.innerWidth || e.clientWidth || g.clientWidth,
+                y = w.innerHeight || e.clientHeight || g.clientHeight;
+
+            theIframe.style.height = y - $('.navbar').height() + "px"; //set the height
+            theIframe.style.width = $(window).width() + "px"; //set the width
+        }
+
+        function openIframe() {
+            setIframeSize();
+            var myFrame = document.querySelector("#frame");
+            myFrame.src = ""; //clear the frame
+            myFrame.src = "@Url.Action("Hub", "Home")";
+            //myFrame.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d91737.51273778046!2d12.566428499999994!3d44.06689465000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132cc3a48fa6592b%3A0xc1f284db17f1449d!2sRimini+RN!5e0!3m2!1sit!2sit!4v1427492339750";
+            
+            $("#newreport").css("display", "unset");
+            $("#share").css("display", "unset");
+            $("#exit").css("display", "unset");
+        }
+
+        var $iframes = $("iframe");
+
+        // Resize the iframes when the window is resized
+        $(window).resize(function () {
+            $iframes.each(function () {
+                // Get the parent container width
+                var width = $(this).parent().width();
+                var height = $(window).height();
+                $(this).width(width).height(height);
+            });
+            // Resize iframes on page load.
+        }).resize();
+
+       //}
+    </script>
+}
+
