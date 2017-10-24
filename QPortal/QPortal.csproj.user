@@ -15,6 +15,8 @@
     <WebStackScaffolding_LayoutPageFile />
     <ProjectView>ProjectFiles</ProjectView>
     <NameOfLastUsedPublishProfile>FileSystem</NameOfLastUsedPublishProfile>
+    <WebStackScaffolding_ControllerDialogWidth>600</WebStackScaffolding_ControllerDialogWidth>
+    <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

@@ -197,12 +197,32 @@
             $iframes.each(function () {
                 // Get the parent container width
                 var width = $(this).parent().width();
-                var height = $(window).height();
+                var height = $(window).height() - $('.navbar').height();
                 $(this).width(width).height(height);
             });
             // Resize iframes on page load.
         }).resize();
 
+
+        //new method
+        function openIframeV2(element) {
+            var frameId = $(element).attr("data-frame-id");
+            var nodeId = $(element).attr("data-node-id");
+
+            $.ajax({
+                url: "/api/Farms/" + frameId + "/" + nodeId,
+                method: "GET",
+                success: function (data) {
+                    setIframeSize();
+                    var myFrame = document.querySelector("#frame");
+                    myFrame.src = ""; //clear the frame
+                    myFrame.src = data.Link;
+                },
+                error: function (data) {
+                    toastr.error(data.responseJSON.Message);
+                }
+            });
+        }
        //}
     </script>
 }
