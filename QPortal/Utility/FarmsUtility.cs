@@ -25,7 +25,7 @@ namespace QPortal.Utility
 
         public static List<Farms> GetFarmsById(List<string> farmsId)
         {
-            string path = System.Web.Hosting.HostingEnvironment.MapPath("~/Farms.xml");
+            string path = System.Web.Hosting.HostingEnvironment.MapPath(FilePaths.FarmsXML);
             XDocument root = GetXmlDocument(path);
 
             List<Farms> Farms = new List<Farms>();
@@ -69,7 +69,7 @@ namespace QPortal.Utility
         {
             Node result = new Node();
 
-            string path = System.Web.Hosting.HostingEnvironment.MapPath("~/Farms.xml");
+            string path = System.Web.Hosting.HostingEnvironment.MapPath(FilePaths.FarmsXML);
             XDocument root = GetXmlDocument(path);
 
             if (root != null)

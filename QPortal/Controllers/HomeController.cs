@@ -25,14 +25,15 @@ namespace QPortal.Controllers
             //roles.Add("YA0004");
             //roles.Add("YA0005");
             //roles.Add("YA0001");
+            //roles.Add("YA0002");
             //roles.Add("YA0001");
             //roles.Add("YA0003");
             //roles.Add("test");
             //roles.Add("");
 
-            string path = Server.MapPath(Url.Content("~/Roles.xml"));
+            string path = Server.MapPath(Url.Content(FilePaths.RolesXML));
             XDocument root = FarmsUtility.GetXmlDocument(path);
-
+            
             List<FarmRoles> FarmRoles = new List<FarmRoles>(RolesUtility.GetRoles(root, roles));
 
             if (FarmRoles.Count != 0)

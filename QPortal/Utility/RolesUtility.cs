@@ -50,6 +50,24 @@ namespace QPortal.Utility
             return FarmRoles;
         }
 
+        public static string GetFarmRoleById(int farmId, List<string> roles)
+        {
+            string path = System.Web.Hosting.HostingEnvironment.MapPath(FilePaths.RolesXML);
+            XDocument root = FarmsUtility.GetXmlDocument(path);
+
+            string role = null;
+            if(root != null)
+            {
+                 role = root.Elements("farms").Elements("role")
+                            .Where(r => r.Attributes("id").Any(x => roles.Contains(x.Value)))
+                            .Where(r => r.Attribute("farm").Value.Equals(farmId.ToString()))
+                            .OrderByDescending(p => p.Attribute("priority").Value)
+                            .Select(r => r.Value).FirstOrDefault();
+            }
+
+            return role;
+        }
+
         public static List<Farms> AssignFarmRoles(List<FarmRoles> FarmRoles)
         {
             List<Farms> FarmList = new List<Farms>();
