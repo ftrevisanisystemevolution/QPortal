@@ -39,8 +39,9 @@ namespace QlikSenseSession
         {
             SessionID = CreateSession(context);
 
-            CertificateFoo = GetCertificate(StoreLocation.CurrentUser);
-            
+            CertificateFoo = GetCertificate(StoreLocation.LocalMachine);
+            //CertificateFoo = GetCertificate(StoreLocation.CurrentUser);
+
             //Create URL to REST endpoint for tickets
             string url = "https://" + Server + ":4243/qps/" + VirtualProxy + "/session";
 
@@ -104,6 +105,7 @@ namespace QlikSenseSession
         private X509Certificate2 GetCertificate(StoreLocation storelocation)
         {
             // First locate the Qlik Sense certificate
+            //X509Store store = new X509Store(StoreName.My, storelocation);
             X509Store store = new X509Store(StoreName.My, storelocation);
             store.Open(OpenFlags.ReadOnly);
             X509Certificate2 certificateFoo = store.Certificates.Cast<X509Certificate2>().FirstOrDefault(c => c.FriendlyName == "QlikClient");
