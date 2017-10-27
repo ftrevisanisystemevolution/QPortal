@@ -282,7 +282,7 @@ else
                     myFrame.src = data.Link;
                 },
                 error: function (data) {
-                    toastr.error(data.responseJSON.Message);
+                    toastr.error(data.status + " - " + data.statusText);
                 }
             });
         }

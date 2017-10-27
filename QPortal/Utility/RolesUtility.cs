@@ -62,14 +62,8 @@ namespace QPortal.Utility
 
             foreach (var role in FarmRoles)
             {
-                //var nodes = from n in farm.Nodes
-                //              select n;
-
                 FarmList = AssignRoles(role.FarmId, role.Role, FarmList);
-
-
             }
-            //var indexes = list.FindIndex(c => c.Number == someTextBox.Text);
 
             return FarmList;
         }
