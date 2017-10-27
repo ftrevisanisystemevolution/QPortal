@@ -1,10 +1,13 @@
 ﻿using QlikSenseSession;
 using QPortal.Models;
+using QPortal.Utility;
+using QPortal.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml.Linq;
 
 namespace QPortal.Controllers
 {
@@ -12,6 +15,38 @@ namespace QPortal.Controllers
     {
         public ActionResult Index()
         {
+            //receive the list of roles
+            List<string> roles = new List<string>();
+            //uncomment to add roles
+            //roles.Add("YA0002");
+            roles.Add("YA0001");
+            roles.Add("YA0005");
+            //roles.Add("YA0006");
+            //roles.Add("YA0004");
+            //roles.Add("YA0005");
+            //roles.Add("YA0001");
+            //roles.Add("YA0001");
+            //roles.Add("YA0003");
+            //roles.Add("test");
+            //roles.Add("");
+
+            string path = Server.MapPath(Url.Content("~/Roles.xml"));
+            XDocument root = FarmsUtility.GetXmlDocument(path);
+
+            List<FarmRoles> FarmRoles = new List<FarmRoles>(RolesUtility.GetRoles(root, roles));
+
+            if (FarmRoles.Count != 0)
+            {
+                List<Farms> FarmList = new List<Farms>(RolesUtility.AssignFarmRoles(FarmRoles));
+
+                var viewModel = new FarmsViewModel()
+                {
+                    FarmList = FarmList
+                };
+
+                return View(viewModel);
+            }
+
             return View();
         }
 
