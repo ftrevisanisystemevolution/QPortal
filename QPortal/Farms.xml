@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<farms>
+  <farm id="0" name="Farm DOF">
+    <node id="0" server="desktop-N0_F0" vp="vp" link="https://www.youtube.com/embed/vGF-f3arb04">Ambiente Instituzionale</node>
+    <node id="1" server="desktop-N1_F0" vp="vp" link="https://www.youtube.com/watch?v=vbttZVTSJRU">Self Service Analysis</node>
+  </farm>
+  <farm id ="1" name="Farm CLB">
+    <node id="0" server="desktop-N0_F1" vp="vp" link="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d91737.51273778046!2d12.566428499999994!3d44.06689465000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132cc3a48fa6592b%3A0xc1f284db17f1449d!2sRimini+RN!5e0!3m2!1sit!2sit!4v1427492339750">Ambiente Instituzionale</node>
+    <node id="1" server="desktop-N1_F1" vp="vp" link="http://localhost:4848/sense/app/C%3A%5CUsers%5Cbrasoveanum%5CDocuments%5CQlik%5CSense%5CApps%5CExecutive%20Dashboard.qvf">Self Service Analysis</node>
+  </farm>
+</farms>

@@ -1,16 +1,75 @@
-﻿@{
+﻿@model QPortal.ViewModels.FarmsViewModel
+
+
+@{
     ViewBag.Title = "Home Page";
 }
 
-
-<div class="container-fluid nopaddinglr">
-    <div class="row">
-        <div id="ifr" class="collapse embed-responsive">
-            <iframe id="frame" src="" frameborder="0" scrolling="no"></iframe>
-        </div>
+@if (ViewData.Model != null)
+{
+    <div id="ifr" class="collapse embed-responsive nomarginlr">
+        <iframe id="frame" src=""></iframe>
     </div>
-</div>
+    <div class="jumbotron collapse in" id="farms">
 
+        @foreach (var farms in Model)
+        {
+            <div class="container">
+                <div class="row">
+
+                    @foreach (var node in farms.Nodes)
+                    {
+                        <div class="col-md-6">
+                            <div class="thumbnail block-card">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <h4 class="caption-text" style="text-align:left">@farms.Name</h4>
+                                            <h5 class="caption-text">@node.Name</h5>
+                                        </div>
+                                        <div class="col-md-8 text-right">
+                                            <img src="~/Content/Images/appNull2.png" style="width:216px;height:210px;" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="separator-line" />
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-4 text-center nopaddinglr">
+                                            <button class="btn btn-success buttonhome @node.btnDistributeClass" onclick="">
+                                                <i class="fa fa-share-square-o"></i> Distribuisci
+                                            </button>
+                                        </div>
+                                        <div class="col-md-4 text-center nopaddinglr">
+                                            <button class="btn btn-success buttonhome @node.btnArchiveClass" onclick="">
+                                                <i class="fa fa-folder-o"></i> Archivio Report
+                                            </button>
+                                        </div>
+                                        <div class="col-md-4 text-center nopaddinglr">
+                                            <button class="btn btn-success buttonhome @node.btnEnterClass" onclick="openIframeV2(this)" data-frame-id="@farms.Id" data-node-id="@node.Id">
+                                                <i class="fa fa-chevron-right"></i> Entra nell'Hub
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        }
+
+    </div>
+}
+else
+{
+    <div class="jumbotron">
+        <h1>No roles assigned!</h1>
+    </div>
+}
+
+<!--
 <div class="jumbotron collapse in" id="farms" style="background-color: white; background-image: url('../../Content/Images/bgcharts2.jpeg');background-repeat:no-repeat;background-size:cover;">
     <div class="container">
         <div class="row">
@@ -25,9 +84,9 @@
                             <div class="col-md-8 text-right">
                                 <img src="~/Content/Images/appNull2.png" style="width:216px;height:210px;" />
                             </div>
-                        </div>                        
+                        </div>
                     </div>
-                    <hr class="separator-line" />                    
+                    <hr class="separator-line" />
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-4 text-center">
@@ -99,7 +158,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr class="separator-line" />    
+                    <hr class="separator-line" />
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-4 text-center">
@@ -157,12 +216,16 @@
     </div>
 </div>
 
+-->
+
+
 @section scripts{
     <script type="text/javascript">
 
         //$(document).ready(function () {
 
         function setIframeSize() {
+            $("#ifr").collapse('show');
             $('#farms').collapse();
 
             var theIframe = document.querySelector("#frame"); //select the iframe element
@@ -184,7 +247,7 @@
             myFrame.src = ""; //clear the frame
             myFrame.src = "@Url.Action("Hub", "Home")";
             //myFrame.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d91737.51273778046!2d12.566428499999994!3d44.06689465000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132cc3a48fa6592b%3A0xc1f284db17f1449d!2sRimini+RN!5e0!3m2!1sit!2sit!4v1427492339750";
-            
+
             $("#newreport").css("display", "unset");
             $("#share").css("display", "unset");
             $("#exit").css("display", "unset");
@@ -219,7 +282,7 @@
                     myFrame.src = data.Link;
                 },
                 error: function (data) {
-                    toastr.error(data.responseJSON.Message);
+                    toastr.error(data.status + " - " + data.statusText);
                 }
             });
         }
