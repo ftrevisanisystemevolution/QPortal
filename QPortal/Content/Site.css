@@ -27,6 +27,48 @@ textarea {
 
 /* Custom styles */
 
+/* Navbar X Animation Start */
+.navbar-toggle {
+    border: none;
+    background: transparent !important;
+}
+
+    .navbar-toggle:hover {
+        background: transparent !important;
+    }
+
+    .navbar-toggle .icon-bar {
+        width: 22px;
+        transition: all 0.2s;
+    }
+
+    .navbar-toggle .top-bar {
+        transform: rotate(45deg);
+        transform-origin: 10% 10%;
+    }
+
+    .navbar-toggle .middle-bar {
+        opacity: 0;
+    }
+
+    .navbar-toggle .bottom-bar {
+        transform: rotate(-45deg);
+        transform-origin: 10% 90%;
+    }
+
+    .navbar-toggle.collapsed .top-bar {
+        transform: rotate(0);
+    }
+
+    .navbar-toggle.collapsed .middle-bar {
+        opacity: 1;
+    }
+
+    .navbar-toggle.collapsed .bottom-bar {
+        transform: rotate(0);
+    }
+/* Navbar X Animation End */
+
 /* hamburger navbar button*/
 @media (min-width: 992px) {
     .nav-button {
@@ -38,73 +80,11 @@ a.nav-button:hover {
     background-color: #323232;
 }
 
-.nav-button .hamburger {
-    width: 20px;
-    height: 50px;
-    position: relative;
-    margin-right: 19px;
-    overflow: visible;
-    line-height: 13px;
-    font-size: 1px;
-    float: right;
-    cursor: pointer;
-    margin-left: 19px;
-    margin-top: 18.5px; 
-}
-
-    .nav-button .hamburger .line {
-        position: absolute;
-        background-color: #ffffff;
-        overflow: hidden;
-        z-index: 1;
-        width: 20px;
-        height: 2px;
-        left: 0px;
-        -webkit-transition: all 0.25s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-        transition: all 0.25s cubic-bezier(0.455, 0.03, 0.515, 0.955)
-    }
-
-        .nav-button .hamburger .line:nth-child(1) {
-            -webkit-transform-origin: 0px 1.5px;
-            -ms-transform-origin: 0px 1.5px;
-            transform-origin: 0px 1.5px;
-            top: 0px;
-            z-index: 2
-        }
-
-        .nav-button .hamburger .line:nth-child(2) {
-            top: 5px;
-            z-index: 1
-        }
-
-        .nav-button .hamburger .line:nth-child(3) {
-            -webkit-transform-origin: 0px 1.5px;
-            -ms-transform-origin: 0px 1.5px;
-            transform-origin: 0px 1.5px;
-            top: 10px;
-            z-index: 3
-        }
-
-.nav-button.active .hamburger .line:nth-child(1) {
-    -webkit-transform: translateY(-2px) rotate(45deg);
-    -ms-transform: translateY(-2px) rotate(45deg);
-    transform: translateY(-2px) rotate(45deg)
-}
-
-.nav-button.active .hamburger .line:nth-child(2) {
-    opacity: 0
-}
-
-.nav-button.active .hamburger .line:nth-child(3) {
-    -webkit-transform: translateY(2px) rotate(-45deg);
-    -ms-transform: translateY(2px) rotate(-45deg);
-    transform: translateY(2px) rotate(-45deg)
-}
-
 /* navbar */
 .navbar {
     background-color: #258900;
     /*min-height: 70px;*/
+    border-color: transparent;
 }
 
     .navbar .navbar-brand {
