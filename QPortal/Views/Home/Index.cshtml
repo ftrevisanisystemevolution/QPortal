@@ -17,44 +17,132 @@
             <div class="container">
                 <div class="row">
 
-                    @foreach (var node in farms.Nodes)
-                    {
-                        <div class="col-md-6">
-                            <div class="thumbnail block-card">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <h4 class="caption-text" style="text-align:left">@farms.Name</h4>
-                                            <h5 class="caption-text">@node.Name</h5>
-                                        </div>
-                                        <div class="col-md-8 text-right">
-                                            <img src="~/Content/Images/appNull2.png" style="width:216px;height:210px;" />
-                                        </div>
+
+                    <div class="col-md-6">
+                        <div class="thumbnail block-card">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4 class="caption-text" style="text-align:left">@farms.Name</h4>
+                                        <h5 class="caption-text">@farms.Nodes[0].Name</h5>
+                                    </div>
+                                    <div class="col-md-8 text-right">
+                                        <img src="~/Content/Images/appNull2.png" style="width:216px;height:210px;" />
                                     </div>
                                 </div>
-                                <hr class="separator-line" />
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-md-4 text-center nopaddinglr">
-                                            <button class="btn btn-success buttonhome @node.btnDistributeClass" onclick="">
+                            </div>
+                            <hr class="separator-line" />
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-4 text-center nopaddinglr">
+                                        @if (farms.role.Equals("supervisor"))
+                                        {
+                                            <button class="btn btn-success buttonhome " onclick="">
                                                 <i class="fa fa-share-square-o"></i> Distribuisci
                                             </button>
-                                        </div>
-                                        <div class="col-md-4 text-center nopaddinglr">
-                                            <button class="btn btn-success buttonhome @node.btnArchiveClass" onclick="">
+                                        }
+                                        else
+                                        {
+                                            <button class="btn btn-success buttonhome disabled" onclick="">
+                                                <i class="fa fa-share-square-o"></i> Distribuisci
+                                            </button>
+                                        }
+                                    </div>
+                                    <div class="col-md-4 text-center nopaddinglr">
+                                        @if (farms.role.Equals("supervisor") || farms.role.Equals("developer"))
+                                        {
+                                            <button class="btn btn-success buttonhome " onclick="">
                                                 <i class="fa fa-folder-o"></i> Archivio Report
                                             </button>
-                                        </div>
-                                        <div class="col-md-4 text-center nopaddinglr">
-                                            <button class="btn btn-success buttonhome @node.btnEnterClass" onclick="openIframeV2(this)" data-frame-id="@farms.Id" data-node-id="@node.Id">
+                                        }
+                                        else
+                                        {
+                                            <button class="btn btn-success buttonhome disabled" onclick="">
+                                                <i class="fa fa-folder-o"></i> Archivio Report
+                                            </button>
+                                        }
+                                    </div>
+                                    <div class="col-md-4 text-center nopaddinglr">
+                                        @if (farms.role.Equals("supervisor") || farms.role.Equals("developer") || farms.role.Equals("user"))
+                                        {
+                                            <button class="btn btn-success buttonhome " onclick="openIframeV2(this)" data-frame-id="@farms.Id" data-node-id="@farms.Nodes[0].Id">
                                                 <i class="fa fa-chevron-right"></i> Entra nell'Hub
                                             </button>
-                                        </div>
+                                        }
+                                        else
+                                        {
+                                            <button class="btn btn-success buttonhome disabled" onclick="openIframeV2(this)" data-frame-id="@farms.Id" data-node-id="@farms.Nodes[0].Id">
+                                                <i class="fa fa-chevron-right"></i> Entra nell'Hub
+                                            </button>
+                                        }
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    }
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="thumbnail block-card">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4 class="caption-text" style="text-align:left">@farms.Name</h4>
+                                        <h5 class="caption-text">@farms.Nodes[1].Name</h5>
+                                    </div>
+                                    <div class="col-md-8 text-right">
+                                        <img src="~/Content/Images/appNull2.png" style="width:216px;height:210px;" />
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="separator-line" />
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-4 text-center nopaddinglr">
+                                        @if (farms.role.Equals("supervisor"))
+                                        {
+                                            <button class="btn btn-success buttonhome " onclick="">
+                                                <i class="fa fa-share-square-o"></i> Distribuisci
+                                            </button>
+                                        }
+                                        else
+                                        {
+                                            <button class="btn btn-success buttonhome disabled" onclick="">
+                                                <i class="fa fa-share-square-o"></i> Distribuisci
+                                            </button>
+                                        }
+                                    </div>
+                                    <div class="col-md-4 text-center nopaddinglr">
+                                        @if (farms.role.Equals("supervisor") || farms.role.Equals("developer"))
+                                        {
+                                            <button class="btn btn-success buttonhome " onclick="">
+                                                <i class="fa fa-folder-o"></i> Archivio Report
+                                            </button>
+                                        }
+                                        else
+                                        {
+                                            <button class="btn btn-success buttonhome disabled" onclick="">
+                                                <i class="fa fa-folder-o"></i> Archivio Report
+                                            </button>
+                                        }
+                                    </div>
+                                    <div class="col-md-4 text-center nopaddinglr">
+                                        @if (farms.role.Equals("supervisor") || farms.role.Equals("developer"))
+                                        {
+                                            <button class="btn btn-success buttonhome " onclick="openIframeV2(this)" data-frame-id="@farms.Id" data-node-id="@farms.Nodes[1].Id">
+                                                <i class="fa fa-chevron-right"></i> Entra nell'Hub
+                                            </button>
+                                        }
+                                        else
+                                        {
+                                            <button class="btn btn-success buttonhome disabled" onclick="openIframeV2(this)" data-frame-id="@farms.Id" data-node-id="@farms.Nodes[1].Id">
+                                                <i class="fa fa-chevron-right"></i> Entra nell'Hub
+                                            </button>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>

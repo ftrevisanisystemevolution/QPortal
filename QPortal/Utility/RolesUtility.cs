@@ -78,74 +78,15 @@ namespace QPortal.Utility
 
             FarmList = FarmsUtility.GetFarmsById(farmsId);
 
-            foreach (var role in FarmRoles)
+            foreach (var farm in FarmList)
             {
-                FarmList = AssignRoles(role.FarmId, role.Role, FarmList);
+                string role = FarmRoles.Where(r => r.FarmId.Equals(farm.Id)).Select(x => x.Role).SingleOrDefault().ToString();
+
+                farm.role = role;
             }
 
             return FarmList;
         }
 
-        public static List<Farms> AssignRoles(string farmId, string farmRole, List<Farms> FarmList)
-        {
-            List<Farms> Farms = new List<Farms>(FarmList);
-
-            var farmNodes = (from r in FarmList
-                             where r.Id.Equals(farmId)
-                             select r)
-                            .SelectMany(r => r.Nodes)
-                            .ToList();
-
-            foreach (var node in farmNodes)
-            {
-                switch (farmRole)
-                {
-                    case RoleName.User:
-                        if (node.Id == 0)
-                        {
-                            node.btnEnterClass = "";
-                            node.btnArchiveClass = "disabled";
-                            node.btnDistributeClass = "disabled";
-                        }
-                        else
-                        {
-                            node.btnEnterClass = "disabled";
-                            node.btnArchiveClass = "disabled";
-                            node.btnDistributeClass = "disabled";
-                        }
-                        break;
-                    case RoleName.Developer:
-                        if (node.Id == 0)
-                        {
-                            node.btnEnterClass = "";
-                            node.btnArchiveClass = "";
-                            node.btnDistributeClass = "disabled";
-                        }
-                        else
-                        {
-                            node.btnEnterClass = "";
-                            node.btnArchiveClass = "";
-                            node.btnDistributeClass = "disabled";
-                        }
-                        break;
-                    case RoleName.Supervisor:
-                        if (node.Id == 0)
-                        {
-                            node.btnEnterClass = "";
-                            node.btnArchiveClass = "";
-                            node.btnDistributeClass = "";
-                        }
-                        else
-                        {
-                            node.btnEnterClass = "";
-                            node.btnArchiveClass = "";
-                            node.btnDistributeClass = "";
-                        }
-                        break;
-                }
-            }
-
-            return Farms;
-        }
     }
 }
