@@ -45,6 +45,8 @@ namespace QlikSenseSession
             //Create URL to REST endpoint for tickets
             string url = "https://" + Server + ":4243/qps/" + VirtualProxy + "/session";
 
+
+
             //Create the HTTP Request and add required headers and content in Xrfkey
             string Xrfkey = "0123456789abcdef";
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url + "?Xrfkey=" + Xrfkey);
@@ -110,6 +112,8 @@ namespace QlikSenseSession
             store.Open(OpenFlags.ReadOnly);
             X509Certificate2 certificateFoo = store.Certificates.Cast<X509Certificate2>().FirstOrDefault(c => c.FriendlyName == "QlikClient");
             store.Close();
+
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11;
             //The following line is required because the root certificate for the above server certificate is self-signed.
             //Using a certificate from a trusted root certificate authority will allow this line to be removed.
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
