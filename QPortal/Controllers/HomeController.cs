@@ -65,14 +65,14 @@ namespace QPortal.Controllers
             return View();
         }
 
-        public ActionResult Hub()
+        public ActionResult Hub(string server, string vp)
         {
-            string Server = "desktop-29ba4mu";
-            string VP = "vp";
+            //string Server = "desktop-29ba4mu";
+            //string VP = "vp";
             string UserID = "bixth";
             string UserDirectory = "desktop-29ba4mu";
 
-            QSession qSession = new QSession("POST", Server, VP, UserID, UserDirectory);
+            QSession qSession = new QSession("POST", server, vp, UserID, UserDirectory);
             qSession.OpenSession(HttpContext.ApplicationInstance.Context);
             Request.Cookies.Add(qSession.GetCookie());
             Response.Cookies.Add(qSession.GetCookie());

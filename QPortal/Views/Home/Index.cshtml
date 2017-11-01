@@ -367,7 +367,13 @@ else
                     setIframeSize();
                     var myFrame = document.querySelector("#frame");
                     myFrame.src = ""; //clear the frame
-                    myFrame.src = data.Link;
+
+                    //Get Farm attributes from xml configuration file and create the link di the action that call Hub
+                    var link = myFrame.src = "@Url.Action("Hub", "Home")";
+                    link += "?server=" + data.Server + "&vp=" + data.VirtualProxy;
+
+                    myFrame.src = link;
+                    //myFrame.src = data.Link;
                 },
                 error: function (data) {
                     toastr.error(data.status + " - " + data.statusText);
