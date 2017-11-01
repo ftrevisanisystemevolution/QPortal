@@ -50,6 +50,24 @@ namespace QPortal.Utility
             return FarmRoles;
         }
 
+        public static string GetFarmRoleById(int farmId, List<string> roles)
+        {
+            string path = System.Web.Hosting.HostingEnvironment.MapPath(FilePaths.RolesXML);
+            XDocument root = FarmsUtility.GetXmlDocument(path);
+
+            string role = null;
+            if(root != null)
+            {
+                 role = root.Elements("farms").Elements("role")
+                            .Where(r => r.Attributes("id").Any(x => roles.Contains(x.Value)))
+                            .Where(r => r.Attribute("farm").Value.Equals(farmId.ToString()))
+                            .OrderByDescending(p => p.Attribute("priority").Value)
+                            .Select(r => r.Value).FirstOrDefault();
+            }
+
+            return role;
+        }
+
         public static List<Farms> AssignFarmRoles(List<FarmRoles> FarmRoles)
         {
             List<Farms> FarmList = new List<Farms>();
@@ -60,74 +78,15 @@ namespace QPortal.Utility
 
             FarmList = FarmsUtility.GetFarmsById(farmsId);
 
-            foreach (var role in FarmRoles)
+            foreach (var farm in FarmList)
             {
-                FarmList = AssignRoles(role.FarmId, role.Role, FarmList);
+                string role = FarmRoles.Where(r => r.FarmId.Equals(farm.Id)).Select(x => x.Role).SingleOrDefault().ToString();
+
+                farm.role = role;
             }
 
             return FarmList;
         }
 
-        public static List<Farms> AssignRoles(string farmId, string farmRole, List<Farms> FarmList)
-        {
-            List<Farms> Farms = new List<Farms>(FarmList);
-
-            var farmNodes = (from r in FarmList
-                             where r.Id.Equals(farmId)
-                             select r)
-                            .SelectMany(r => r.Nodes)
-                            .ToList();
-
-            foreach (var node in farmNodes)
-            {
-                switch (farmRole)
-                {
-                    case RoleName.User:
-                        if (node.Id == 0)
-                        {
-                            node.btnEnterClass = "";
-                            node.btnArchiveClass = "disabled";
-                            node.btnDistributeClass = "disabled";
-                        }
-                        else
-                        {
-                            node.btnEnterClass = "disabled";
-                            node.btnArchiveClass = "disabled";
-                            node.btnDistributeClass = "disabled";
-                        }
-                        break;
-                    case RoleName.Developer:
-                        if (node.Id == 0)
-                        {
-                            node.btnEnterClass = "";
-                            node.btnArchiveClass = "";
-                            node.btnDistributeClass = "disabled";
-                        }
-                        else
-                        {
-                            node.btnEnterClass = "";
-                            node.btnArchiveClass = "";
-                            node.btnDistributeClass = "disabled";
-                        }
-                        break;
-                    case RoleName.Supervisor:
-                        if (node.Id == 0)
-                        {
-                            node.btnEnterClass = "";
-                            node.btnArchiveClass = "";
-                            node.btnDistributeClass = "";
-                        }
-                        else
-                        {
-                            node.btnEnterClass = "";
-                            node.btnArchiveClass = "";
-                            node.btnDistributeClass = "";
-                        }
-                        break;
-                }
-            }
-
-            return Farms;
-        }
     }
 }
