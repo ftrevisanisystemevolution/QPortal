@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://sanpaoloimi.com/SSO" targetNamespace="http://sanpaoloimi.com/SSO" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="AbilitazioneType" type="tns:abilitazioneType" />
+  <xs:element name="AbilitazioniProfiloType" type="tns:abilitazioniProfiloType" />
+  <xs:element name="AnagraficaAbilitazioneType" type="tns:anagraficaAbilitazioneType" />
+  <xs:element name="AnagraficaFunzioneSlimType" type="tns:anagraficaFunzioneSlimType" />
+  <xs:element name="AnagraficaUtenteBodyType" type="tns:anagraficaUtenteBodyType" />
+  <xs:element name="AnagraficaUtenteType" type="tns:anagraficaUtenteMultiplaType" />
+  <xs:element name="DecodificaProfiliType" type="tns:decodificaProfiliType" />
+  <xs:element name="FunzioneType" type="tns:funzioneType" />
+  <xs:element name="FunzioniAbilitazioniType" type="tns:funzioniAbilitazioniType" />
+  <xs:element name="FunzioniBodyType" type="tns:funzioniBodyType" />
+  <xs:element name="FunzioniInfoType" type="tns:funzioniInfoType" />
+  <xs:element name="FunzioniProfiliType" type="tns:funzioniProfiliType" />
+  <xs:element name="FunzioniType" type="tns:funzioniType" />
+  <xs:element name="FunzioniUoType" type="tns:funzioniUoType" />
+  <xs:element name="IncaricoType" type="tns:incaricoType" />
+  <xs:element name="IsProfilatoType" type="tns:isProfilatoType" />
+  <xs:element name="LivelloDiFacoltaType" type="tns:livelloDiFacoltaType" />
+  <xs:element name="NBPProfilazioneType" type="tns:nbpProfilazioneType" />
+  <xs:element name="NbpProfilazioneBodyType" type="tns:nbpProfilazioneBodyType" />
+  <xs:element name="ProfilazioneBodyType" type="tns:profilazioneBodyType" />
+  <xs:element name="ProfilazioneType" type="tns:profilazioneType" />
+  <xs:element name="ProfiloType" type="tns:profiloType" />
+  <xs:element name="ResponseHeaderType" type="tns:responseHeaderType" />
+  <xs:element name="ServiziType" type="tns:serviziType" />
+  <xs:element name="ServizioType" type="tns:servizioType" />
+  <xs:element name="UoInfoType" type="tns:uoInfoType" />
+  <xs:element name="UserInfoType" nillable="true" type="xs:anyType" />
+  <xs:element name="UserProfileType" type="tns:userProfileType" />
+  <xs:element name="UtentiBodyType" type="tns:utentiBodyType" />
+  <xs:element name="UtentiType" type="tns:utentiType" />
+  <xs:element name="getAnagraficaUtente" type="tns:getAnagraficaUtente" />
+  <xs:element name="getAnagraficaUtenteResponse" type="tns:getAnagraficaUtenteResponse" />
+  <xs:element name="getFunzioni" type="tns:getFunzioni" />
+  <xs:element name="getFunzioniResponse" type="tns:getFunzioniResponse" />
+  <xs:element name="getNbpProfile" type="tns:getNbpProfile" />
+  <xs:element name="getNbpProfileResponse" type="tns:getNbpProfileResponse" />
+  <xs:element name="getProfilazione" type="tns:getProfilazione" />
+  <xs:element name="getProfilazioneResponse" type="tns:getProfilazioneResponse" />
+  <xs:element name="getUtenti" type="tns:getUtenti" />
+  <xs:element name="getUtentiResponse" type="tns:getUtentiResponse" />
+  <xs:element name="isProfilato" type="tns:isProfilato" />
+  <xs:element name="isProfilatoResponse" type="tns:isProfilatoResponse" />
+  <xs:complexType name="getAnagraficaUtente">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string" />
+      <xs:element minOccurs="0" name="siteName" type="xs:string" />
+      <xs:element minOccurs="0" name="codiceFiscale" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getAnagraficaUtenteResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="getAnagraficaUtente" type="tns:anagraficaUtenteMultiplaType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="anagraficaUtenteMultiplaType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractResponseType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="datiAnagrafici" type="tns:anagraficaUtenteBodyType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="abstractResponseType" abstract="true">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="responseStatus" type="tns:responseHeaderType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="anagraficaUtenteBodyType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string" />
+      <xs:element minOccurs="0" name="nome" type="xs:string" />
+      <xs:element minOccurs="0" name="cognome" type="xs:string" />
+      <xs:element minOccurs="0" name="codiceFiscale" type="xs:string" />
+      <xs:element minOccurs="0" name="email" type="xs:string" />
+      <xs:element minOccurs="0" name="telefono" type="xs:string" />
+      <xs:element minOccurs="0" name="cellulare" type="xs:string" />
+      <xs:element minOccurs="0" name="figuraProfessionale" type="xs:string" />
+      <xs:element minOccurs="0" name="azienda" type="xs:string" />
+      <xs:element minOccurs="0" name="descAzienda" type="xs:string" />
+      <xs:element minOccurs="0" name="uo" type="xs:string" />
+      <xs:element minOccurs="0" name="descUo" type="xs:string" />
+      <xs:element minOccurs="0" name="societa" type="xs:string" />
+      <xs:element minOccurs="0" name="descSocieta" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoDipendente" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="responseHeaderType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="retCode" type="xs:string" />
+      <xs:element minOccurs="0" name="retDesc" type="xs:string" />
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+      <xs:element minOccurs="0" name="numeroElementi" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUtenti">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="azienda" type="xs:string" />
+      <xs:element minOccurs="0" name="uo" type="xs:string" />
+      <xs:element minOccurs="0" name="gerarchia" type="xs:string" />
+      <xs:element minOccurs="0" name="abilSSA" type="xs:string" />
+      <xs:element minOccurs="0" name="abilAcronimo" type="xs:string" />
+      <xs:element minOccurs="0" name="flagAnagraficaUtente" type="xs:string" />
+      <xs:element minOccurs="0" name="filtraAbilitazioni" type="xs:string" />
+      <xs:element minOccurs="0" name="filtraProfili" type="xs:string" />
+      <xs:element minOccurs="0" name="filtraAbilitazioniProfilo" type="xs:string" />
+      <xs:element minOccurs="0" name="filtraLivelliDiFacolta" type="xs:string" />
+      <xs:element minOccurs="0" name="filtraIncarichi" type="xs:string" />
+      <xs:element minOccurs="0" name="filtraTutto" type="xs:string" />
+      <xs:element minOccurs="0" name="siteName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getUtentiResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="getUtenti" type="tns:utentiType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="utentiType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractResponseType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="utenti" type="tns:utentiBodyType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="utentiBodyType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UOinfo" type="tns:uoInfoType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="uoInfoType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="userinfo" type="tns:userInfoTypeUtenti" />
+    </xs:sequence>
+    <xs:attribute name="azienda" type="xs:string" />
+    <xs:attribute name="uo" type="xs:string" />
+    <xs:attribute name="societa" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="userInfoTypeUtenti">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="anagraficaUtente" type="tns:anagraficaUtenteBodyType" />
+    </xs:sequence>
+    <xs:attribute name="utente" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="getNbpProfile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string" />
+      <xs:element minOccurs="0" name="abilAcronimo" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoQuery" type="xs:string" />
+      <xs:element minOccurs="0" name="siteName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getNbpProfileResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="getNbpProfile" type="tns:nbpProfilazioneType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="nbpProfilazioneType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractResponseType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="profilazione" type="tns:nbpProfilazioneBodyType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="nbpProfilazioneBodyType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userinfo" type="tns:userInfoTypeUtentu" />
+      <xs:element minOccurs="0" name="servizi" type="tns:serviziType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="userInfoTypeUtentu">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="userprofile" type="tns:userProfileType" />
+    </xs:sequence>
+    <xs:attribute name="utente" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="userProfileType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="abilitazioni" type="tns:abilitazioneType" />
+      <xs:element minOccurs="0" name="profili" type="tns:profiloType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="abilitazioniProfilo" type="tns:abilitazioniProfiloType" />
+      <xs:element minOccurs="0" name="livelliDiFacolta" type="tns:livelloDiFacoltaType" />
+      <xs:element minOccurs="0" name="incarichi" type="tns:incaricoType" />
+    </xs:sequence>
+    <xs:attribute name="azienda" type="xs:string" />
+    <xs:attribute name="uo" type="xs:string" />
+    <xs:attribute name="societa" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="abilitazioneType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="abilitazione" type="tns:funzioneType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="funzioneType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="anagraficaFunzione" type="tns:anagraficaFunzioneSlimType" />
+    </xs:sequence>
+    <xs:attribute name="codice" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="anagraficaFunzioneSlimType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codFunzione" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoFunzione" type="xs:string" />
+      <xs:element minOccurs="0" name="descrizioneFunzioneBreve" type="xs:string" />
+      <xs:element minOccurs="0" name="descrizioneFunzioneLunga" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoUo" type="xs:string" />
+      <xs:element minOccurs="0" name="codCategoria" type="xs:string" />
+      <xs:element minOccurs="0" name="flagInoltro" type="xs:string" />
+      <xs:element minOccurs="0" name="flagAssegn" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoLdf" type="xs:string" />
+      <xs:element minOccurs="0" name="dataInizioValidita" type="xs:string" />
+      <xs:element minOccurs="0" name="dataFineValidita" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="profiloType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="profilo" type="tns:funzioneType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="abilitazioniProfiloType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="abilitazione" type="tns:funzioneType" />
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="livelloDiFacoltaType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="livelloDiFacolta" type="tns:funzioneType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="incaricoType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="incarico" type="tns:funzioneType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="serviziType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="servizio" type="tns:servizioType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="servizioType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="serviceid" type="xs:string" />
+      <xs:element minOccurs="0" name="endpoint" type="xs:string" />
+      <xs:element minOccurs="0" name="abilitazione" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="getFunzioni">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="azienda" type="xs:string" />
+      <xs:element minOccurs="0" name="uo" type="xs:string" />
+      <xs:element minOccurs="0" name="descrizioneFunzione" type="xs:string" />
+      <xs:element minOccurs="0" name="abilTAG" type="xs:string" />
+      <xs:element minOccurs="0" name="abilSSA" type="xs:string" />
+      <xs:element minOccurs="0" name="abilAcronimo" type="xs:string" />
+      <xs:element minOccurs="0" name="filtraAbilitazioni" type="xs:string" />
+      <xs:element minOccurs="0" name="filtraProfili" type="xs:string" />
+      <xs:element minOccurs="0" name="filtraAbilitazioniProfilo" type="xs:string" />
+      <xs:element minOccurs="0" name="filtraLivelliDiFacolta" type="xs:string" />
+      <xs:element minOccurs="0" name="filtraIncarichi" type="xs:string" />
+      <xs:element minOccurs="0" name="filtraTutto" type="xs:string" />
+      <xs:element minOccurs="0" name="siteName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getFunzioniResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="getFunzioni" type="tns:funzioniType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="funzioniType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractResponseType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="funzioni" type="tns:funzioniBodyType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="funzioniBodyType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="funzioneInfo" type="tns:funzioniInfoType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="funzioniInfoType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="datiAnagraficiFunzione" type="tns:anagraficaFunzioneSlimType" />
+      <xs:element minOccurs="0" name="datiAnagraficiAbilitazione" type="tns:anagraficaAbilitazioneType" />
+      <xs:element minOccurs="0" name="abilitazioniAssociate" type="tns:funzioniAbilitazioniType" />
+      <xs:element minOccurs="0" name="profiliAssociati" type="tns:funzioniProfiliType" />
+      <xs:element minOccurs="0" name="uoAssegnabili" type="tns:funzioniUoType" />
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" />
+    <xs:attribute name="tipo" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="anagraficaAbilitazioneType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ssa" type="xs:string" />
+      <xs:element minOccurs="0" name="acronimo" type="xs:string" />
+      <xs:element minOccurs="0" name="tipo_ambiente" type="xs:string" />
+      <xs:element minOccurs="0" name="tipo_operativita" type="xs:string" />
+      <xs:element minOccurs="0" name="tipo_utenza" type="xs:string" />
+      <xs:element minOccurs="0" name="incompatibile" type="xs:string" />
+      <xs:element minOccurs="0" name="richiedente" type="xs:string" />
+      <xs:element minOccurs="0" name="tags" type="xs:string" />
+      <xs:element minOccurs="0" name="abil_desc_ita" type="xs:string" />
+      <xs:element minOccurs="0" name="abil_desc_eng" type="xs:string" />
+      <xs:element minOccurs="0" name="note" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="funzioniAbilitazioniType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="abilitazione" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="funzioniProfiliType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="profilo" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="funzioniUoType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="uoinfo" type="tns:uoInfoType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getProfilazione">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string" />
+      <xs:element minOccurs="0" name="azienda" type="xs:string" />
+      <xs:element minOccurs="0" name="uo" type="xs:string" />
+      <xs:element minOccurs="0" name="abilSSA" type="xs:string" />
+      <xs:element minOccurs="0" name="abilAcronimo" type="xs:string" />
+      <xs:element minOccurs="0" name="flagAnagraficaUtente" type="xs:string" />
+      <xs:element minOccurs="0" name="flagAnagraficaFunzione" type="xs:string" />
+      <xs:element minOccurs="0" name="flagDecodificaProfili" type="xs:string" />
+      <xs:element minOccurs="0" name="filtraAbilitazioni" type="xs:string" />
+      <xs:element minOccurs="0" name="filtraProfili" type="xs:string" />
+      <xs:element minOccurs="0" name="filtraAbilitazioniProfilo" type="xs:string" />
+      <xs:element minOccurs="0" name="filtraLivelliDiFacolta" type="xs:string" />
+      <xs:element minOccurs="0" name="filtraIncarichi" type="xs:string" />
+      <xs:element minOccurs="0" name="filtraTutto" type="xs:string" />
+      <xs:element minOccurs="0" name="siteName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getProfilazioneResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="getProfilazione" type="tns:profilazioneType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="profilazioneType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractResponseType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="profilazione" type="tns:profilazioneBodyType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="profilazioneBodyType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="anagraficaUtente" type="tns:anagraficaUtenteBodyType" />
+      <xs:element minOccurs="0" name="decodificaProfili" type="tns:decodificaProfiliType" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="userinfo" type="tns:userInfoTypeUtentu" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="decodificaProfiliType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="decodificaProfilo" type="tns:abilitazioniProfiloType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isProfilato">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="userId" type="xs:string" />
+      <xs:element minOccurs="0" name="azienda" type="xs:string" />
+      <xs:element minOccurs="0" name="uo" type="xs:string" />
+      <xs:element minOccurs="0" name="abilSSA" type="xs:string" />
+      <xs:element minOccurs="0" name="abilAcronimo" type="xs:string" />
+      <xs:element minOccurs="0" name="filtraAbilitazioni" type="xs:string" />
+      <xs:element minOccurs="0" name="filtraProfili" type="xs:string" />
+      <xs:element minOccurs="0" name="filtraAbilitazioniProfilo" type="xs:string" />
+      <xs:element minOccurs="0" name="filtraLivelliDiFacolta" type="xs:string" />
+      <xs:element minOccurs="0" name="filtraIncarichi" type="xs:string" />
+      <xs:element minOccurs="0" name="filtraTutto" type="xs:string" />
+      <xs:element minOccurs="0" name="siteName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isProfilatoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="isProfilato" type="tns:isProfilatoType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="isProfilatoType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:abstractResponseType">
+        <xs:sequence>
+          <xs:element name="isProfilato" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

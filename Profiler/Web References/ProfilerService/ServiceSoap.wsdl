@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://sanpaoloimi.com/SSO" name="ServiceSoap" targetNamespace="http://sanpaoloimi.com/SSO" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="schema.xsd" namespace="http://sanpaoloimi.com/SSO" />
+    </xsd:schema>
+  </types>
+  <message name="getProfilazione">
+    <part name="parameters" element="tns:getProfilazione" />
+  </message>
+  <message name="getProfilazioneResponse">
+    <part name="parameters" element="tns:getProfilazioneResponse" />
+  </message>
+  <message name="getUtenti">
+    <part name="parameters" element="tns:getUtenti" />
+  </message>
+  <message name="getUtentiResponse">
+    <part name="parameters" element="tns:getUtentiResponse" />
+  </message>
+  <message name="getFunzioni">
+    <part name="parameters" element="tns:getFunzioni" />
+  </message>
+  <message name="getFunzioniResponse">
+    <part name="parameters" element="tns:getFunzioniResponse" />
+  </message>
+  <message name="getAnagraficaUtente">
+    <part name="parameters" element="tns:getAnagraficaUtente" />
+  </message>
+  <message name="getAnagraficaUtenteResponse">
+    <part name="parameters" element="tns:getAnagraficaUtenteResponse" />
+  </message>
+  <message name="isProfilato">
+    <part name="parameters" element="tns:isProfilato" />
+  </message>
+  <message name="isProfilatoResponse">
+    <part name="parameters" element="tns:isProfilatoResponse" />
+  </message>
+  <message name="getNbpProfile">
+    <part name="parameters" element="tns:getNbpProfile" />
+  </message>
+  <message name="getNbpProfileResponse">
+    <part name="parameters" element="tns:getNbpProfileResponse" />
+  </message>
+  <portType name="ServiceSoap">
+    <operation name="getProfilazione">
+      <input message="tns:getProfilazione" />
+      <output message="tns:getProfilazioneResponse" />
+    </operation>
+    <operation name="getUtenti">
+      <input message="tns:getUtenti" />
+      <output message="tns:getUtentiResponse" />
+    </operation>
+    <operation name="getFunzioni">
+      <input message="tns:getFunzioni" />
+      <output message="tns:getFunzioniResponse" />
+    </operation>
+    <operation name="getAnagraficaUtente">
+      <input message="tns:getAnagraficaUtente" />
+      <output message="tns:getAnagraficaUtenteResponse" />
+    </operation>
+    <operation name="isProfilato">
+      <input message="tns:isProfilato" />
+      <output message="tns:isProfilatoResponse" />
+    </operation>
+    <operation name="getNbpProfile">
+      <input message="tns:getNbpProfile" />
+      <output message="tns:getNbpProfileResponse" />
+    </operation>
+  </portType>
+  <binding name="ServiceSoapPortBinding" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="getProfilazione">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getUtenti">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getFunzioni">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getAnagraficaUtente">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="isProfilato">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getNbpProfile">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ServiceSoap">
+    <port name="ServiceSoapPort" binding="tns:ServiceSoapPortBinding">
+      <soap:address location="http://sswp20.syssede.systest.sanpaoloimi.com:8024/scriptSwp20/swp2/ServiceSoap" />
+    </port>
+  </service>
+</definitions>

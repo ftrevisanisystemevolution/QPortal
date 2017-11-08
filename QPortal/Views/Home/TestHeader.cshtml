@@ -1,4 +1,5 @@
-﻿<div class="caption">Header</div>
+﻿@*@model IEnumerable<Profiler.Profile>*@
+<div class="caption">Header</div>
 <table border="1">
     @for (int i = 0; i < ViewBag.HeadersKeysCount; i++)
     {
@@ -6,9 +7,55 @@
             <td>
                 @ViewBag.HeadersKeys[i]
             </td>
-            <td align="right">
+            <td>
                 @ViewBag.Headers[i]
             </td>
         </tr>
     }
 </table>
+<div class="caption">Profile</div>
+<table border="1">
+    <tr>
+        <td>
+            IsValid
+        </td>
+        <td>
+            @ViewBag.IsValid
+        </td>
+    </tr>
+    <tr>
+        <td>
+            UserDirectory
+        </td>
+        <td>
+            @ViewBag.UserDirectory
+        </td>
+    </tr>
+    <tr>
+        <td>
+            UserID
+        </td>
+        <td>
+            @ViewBag.UserID
+        </td>
+    </tr>
+    <tr>
+        <td>
+            LinkSWP
+        </td>
+        <td>
+            @ViewBag.LinkSWP
+        </td>
+    </tr>
+</table>
+<div class="caption">Profili: @ViewBag.ProfileCount</div>
+@*<table border="1">
+    @foreach(Profiler.Profile model in Model)
+    {
+        <tr>
+            <td>
+                model.RoleID
+            </td>
+        </tr>
+    }
+</table>*@

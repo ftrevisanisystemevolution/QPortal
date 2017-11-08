@@ -1,11 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <farms>
-  <role id="YA0001" farm="0" priority="1">user</role>
-  <role id="YA0002" farm="0" priority="2">developer</role>
-  <role id="YA0003" farm="0" priority="3">supervisor</role>
-  <role id="YA0004" farm="1" priority="1">user</role>
-  <role id="YA0005" farm="1" priority="2">developer</role>
-  <role id="YA0006" farm="1" priority="3">supervisor</role>
+  <role id="YA2C04" farm="0" priority="1">user</role>
+  <role id="YA2C05" farm="0" priority="2">developer</role>
+  <role id="YA2C03" farm="0" priority="3">supervisor</role>
+  <role id="YA2C02" farm="0" priority="4">certifier</role>
+  <role id="YA2C06" farm="1" priority="1">user</role>
+  <role id="YA2C07" farm="1" priority="2">developer</role>
+  <role id="YA2C08" farm="1" priority="3">supervisor</role>
+  <role id="YA2C09" farm="1" priority="4">certifier</role>
 </farms>
 

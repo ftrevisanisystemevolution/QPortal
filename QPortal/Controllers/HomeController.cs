@@ -1,4 +1,5 @@
-﻿using QlikSenseSession;
+﻿using Profiler;
+using QlikSenseSession;
 using QPortal.Models;
 using QPortal.Utility;
 using QPortal.ViewModels;
@@ -18,19 +19,19 @@ namespace QPortal.Controllers
             //receive the list of roles
             List<string> roles = new List<string>();
             //uncomment to add roles
-            //roles.Add("YA0002");
-            roles.Add("YA0001");
-            roles.Add("YA0005");
-            //roles.Add("YA0006");
-            //roles.Add("YA0004");
-            //roles.Add("YA0005");
-            //roles.Add("YA0001");
-            //roles.Add("YA0002");
-            //roles.Add("YA0001");
-            //roles.Add("YA0003");
-            //roles.Add("test");
-            //roles.Add("");
-
+#if DEBUG
+            Session["UserID"] = "bixth";
+            Session["UserDirectory"] = "desktop-29ba4mu";
+#else
+            UserRequest userRequest = new UserRequest(Request.Headers.AllKeys.Count(), Request.Headers.AllKeys, Request.Headers);
+            Session["UserID"] = userRequest.UserID;
+            Session["UserDirectory"] = userRequest.UserDirectory;
+            UserProfile userProfile = new UserProfile(userRequest.SWAProfileID, userRequest.LinkSWP);
+            foreach(var role in userProfile.Profiles)
+            {
+                roles.Add(role.RoleID);
+            }
+#endif
             string path = Server.MapPath(Url.Content(FilePaths.RolesXML));
             XDocument root = FarmsUtility.GetXmlDocument(path);
             
@@ -67,10 +68,8 @@ namespace QPortal.Controllers
 
         public ActionResult Hub(string server, string vp)
         {
-            //string Server = "desktop-29ba4mu";
-            //string VP = "vp";
-            string UserID = "bixth";
-            string UserDirectory = "desktop-29ba4mu";
+            string UserID = Session["UserID"].ToString();
+            string UserDirectory = Session["UserDirectory"].ToString();
 
             QSession qSession = new QSession("POST", server, vp, UserID, UserDirectory);
             qSession.OpenSession(HttpContext.ApplicationInstance.Context);
@@ -85,6 +84,14 @@ namespace QPortal.Controllers
             ViewBag.HeadersKeysCount = Request.Headers.AllKeys.Count();
             ViewBag.HeadersKeys = Request.Headers.AllKeys;
             ViewBag.Headers = Request.Headers;
+            UserRequest userRequest = new UserRequest(Request.Headers.AllKeys.Count(), Request.Headers.AllKeys, Request.Headers);
+            ViewBag.IsValid = userRequest.IsValid;
+            ViewBag.UserDirectory = userRequest.UserDirectory;
+            ViewBag.UserID = userRequest.UserID;
+            ViewBag.LinkSWP = userRequest.LinkSWP;
+            UserProfile userProfile = new UserProfile(userRequest.SWAProfileID, userRequest.LinkSWP + "ServiceSoap");
+            //return View(userProfile.Profiles);
+            ViewBag.ProfileCount = userProfile.IsValid ? userProfile.Profiles.Count : 0;
             return View();
         }
     }

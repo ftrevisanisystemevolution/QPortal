@@ -93,11 +93,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/Owin.dll">
       <publishTime>11/27/2012 08:00:52</publishTime>
     </File>
+    <File Include="bin/Profiler.dll">
+      <publishTime>11/05/2017 17:26:28</publishTime>
+    </File>
+    <File Include="bin/Profiler.XmlSerializers.dll">
+      <publishTime>11/05/2017 17:26:28</publishTime>
+    </File>
     <File Include="bin/QlikSenseSession.dll">
-      <publishTime>10/19/2017 12:17:23</publishTime>
+      <publishTime>10/31/2017 17:10:54</publishTime>
     </File>
     <File Include="bin/QPortal.dll">
-      <publishTime>10/23/2017 23:17:24</publishTime>
+      <publishTime>11/06/2017 10:13:28</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>04/13/2017 14:47:48</publishTime>
@@ -243,8 +249,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/roslyn/VBCSCompiler.exe.config">
       <publishTime>04/13/2017 14:47:48</publishTime>
     </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>10/24/2017 17:02:09</publishTime>
+    </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>01/27/2015 23:04:30</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>10/24/2017 17:02:09</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>10/24/2017 17:02:09</publishTime>
     </File>
     <File Include="bin/System.Web.Mvc.dll">
       <publishTime>01/27/2015 23:02:18</publishTime>
@@ -424,7 +439,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/18/2017 15:16:46</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>10/19/2017 02:21:11</publishTime>
+      <publishTime>10/27/2017 16:43:34</publishTime>
+    </File>
+    <File Include="Content/toastr.css">
+      <publishTime>10/27/2017 16:43:34</publishTime>
+    </File>
+    <File Include="Content/toastr.less">
+      <publishTime>10/27/2017 16:43:34</publishTime>
+    </File>
+    <File Include="Content/toastr.min.css">
+      <publishTime>10/27/2017 16:43:34</publishTime>
+    </File>
+    <File Include="Content/toastr.scss">
+      <publishTime>10/27/2017 16:43:34</publishTime>
+    </File>
+    <File Include="Farms.xml">
+      <publishTime>11/03/2017 15:45:27</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>10/05/2017 13:13:42</publishTime>
@@ -464,6 +494,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Global.asax">
       <publishTime>10/05/2017 13:13:42</publishTime>
+    </File>
+    <File Include="Roles.xml">
+      <publishTime>11/03/2017 15:44:01</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>10/05/2017 13:14:02</publishTime>
@@ -513,6 +546,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/respond.min.js">
       <publishTime>10/05/2017 13:14:17</publishTime>
     </File>
+    <File Include="Scripts/toastr.js">
+      <publishTime>10/27/2017 16:43:34</publishTime>
+    </File>
+    <File Include="Scripts/toastr.min.js">
+      <publishTime>10/27/2017 16:43:34</publishTime>
+    </File>
     <File Include="Views/Account/ConfirmEmail.cshtml">
       <publishTime>10/05/2017 13:14:22</publishTime>
     </File>
@@ -556,10 +595,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/05/2017 13:13:42</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>10/19/2017 11:18:43</publishTime>
+      <publishTime>11/03/2017 15:37:04</publishTime>
     </File>
     <File Include="Views/Home/TestHeader.cshtml">
-      <publishTime>10/19/2017 15:21:23</publishTime>
+      <publishTime>11/05/2017 18:02:13</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>10/05/2017 13:14:23</publishTime>
@@ -592,7 +631,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/05/2017 13:14:23</publishTime>
     </File>
     <File Include="Views/Shared/_NavBar.cshtml">
-      <publishTime>10/19/2017 11:11:19</publishTime>
+      <publishTime>10/24/2017 17:02:09</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>10/05/2017 13:13:42</publishTime>
@@ -601,7 +640,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/05/2017 13:13:42</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/23/2017 23:17:25</publishTime>
+      <publishTime>11/04/2017 18:33:29</publishTime>
     </File>
   </ItemGroup>
 </Project>

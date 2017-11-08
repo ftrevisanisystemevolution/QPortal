@@ -33,23 +33,9 @@
                             </div>
                             <hr class="separator-line" />
                             <div class="container-fluid">
-                                <div class="row">
+                                <div class="row">                                    
                                     <div class="col-md-4 text-center nopaddinglr">
-                                        @if (farms.role.Equals("supervisor"))
-                                        {
-                                            <button class="btn btn-success buttonhome " onclick="">
-                                                <i class="fa fa-share-square-o"></i> Distribuisci
-                                            </button>
-                                        }
-                                        else
-                                        {
-                                            <button class="btn btn-success buttonhome disabled" onclick="">
-                                                <i class="fa fa-share-square-o"></i> Distribuisci
-                                            </button>
-                                        }
-                                    </div>
-                                    <div class="col-md-4 text-center nopaddinglr">
-                                        @if (farms.role.Equals("supervisor") || farms.role.Equals("developer"))
+                                        @if (farms.role.Equals("supervisor") || farms.role.Equals("developer") || farms.role.Equals("certifier"))
                                         {
                                             <button class="btn btn-success buttonhome " onclick="">
                                                 <i class="fa fa-folder-o"></i> Archivio Report
@@ -57,13 +43,13 @@
                                         }
                                         else
                                         {
-                                            <button class="btn btn-success buttonhome disabled" onclick="">
+                                            <button class="btn btn-default buttonhome disabled" onclick="">
                                                 <i class="fa fa-folder-o"></i> Archivio Report
                                             </button>
                                         }
                                     </div>
                                     <div class="col-md-4 text-center nopaddinglr">
-                                        @if (farms.role.Equals("supervisor") || farms.role.Equals("developer") || farms.role.Equals("user"))
+                                        @if (farms.role.Equals("supervisor") || farms.role.Equals("developer") || farms.role.Equals("certifier") || farms.role.Equals("user"))
                                         {
                                             <button class="btn btn-success buttonhome " onclick="openIframeV2(this)" data-frame-id="@farms.Id" data-node-id="@farms.Nodes[0].Id">
                                                 <i class="fa fa-chevron-right"></i> Entra nell'Hub
@@ -71,7 +57,7 @@
                                         }
                                         else
                                         {
-                                            <button class="btn btn-success buttonhome disabled" onclick="openIframeV2(this)" data-frame-id="@farms.Id" data-node-id="@farms.Nodes[0].Id">
+                                            <button class="btn btn-default buttonhome disabled" onclick="openIframeV2(this)" data-frame-id="@farms.Id" data-node-id="@farms.Nodes[0].Id">
                                                 <i class="fa fa-chevron-right"></i> Entra nell'Hub
                                             </button>
                                         }
@@ -106,7 +92,7 @@
                                         }
                                         else
                                         {
-                                            <button class="btn btn-success buttonhome disabled" onclick="">
+                                            <button class="btn btn-default buttonhome disabled" onclick="">
                                                 <i class="fa fa-share-square-o"></i> Distribuisci
                                             </button>
                                         }
@@ -115,13 +101,13 @@
                                         @if (farms.role.Equals("supervisor") || farms.role.Equals("developer"))
                                         {
                                             <button class="btn btn-success buttonhome " onclick="">
-                                                <i class="fa fa-folder-o"></i> Archivio Report
+                                                <i class="fa fa-plus-square-o"></i> Nuovo Report
                                             </button>
                                         }
                                         else
                                         {
-                                            <button class="btn btn-success buttonhome disabled" onclick="">
-                                                <i class="fa fa-folder-o"></i> Archivio Report
+                                            <button class="btn btn-default buttonhome disabled" onclick="">
+                                                <i class="fa fa-plus-square-o"></i> Nuovo Report
                                             </button>
                                         }
                                     </div>
@@ -134,7 +120,7 @@
                                         }
                                         else
                                         {
-                                            <button class="btn btn-success buttonhome disabled" onclick="openIframeV2(this)" data-frame-id="@farms.Id" data-node-id="@farms.Nodes[1].Id">
+                                            <button class="btn btn-default buttonhome disabled" onclick="openIframeV2(this)" data-frame-id="@farms.Id" data-node-id="@farms.Nodes[1].Id">
                                                 <i class="fa fa-chevron-right"></i> Entra nell'Hub
                                             </button>
                                         }
@@ -157,8 +143,8 @@ else
     </div>
 }
 
-<!--
-<div class="jumbotron collapse in" id="farms" style="background-color: white; background-image: url('../../Content/Images/bgcharts2.jpeg');background-repeat:no-repeat;background-size:cover;">
+
+@*<div class="jumbotron collapse in" id="farms" style="background-color: white; background-image: url('../../Content/Images/bgcharts2.jpeg');background-repeat:no-repeat;background-size:cover;">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -302,9 +288,9 @@ else
             </div>
         </div>
     </div>
-</div>
+</div>*@
 
--->
+
 
 
 @section scripts{

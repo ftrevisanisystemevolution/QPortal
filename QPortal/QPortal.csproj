@@ -364,6 +364,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Profiler\Profiler.csproj">
+      <Project>{3774f0e2-6adc-4b95-acb5-14aca278cfc7}</Project>
+      <Name>Profiler</Name>
+    </ProjectReference>
     <ProjectReference Include="..\QlikSenseSession\QlikSenseSession.csproj">
       <Project>{fe6ec5d8-e640-49d0-9416-c6fca1d7d7a6}</Project>
       <Name>QlikSenseSession</Name>
