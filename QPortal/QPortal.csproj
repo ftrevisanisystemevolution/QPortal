@@ -273,6 +273,7 @@
     <Content Include="Content\Images\logo-icon.png" />
     <Content Include="Content\Images\logo-intesasanpaolo.png" />
     <Content Include="Content\Images\Logo.png" />
+    <Content Include="Content\Images\Qlik.png" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="Farms.xml">

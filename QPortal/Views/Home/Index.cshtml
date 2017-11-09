@@ -14,7 +14,6 @@
 
         <div class="top-left message">Business Intelligence Center</div>
 
-
         <div class="container vcenter">
             <div class="row">
 
@@ -26,11 +25,11 @@
                                     <h3 class="card-title">Area Reportistica</h3>
                                     <p class="card-text">Crea e Visualizza la reportistica</p>
                                     <h3 class="card-title">Ambito</h3>
-                                        <select class="form-control mb-5">
-                                            <option value="">Select a Farm</option>
-                                            <option value="CFO-R" selected="selected">CFO - report distribuiti</option>
-                                            <option value="CFO-S" selected="selected">CFO - self-service BI</option>
-                                        </select>
+                                    <select class="form-control mb-5">
+                                        <option value="">Select a Farm</option>
+                                        <option value="CFO-R" selected="selected">CFO - report distribuiti</option>
+                                        <option value="CFO-S" selected="selected">CFO - self-service BI</option>
+                                    </select>
 
                                     <a href="#" class="btn btn-primary center-block">ACCEDI</a>
                                 </div>
@@ -184,7 +183,18 @@
             </div>
         </div>
 
+        <div class="footer navbar-fixed-bottom line">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="nopaddingtopbot qliklogotext" href="#">Powered by
+                    <img class="logo qliklogo" src='@Url.Content("~/Content/Images/Qlik.png")' alt="Qlik logo" title="Qlik logo">
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
+
+
 }
 else
 {
@@ -193,158 +203,162 @@ else
     </div>
 }
 
+@*<div class="col-xs-12 hr push-to-bottom">
 
-@*<div class="jumbotron collapse in" id="farms" style="background-color: white; background-image: url('../../Content/Images/bgcharts2.jpeg');background-repeat:no-repeat;background-size:cover;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="thumbnail block-card">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h4 class="caption-text" style="text-align:left">Farm DOF</h4>
-                                    <h5 class="caption-text">Ambiente Istituzionale</h5>
-                                </div>
-                                <div class="col-md-8 text-right">
-                                    <img src="~/Content/Images/appNull2.png" style="width:216px;height:210px;" />
-                                </div>
-                            </div>
-                        </div>
-                        <hr class="separator-line" />
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-4 text-center">
-                                </div>
-                                <div class="col-md-4 text-center">
-                                    <button class="btn btn-success buttonhome" onclick="">
-                                        <i class="fa fa-folder-o"></i> Archivio Report
-                                    </button>
-                                </div>
-                                <div class="col-md-4 text-center">
-                                    <button class="btn btn-success buttonhome" onclick="openIframe()" data-toggle="collapse" data-target="#ifr">
-                                        <i class="fa fa-chevron-right"></i> Entra nell'Hub
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="thumbnail block-card">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h4 class="caption-text" style="text-align:left">Farm DOF</h4>
-                                    <h5 class="caption-text">Self Service Analysis</h5>
-                                </div>
-                                <div class="col-md-8 text-right">
-                                    <img src="~/Content/Images/appNull2.png" style="width:216px;height:210px;" />
-                                </div>
-                            </div>
-                        </div>
-                        <hr class="separator-line" />
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-4 text-center">
-                                    <button class="btn btn-success buttonhome" onclick="">
-                                        <i class="fa fa-share-square-o"></i> Distribuisci
-                                    </button>
-                                </div>
-                                <div class="col-md-4 text-center">
-                                    <button class="btn btn-success buttonhome" onclick="">
-                                        <i class="fa fa-plus-square-o"></i> Nuovo Report
-                                    </button>
-                                </div>
-                                <div class="col-md-4 text-center">
-                                    <button class="btn btn-success buttonhome" onclick="openIframe()" data-toggle="collapse" data-target="#ifr">
-                                        <i class="fa fa-chevron-right"></i> Entra nell'Hub
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+</div>*@
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="thumbnail block-card">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h4 class="caption-text" style="text-align:left">Farm CLB</h4>
-                                    <h5 class="caption-text">Ambiente Istituzionale</h5>
-                                </div>
-                                <div class="col-md-8 text-right">
-                                    <img src="~/Content/Images/appNull2.png" style="width:216px;height:210px;" />
+
+    @*<div class="jumbotron collapse in" id="farms" style="background-color: white; background-image: url('../../Content/Images/bgcharts2.jpeg');background-repeat:no-repeat;background-size:cover;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="thumbnail block-card">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4 class="caption-text" style="text-align:left">Farm DOF</h4>
+                                        <h5 class="caption-text">Ambiente Istituzionale</h5>
+                                    </div>
+                                    <div class="col-md-8 text-right">
+                                        <img src="~/Content/Images/appNull2.png" style="width:216px;height:210px;" />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <hr class="separator-line" />
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-4 text-center">
-                                </div>
-                                <div class="col-md-4 text-center">
-                                    <button class="btn btn-default disabled buttonhome" onclick="">
-                                        <i class="fa fa-folder-o"></i> Archivio Report
-                                    </button>
-                                </div>
-                                <div class="col-md-4 text-center">
-                                    <button class="btn btn-success buttonhome" onclick="openIframe()" data-toggle="collapse" data-target="#ifr">
-                                        <i class="fa fa-chevron-right"></i> Entra nell'Hub
-                                    </button>
+                            <hr class="separator-line" />
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-4 text-center">
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <button class="btn btn-success buttonhome" onclick="">
+                                            <i class="fa fa-folder-o"></i> Archivio Report
+                                        </button>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <button class="btn btn-success buttonhome" onclick="openIframe()" data-toggle="collapse" data-target="#ifr">
+                                            <i class="fa fa-chevron-right"></i> Entra nell'Hub
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="thumbnail block-card">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h4 class="caption-text" style="text-align:left">Farm CLB</h4>
-                                    <h5 class="caption-text">Self Service Analysis</h5>
-                                </div>
-                                <div class="col-md-8 text-right">
-                                    <img src="~/Content/Images/appNull2.png" style="width:216px;height:210px;" />
+                    <div class="col-md-6">
+                        <div class="thumbnail block-card">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4 class="caption-text" style="text-align:left">Farm DOF</h4>
+                                        <h5 class="caption-text">Self Service Analysis</h5>
+                                    </div>
+                                    <div class="col-md-8 text-right">
+                                        <img src="~/Content/Images/appNull2.png" style="width:216px;height:210px;" />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <hr class="separator-line" />
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-4 text-center">
-                                    <button class="btn btn-default disabled buttonhome" onclick="">
-                                        <i class="fa fa-share-square-o"></i> Distribuisci
-                                    </button>
-                                </div>
-                                <div class="col-md-4 text-center">
-                                    <button class="btn btn-default disabled buttonhome" onclick="">
-                                        <i class="fa fa-plus-square-o"></i> Nuovo Report
-                                    </button>
-                                </div>
-                                <div class="col-md-4 text-center">
-                                    <button class="btn btn-default disabled buttonhome" onclick="openIframe()" data-toggle="collapse" data-target="#ifr">
-                                        <i class="fa fa-chevron-right"></i> Entra nell'Hub
-                                    </button>
+                            <hr class="separator-line" />
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-4 text-center">
+                                        <button class="btn btn-success buttonhome" onclick="">
+                                            <i class="fa fa-share-square-o"></i> Distribuisci
+                                        </button>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <button class="btn btn-success buttonhome" onclick="">
+                                            <i class="fa fa-plus-square-o"></i> Nuovo Report
+                                        </button>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <button class="btn btn-success buttonhome" onclick="openIframe()" data-toggle="collapse" data-target="#ifr">
+                                            <i class="fa fa-chevron-right"></i> Entra nell'Hub
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>*@
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="thumbnail block-card">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4 class="caption-text" style="text-align:left">Farm CLB</h4>
+                                        <h5 class="caption-text">Ambiente Istituzionale</h5>
+                                    </div>
+                                    <div class="col-md-8 text-right">
+                                        <img src="~/Content/Images/appNull2.png" style="width:216px;height:210px;" />
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="separator-line" />
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-4 text-center">
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <button class="btn btn-default disabled buttonhome" onclick="">
+                                            <i class="fa fa-folder-o"></i> Archivio Report
+                                        </button>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <button class="btn btn-success buttonhome" onclick="openIframe()" data-toggle="collapse" data-target="#ifr">
+                                            <i class="fa fa-chevron-right"></i> Entra nell'Hub
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="thumbnail block-card">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4 class="caption-text" style="text-align:left">Farm CLB</h4>
+                                        <h5 class="caption-text">Self Service Analysis</h5>
+                                    </div>
+                                    <div class="col-md-8 text-right">
+                                        <img src="~/Content/Images/appNull2.png" style="width:216px;height:210px;" />
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="separator-line" />
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-4 text-center">
+                                        <button class="btn btn-default disabled buttonhome" onclick="">
+                                            <i class="fa fa-share-square-o"></i> Distribuisci
+                                        </button>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <button class="btn btn-default disabled buttonhome" onclick="">
+                                            <i class="fa fa-plus-square-o"></i> Nuovo Report
+                                        </button>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <button class="btn btn-default disabled buttonhome" onclick="openIframe()" data-toggle="collapse" data-target="#ifr">
+                                            <i class="fa fa-chevron-right"></i> Entra nell'Hub
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
 
 
 
 
-@section scripts{
-    <script type="text/javascript">
+    @section scripts{
+        <script type="text/javascript">
 
         //$(document).ready(function () {
 
@@ -417,6 +431,6 @@ else
             });
         }
        //}
-    </script>
-}
+        </script>
+    }
 

@@ -469,16 +469,41 @@ a:hover, a:visited, a:link, a:active {
     }
 }
 
-/*@media (max-width: 1199px) {
-    .btn.buttonhome{
-        padding-left: 0px;
-        padding-right: 0px;
-    }
+/* bottom-line --Powered by*/
+.hr {
+    height: 50px;
+    display: block;
+    background-color: #6F6F6F;
 }
 
-@media (min-width: 991px) {
-    .btn.buttonhome {
-        padding-left: 0px;
-        padding-right: 0px;
-    }
-}*/
+.qliklogotext{
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+}
+
+a.qliklogotext:hover {
+    background-color: inherit !important;
+    color: white;
+}
+a.qliklogotext:focus {
+    background-color: inherit !important;
+    color: white;
+}
+
+.qliklogo {
+    width: 120px;
+    margin-right: 15px;
+}
+
+.push-to-bottom {
+    position: absolute;
+    bottom: 50px;
+}
+
+.line {
+    background-color: #232323;
+    height: 50px;
+}
+/* End bottom line*/
