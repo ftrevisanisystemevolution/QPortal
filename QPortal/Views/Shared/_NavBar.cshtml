@@ -8,7 +8,7 @@
                 <span class="icon-bar bottom-bar"></span>
             </button>
             <a class="navbar-brand" href='@Url.Action("Index", "Home")' title="Intesa Sanpaolo">
-                <img class="logo hidden-xs" src='@Url.Content("~/Content/Images/logo.png")' alt="Intesa Sanpaolo" title="Intesa Sanpaolo">
+                <img class="logo hidden-xs" src='@Url.Content("~/Content/Images/logo-intesasanpaolo.png")' alt="Intesa Sanpaolo" title="Intesa Sanpaolo">
                 <img class="icon visible-xs text-center" src='@Url.Content("~/Content/Images/logo-icon.png")' alt="IS">
             </a>
         </div>
@@ -25,11 +25,19 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li>
+                @*<li>
                     <a class="nopaddingtopbot" href="#"><img class="logo hidden-xs" src='@Url.Content("~/Content/Images/docs.png")' height="30" width="40" alt="Linee Guida" title="Linee Guida"></a>
                 </li>
                 <li>
                     <a class="nopaddingtopbot" href="#"><img class="logo hidden-xs" src='@Url.Content("~/Content/Images/help.png")' height="30" width="40" alt="Chiedi Aiuto" title="Chiedi Aiuto"></a>
+                </li>*@
+                <li class="user-profile">
+                    <a class="nopaddingtopbot user-adjust" href="#">
+                        <div class="user-profile__info">
+                            <span id="user-profile-name" class="user-profile__info__user-name vcenter">Mario Rossi</span>
+                        </div>
+                        <img class="logo hidden-xs" src='@Url.Content("~/Content/Images/Avatar.jpg")' alt="user icon" title="user icon">
+                    </a>
                 </li>
             </ul>
         </div>

@@ -571,5 +571,47 @@ a.qliklogotext:focus {
         background-color: #258900;
         border-color: #258900;
     }
-
 /* End Primary button Style*/
+
+/* nav user profile start*/
+.user-profile{
+    max-height: 50px;
+    vertical-align:middle;
+}
+.user-profile__info__user-name {
+    width: auto;
+    font-size: 20px;
+    display: inline-block;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+
+li.user-profile > a img {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 2px solid rgba(160,160,160,0.5);
+}
+
+li.user-profile > a .user-profile__info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    margin-right: 10px;
+}
+
+.user-adjust {
+    display: flex !important;
+    max-height: inherit;
+}
+/* nav user profile end*/

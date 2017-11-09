@@ -259,6 +259,7 @@
     <Content Include="Content\bootswatch\yeti\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\Avatar.jpg" />
     <Content Include="Content\Images\centroIS.jpg" />
     <Content Include="Content\Images\appNull.png" />
     <Content Include="Content\Images\appNull2.png" />
