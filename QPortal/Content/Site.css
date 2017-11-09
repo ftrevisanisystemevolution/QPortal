@@ -304,6 +304,10 @@ a.nav-button:hover {
     margin-bottom: 5px;
 }
 
+.w-100{
+    width: 100%;
+}
+
 /* right border on li*/
 .dropdown-menu {
     background-color: #323232;

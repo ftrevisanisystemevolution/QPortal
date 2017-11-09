@@ -271,6 +271,7 @@
     <Content Include="Content\Images\Hero_1.jpg" />
     <Content Include="Content\Images\Hero_2.jpg" />
     <Content Include="Content\Images\Hero_3.jpg" />
+    <Content Include="Content\Images\img01.jpg" />
     <Content Include="Content\Images\logo-icon.png" />
     <Content Include="Content\Images\logo-intesasanpaolo.png" />
     <Content Include="Content\Images\Logo.png" />

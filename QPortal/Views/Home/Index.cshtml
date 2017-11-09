@@ -20,18 +20,24 @@
                 <div class="col-md-4">
                     <div class="thumbnail block-card h-250">
                         <div class="container-fluid">
-                            <div class="card w-50">
+                            <div class="card">
                                 <div class="card-block">
                                     <h3 class="card-title">Area Reportistica</h3>
                                     <p class="card-text">Crea e Visualizza la reportistica</p>
                                     <h3 class="card-title">Ambito</h3>
+
+                                    @foreach (var farm in Model)
+                                    {
+
+                                    }
+
                                     <select class="form-control mb-5">
                                         <option value="">Select a Farm</option>
                                         <option value="CFO-R" selected="selected">CFO - report distribuiti</option>
                                         <option value="CFO-S" selected="selected">CFO - self-service BI</option>
                                     </select>
 
-                                    <a href="#" class="btn btn-primary center-block">ACCEDI</a>
+                                    <button href="#" class="btn btn-primary center-block w-100">ACCEDI</button>
                                 </div>
                             </div>
                         </div>
@@ -41,12 +47,12 @@
                 <div class="col-md-4">
                     <div class="thumbnail block-card h-250">
                         <div class="container-fluid">
-                            <div class="card w-50">
+                            <div class="card">
                                 <div class="card-block ">
                                     <h3 class="card-title">Linee Guida</h3>
                                     <p class="card-text">Visualizza le linee guida</p>
 
-                                    <a href="#" class="btn btn-primary center-block align-bottom">ACCEDI</a>
+                                    <button href="#" class="btn btn-primary center-block w-100">ACCEDI</button>
                                 </div>
                             </div>
                         </div>
@@ -56,12 +62,12 @@
                 <div class="col-md-4">
                     <div class="thumbnail block-card h-250">
                         <div class="container-fluid">
-                            <div class="card w-50 ">
+                            <div class="card">
                                 <div class="card-block">
                                     <h3 class="card-title">Documenti</h3>
                                     <p class="card-text">Visualizza i documenti a supporto</p>
 
-                                    <a href="#" class="btn btn-primary center-block">ACCEDI</a>
+                                    <button href="#" class="btn btn-primary center-block w-100">ACCEDI</button>
                                 </div>
                             </div>
                         </div>
