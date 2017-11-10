@@ -52,7 +52,7 @@ namespace QPortal.Utility
                             Id = Convert.ToInt32(node.Attribute("id").Value),
                             Server = node.Attribute("server").Value,
                             VirtualProxy = node.Attribute("vp").Value,
-                            Name = node.Value
+                            Name = farm.Attribute("name").Value + " - " + node.Value
                         };
 
                         if (n != null)
