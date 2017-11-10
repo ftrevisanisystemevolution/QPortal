@@ -619,3 +619,92 @@ li.user-profile > a .user-profile__info {
     max-height: inherit;
 }
 /* nav user profile end*/
+
+/* Secondary Nav Start*/
+.navbar-sub .navbar-nav > li > a, .navbar-brand {
+    padding-top: 10px !important;
+    padding-bottom: 5px !important;
+    height: 40px;
+}
+
+.navbar-sub .divider-vertical {
+    height: 39px;
+    margin: 0 9px;
+    border-right: 1px solid #a6a6a6;
+    border-left: 1px solid #cccccc;
+}
+
+.navbar-inverse .divider-vertical {
+    border-right-color: #222222;
+    border-left-color: #111111;
+}
+
+@media (max-width: 767px) {
+    .navbar-collapse .nav > .divider-vertical {
+        display: none;
+    }
+}
+
+.navbar-sub {
+    background-color: #f0f0f0;
+    min-height: 40px !important;
+    height: 40px !important;
+}
+
+    /* change the brand and text color */
+    .navbar-sub .navbar-brand,
+    .navbar-sub .navbar-text {
+        color: #a6a6a6;
+    }
+
+    /* change the link color */
+    .navbar-sub .navbar-nav .nav-link {
+        color: rgba(255,255,255,.5);
+    }
+
+    /* change the color of active or hovered links */
+    .navbar-sub .nav-item.active .nav-link,
+    .navbar-sub .nav-item:hover .nav-link {
+        color: #a6a6a6;
+    }
+
+    /* for dropdown only - change the color of droodown */
+    .navbar-sub .dropdown-menu {
+        background-color: #f0f0f0;
+    }
+
+    .navbar-sub .dropdown-item {
+        color: #ffffff;
+    }
+
+        .navbar-sub .dropdown-item:hover,
+        .navbar-sub .dropdown-item:focus {
+            color: #333333;
+            background-color: rgba(255,255,255,.5);
+        }
+
+.navbar-sub .navbar-nav > li > a {
+        color: #777;
+}
+
+    .navbar-sub .navbar-nav > li:hover {
+        color: #777;
+    }
+
+    /* icons color */
+    .navbar-sub .navbar-nav > li > a >i {
+        color: #000000;
+    }
+
+    /* hover links*/
+    .navbar-sub .navbar-nav > li > a:hover,
+    .navbar-sub .navbar-nav > li > a:focus {
+        background-color: #777;
+        color: #ffffff;
+    }
+
+    .navbar-sub .navbar-header > a:hover,
+    .navbar-sub .navbar-header > a:focus {
+        color: #777;
+    }
+/* Secondary Nav End*/

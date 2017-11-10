@@ -118,7 +118,7 @@ else
                 x = w.innerWidth || e.clientWidth || g.clientWidth,
                 y = w.innerHeight || e.clientHeight || g.clientHeight;
 
-            theIframe.style.height = y - $('.navbar').height() + "px"; //set the height
+            theIframe.style.height = y - $('#primaryNav').height() + "px"; //set the height
             theIframe.style.width = $(window).width() + "px"; //set the width
         }
 
@@ -141,7 +141,7 @@ else
             $iframes.each(function () {
                 // Get the parent container width
                 var width = $(this).parent().width();
-                var height = $(window).height() - $('.navbar').height();
+                var height = $(window).height() - $('#primaryNav').height();
                 $(this).width(width).height(height);
             });
             // Resize iframes on page load.

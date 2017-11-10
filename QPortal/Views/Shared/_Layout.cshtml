@@ -12,6 +12,10 @@
 </head>
 <body>
   @Html.Partial("_NavBar")
+    @if (ViewBag.Title != "Home Page") //render secondary navbar if we are not on the homepage
+    {
+        @Html.Partial("_SecNavBar")
+    }
     <div class="container-fluid body-content">
         @RenderBody()
         @*<hr />
