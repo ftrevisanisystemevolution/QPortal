@@ -708,3 +708,7 @@ li.user-profile > a .user-profile__info {
         color: #777;
     }
 /* Secondary Nav End*/
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
+    font-weight: 500;
+}
