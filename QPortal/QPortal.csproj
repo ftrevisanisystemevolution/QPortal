@@ -202,6 +202,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\FarmsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LineeGuidaController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -259,6 +260,8 @@
     <Content Include="Content\bootswatch\yeti\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\Avatar.jpg" />
+    <Content Include="Content\Images\centroIS.jpg" />
     <Content Include="Content\Images\appNull.png" />
     <Content Include="Content\Images\appNull2.png" />
     <Content Include="Content\Images\bgcharts.jpeg" />
@@ -272,6 +275,7 @@
     <Content Include="Content\Images\logo-icon.png" />
     <Content Include="Content\Images\logo-intesasanpaolo.png" />
     <Content Include="Content\Images\Logo.png" />
+    <Content Include="Content\Images\Qlik.png" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="Farms.xml">
@@ -356,6 +360,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Home\TestHeader.cshtml" />
+    <Content Include="Views\LineeGuida\Index.cshtml" />
+    <Content Include="Views\Shared\_SecNavBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -21,11 +21,12 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
+/* disabled max width because the select was too small*/
+/*input,
 select,
 textarea {
     max-width: 280px;
-}
+}*/
 
 /* Custom styles */
 
@@ -300,6 +301,14 @@ a.nav-button:hover {
     margin:auto;
 }
 
+.mb-5{
+    margin-bottom: 5px;
+}
+
+.w-100{
+    width: 100%;
+}
+
 /* right border on li*/
 .dropdown-menu {
     background-color: #323232;
@@ -411,9 +420,9 @@ a:hover, a:visited, a:link, a:active {
     margin-bottom: 21px;
     line-height: 1.42857143;
     background-color: #ffffff;
-    border: 2px solid #258900;
-    border-radius: 10px;
-    border-style: dashed;
+    border: 2px solid #ffffff;
+    /*border-radius: 10px;
+    border-style: dashed;*/
     -webkit-transition: border 0.2s ease-in-out;
     -o-transition: border 0.2s ease-in-out;
     transition: border 0.2s ease-in-out;
@@ -426,7 +435,7 @@ a:hover, a:visited, a:link, a:active {
     width: 100%;
     height: 100%;
     min-height: 100%;
-    background-image: url(../../Content/Images/bgcharts2.jpeg);
+    background-image: url(../../Content/Images/centroIS.jpg);
     background-repeat: no-repeat;
 }
 
@@ -434,16 +443,308 @@ a:hover, a:visited, a:link, a:active {
     pointer-events:none;
 }
 
-/*@media (max-width: 1199px) {
-    .btn.buttonhome{
-        padding-left: 0px;
-        padding-right: 0px;
+.message {
+    color: #258900;
+    font-size: 48px;
+}
+
+/* center vertically*/
+.vcenter {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.card-text {
+    font-size: 16px !important;
+    font-weight: normal !important;
+}
+.card-title{
+    font-weight: 500;
+}
+
+/* card height*/
+.h-250{
+    height: 250px;
+}
+
+@media (max-width: 992px) {
+    .h-250 {
+        height: auto;
     }
 }
 
-@media (min-width: 991px) {
-    .btn.buttonhome {
-        padding-left: 0px;
-        padding-right: 0px;
+/* bottom-line --Powered by*/
+.hr {
+    height: 50px;
+    display: block;
+    background-color: #6F6F6F;
+}
+
+.qliklogotext{
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+}
+
+a.qliklogotext:hover {
+    background-color: inherit !important;
+    color: white;
+}
+a.qliklogotext:focus {
+    background-color: inherit !important;
+    color: white;
+}
+
+.qliklogo {
+    width: 120px;
+    margin-right: 15px;
+}
+
+.push-to-bottom {
+    position: absolute;
+    bottom: 50px;
+}
+
+.line {
+    background-color: #232323;
+    height: 50px;
+}
+/* End bottom line*/
+
+/* Button Primary style*/
+.btn-primary {
+    color: #ffffff;
+    background-color: #258900;
+    border-color: #258900;
+    font-family: "Open Sans",Arial;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+    .btn-primary:focus,
+    .btn-primary.focus {
+        color: #ffffff;
+        background-color: #323232;
+        border-color: #323232;
     }
-}*/
+
+    .btn-primary:hover {
+        color: #ffffff;
+        background-color: #323232;
+        border-color: #323232;
+    }
+
+    .btn-primary:active,
+    .btn-primary.active,
+    .open > .dropdown-toggle.btn-primary {
+        color: #ffffff;
+        background-color: #323232;
+        border-color: #323232;
+    }
+
+        .btn-primary:active:hover,
+        .btn-primary.active:hover,
+        .open > .dropdown-toggle.btn-primary:hover,
+        .btn-primary:active:focus,
+        .btn-primary.active:focus,
+        .open > .dropdown-toggle.btn-primary:focus,
+        .btn-primary:active.focus,
+        .btn-primary.active.focus,
+        .open > .dropdown-toggle.btn-primary.focus {
+            color: #ffffff;
+            background-color: #323232;
+            border-color: #323232;
+        }
+
+    .btn-primary:active,
+    .btn-primary.active,
+    .open > .dropdown-toggle.btn-primary {
+        background-image: none;
+    }
+
+    .btn-primary.disabled:hover,
+    .btn-primary[disabled]:hover,
+    fieldset[disabled] .btn-primary:hover,
+    .btn-primary.disabled:focus,
+    .btn-primary[disabled]:focus,
+    fieldset[disabled] .btn-primary:focus,
+    .btn-primary.disabled.focus,
+    .btn-primary[disabled].focus,
+    fieldset[disabled] .btn-primary.focus {
+        background-color: #258900;
+        border-color: #258900;
+    }
+/* End Primary button Style*/
+
+/* nav user profile start*/
+.user-profile{
+    max-height: 50px;
+    vertical-align:middle;
+}
+.user-profile__info__user-name {
+    width: auto;
+    font-size: 16px;
+    display: inline-block;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+
+li.user-profile > a img {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 2px solid rgba(160,160,160,0.5);
+}
+
+li.user-profile > a .user-profile__info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    margin-right: 10px;
+}
+
+.user-adjust {
+    display: flex !important;
+    max-height: inherit;
+}
+/* nav user profile end*/
+
+/* Secondary Nav Start*/
+.navbar-sub .navbar-nav > li > a, .navbar-brand {
+    padding-top: 10px !important;
+    padding-bottom: 5px !important;
+    height: 39px;
+}
+
+.navbar-sub .divider-vertical {
+    height: 39px;
+    margin: 0 9px;
+    border-right: 1px solid #a6a6a6;
+    border-left: 1px solid #cccccc;
+}
+
+.navbar-inverse .divider-vertical {
+    border-right-color: #222222;
+    border-left-color: #111111;
+}
+
+@media (max-width: 767px) {
+    .navbar-collapse .nav > .divider-vertical {
+        display: none;
+    }
+}
+
+.navbar-sub {
+    background-color: #f0f0f0;
+    min-height: 40px !important;
+    height: 40px !important;
+}
+
+    /* change the brand and text color */
+    .navbar-sub .navbar-brand,
+    .navbar-sub .navbar-text {
+        color: #777;
+    }
+
+        .navbar-sub .navbar-brand:hover,
+        .navbar-sub .navbar-brand:focus {
+            color: #777
+        }
+
+    /* change the link color */
+    .navbar-sub .navbar-nav .nav-link {
+        color: rgba(255,255,255,.5);
+    }
+
+    /* change the color of active or hovered links */
+    .navbar-sub .nav-item.active .nav-link,
+    .navbar-sub .nav-item:hover .nav-link {
+        color: #333333;
+    }
+
+    /* for dropdown only - change the color of droodown */
+    .navbar-sub .dropdown-menu {
+        background-color: #f0f0f0;
+    }
+
+    .navbar-sub .dropdown-item {
+        color: #ffffff;
+    }
+
+        .navbar-sub .dropdown-item:hover,
+        .navbar-sub .dropdown-item:focus {
+            color: #333333;
+            background-color: rgba(255,255,255,.5);
+        }
+
+.navbar-sub .navbar-nav > li > a {
+        color: #777;
+}
+
+    .navbar-sub .navbar-nav > li:hover {
+        color: #777;
+    }
+
+    /* hover links*/
+    .navbar-sub .navbar-nav > li > a:hover,
+    .navbar-sub .navbar-nav > li > a:focus {
+        background-color: #258900;
+        color: #FFFFFF;
+    }
+
+    .navbar-sub .navbar-header > a:hover>span,
+    .navbar-sub .navbar-header > a:focus>span {
+        background-color: #258900;
+        color: #FFFFFF;
+    }
+
+    .navbar-sub .navbar-brand {
+        font-size: 15px;
+    }
+
+/* icons */
+.subnav-icon {
+    color: #000000;
+    padding-right: 8px;
+}
+
+/* disable collapsing */
+.navbar-sub .navbar-nav {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.navbar-sub .navbar-collapse.collapse {
+    display: block !important;
+}
+
+.navbar-sub .navbar-nav > li,
+.navbar-sub .navbar-nav {
+    float: left !important;
+}
+
+    .navbar-sub .navbar-nav.navbar-right:last-child {
+        margin-right: -15px !important;
+    }
+
+.navbar-sub .navbar-right {
+    float: right !important;
+}
+
+/* Secondary Nav End*/
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
+    font-weight: 500;
+}
