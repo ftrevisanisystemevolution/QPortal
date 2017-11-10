@@ -202,6 +202,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\FarmsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LineeGuidaController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -271,7 +272,6 @@
     <Content Include="Content\Images\Hero_1.jpg" />
     <Content Include="Content\Images\Hero_2.jpg" />
     <Content Include="Content\Images\Hero_3.jpg" />
-    <Content Include="Content\Images\img01.jpg" />
     <Content Include="Content\Images\logo-icon.png" />
     <Content Include="Content\Images\logo-intesasanpaolo.png" />
     <Content Include="Content\Images\Logo.png" />
@@ -360,6 +360,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Home\TestHeader.cshtml" />
+    <Content Include="Views\LineeGuida\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
