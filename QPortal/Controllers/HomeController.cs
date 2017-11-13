@@ -18,7 +18,7 @@ namespace QPortal.Controllers
         {
             //receive the list of roles
             List<string> roles = new List<string>();
-            roles.Add("YA2C05");
+            roles.Add("YA2C04");
             //uncomment to add roles
 #if DEBUG
             Session["UserID"] = "bixth";
