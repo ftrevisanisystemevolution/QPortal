@@ -428,6 +428,26 @@ a:hover, a:visited, a:link, a:active {
     transition: border 0.2s ease-in-out;
 }
 
+.footer-card {
+    left: 0;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 25px;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+@media (max-width: 991px) {
+    .footer-card {
+        bottom: 6px;
+        padding-left: 0px;
+        padding-right: 0px;
+        position: static;
+    }
+}
+
+
 #farms {
     background-color: white;
     background-size: cover;
@@ -481,11 +501,9 @@ a:hover, a:visited, a:link, a:active {
     background-color: #6F6F6F;
 }
 
-.qliklogotext{
-    font-family: Arial;
-    font-size: 20px;
-    font-weight: 500;
+.qliklogotext {
     color: white;
+    padding-right: 5px;
 }
 
 a.qliklogotext:hover {
@@ -498,10 +516,16 @@ a.qliklogotext:focus {
 }
 
 .qliklogo {
-    width: 120px;
+    width: 70px;
+    height:20px;
     margin-right: 15px;
+    margin-top: -5px;
 }
-
+.qliklogo-right{
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    float: right;
+}
 .push-to-bottom {
     position: absolute;
     bottom: 50px;
@@ -509,7 +533,7 @@ a.qliklogotext:focus {
 
 .line {
     background-color: #232323;
-    height: 50px;
+    height: 20px;
 }
 /* End bottom line*/
 
@@ -748,3 +772,8 @@ li.user-profile > a .user-profile__info {
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
     font-weight: 500;
 }
+
+
+
+
+

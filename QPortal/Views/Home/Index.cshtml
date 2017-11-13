@@ -7,12 +7,12 @@
 
 @if (ViewData.Model != null)
 {
-    <div id="ifr" class="collapse embed-responsive nomarginlr">
+    <div id="ifr" class="collapse embed-responsive">
         <iframe id="frame" src=""></iframe>
     </div>
-    <div class="jumbotron collapse in" id="farms">
+    <div class="collapse in" id="farms">
 
-        <div class="top-left message">Business Intelligence Center</div>
+        <div class="message">Business Intelligence Center</div>
 
         <div class="container vcenter">
             <div class="row">
@@ -26,21 +26,16 @@
                                     <p class="card-text">Crea e Visualizza la reportistica</p>
                                     <h3 class="card-title">Ambito</h3>
 
-                                   @using (Html.BeginForm("Hub", "Home"))
-                                   {
-                                    <div class="form-group">
-                                        @Html.DropDownListFor(m => m.FarmList, new SelectList(Model.FarmList.SelectMany(m => m.Nodes), "Id", "Name"), "Select Farm", new { @class = "form-control mb-5" })
+                                    <div class="footer-card">
+                                        @using (Html.BeginForm("Hub", "Home"))
+                                        {
+                                            <div class="form-group">
+                                                @Html.DropDownListFor(m => m.FarmList, new SelectList(Model.FarmList.SelectMany(m => m.Nodes), "Id", "Name"), null, new { @class = "form-control mb-5"})
+                                            </div>
+
+                                            <button href="#" type="submit" class="btn btn-primary center-block w-100">ACCEDI</button>
+                                        } 
                                     </div>
-
-                                    <button href="#" type="submit" class="btn btn-primary center-block w-100">ACCEDI</button>
-                                   }
-
-                                    @*<select class="form-control mb-5">
-                                        <option value="">Select a Farm</option>
-                                        <option value="CFO-R" selected="selected">CFO - report distribuiti</option>
-                                        <option value="CFO-S" selected="selected">CFO - self-service BI</option>
-                                    </select>*@
-
                                 </div>
                             </div>
                         </div>
@@ -55,7 +50,9 @@
                                     <h3 class="card-title">Linee Guida</h3>
                                     <p class="card-text">Visualizza le linee guida</p>
 
-                                    @Html.ActionLink("ACCEDI", "Index", "LineeGuida", null, new { @class = "btn btn-primary center-block w-100" })
+                                    <div class="footer-card">
+                                        @Html.ActionLink("ACCEDI", "Index", "LineeGuida", null, new { @class = "btn btn-primary center-block w-100" })
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -70,8 +67,11 @@
                                     <h3 class="card-title">Documenti</h3>
                                     <p class="card-text">Visualizza i documenti a supporto</p>
 
-                                    <button href="#" class="btn btn-primary center-block w-100">ACCEDI</button>
+                                    <div class="footer-card">
+                                        <button href="#" class="btn btn-primary center-block w-100" onclick="openIframeV2(this)" data-frame-id="1" data-node-id="0">ACCEDI</button>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -81,13 +81,14 @@
         </div>
 
         <div class="footer navbar-fixed-bottom line">
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a class="nopaddingtopbot qliklogotext" href="www.qlik.com">Powered by
+            <div class="nav navbar-nav navbar-right qliklogo-right">
+                <div>
+                    <a href="https://www.qlik.com" target="_blank">
+                        <span class="qliklogotext">Powered by</span>
                     <img class="logo qliklogo" src='@Url.Content("~/Content/Images/Qlik.png")' alt="Qlik logo" title="Qlik logo">
                     </a>
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
 
     </div>
