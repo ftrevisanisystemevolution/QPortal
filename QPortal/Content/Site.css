@@ -88,6 +88,8 @@ a.nav-button:hover {
     background-color: #258900;
     /*min-height: 70px;*/
     border-color: transparent;
+    margin-bottom: 0;
+    border: 0px;
 }
 
     .navbar .navbar-brand {
@@ -420,7 +422,7 @@ a:hover, a:visited, a:link, a:active {
     margin-bottom: 21px;
     line-height: 1.42857143;
     background-color: #ffffff;
-    border: 2px solid #ffffff;
+    border: 2px solid #EEEEEE;
     /*border-radius: 10px;
     border-style: dashed;*/
     -webkit-transition: border 0.2s ease-in-out;
@@ -455,8 +457,14 @@ a:hover, a:visited, a:link, a:active {
     width: 100%;
     height: 100%;
     min-height: 100%;
-    background-image: url(../../Content/Images/centroIS.jpg);
+    background-image: url(../../Content/Images/centroIS16x9.jpg);
     background-repeat: no-repeat;
+}
+
+@media (max-width: 991px){
+    #farms{
+        height:auto;
+    }
 }
 
 .btn.disabled{
@@ -468,11 +476,24 @@ a:hover, a:visited, a:link, a:active {
     font-size: 48px;
 }
 
+@media (max-width: 768px) {
+    .message {
+        font-size: 24px;
+    }
+}
+
 /* center vertically*/
 .vcenter {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+}
+
+@media (max-width: 991px){
+    .vcenter {
+        top: unset;
+        transform: none;
+    }
 }
 
 .card-text {
@@ -488,7 +509,7 @@ a:hover, a:visited, a:link, a:active {
     height: 250px;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
     .h-250 {
         height: auto;
     }
@@ -757,6 +778,7 @@ li.user-profile > a .user-profile__info {
 .navbar-sub .navbar-nav > li,
 .navbar-sub .navbar-nav {
     float: left !important;
+    margin: 0px;
 }
 
     .navbar-sub .navbar-nav.navbar-right:last-child {
@@ -774,6 +796,63 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
 }
 
 
+.noheight{
+    height:auto;
+}
 
+.equalsize {
+    box-sizing: border-box;
+    width: 150px;
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+}
 
+.float-right{
+    float: right;
+}
 
+.mr-25{
+    margin-right: 25px;
+}
+
+/* radio button style start */
+input[type="radio"] {
+    display: none;
+}
+
+label input[type="radio"] ~ i.fa.fa-circle-thin {
+    color: #CCCCCC;
+    display: block;
+}
+
+label input[type="radio"] ~ i.fa.fa-dot-circle-o {
+    display: none;
+}
+
+label input[type="radio"]:checked ~ i.fa.fa-circle-thin {
+    display: none;
+}
+
+label input[type="radio"]:checked ~ i.fa.fa-dot-circle-o {
+    color: #258900;
+    display: block;
+}
+
+label:hover input[type="radio"] ~ i.fa {
+    color: #258900;
+}
+/* radio button style end */
+
+/* form style start */
+.form-control {
+    border: 2px solid #EEEEEE;
+    font-size: 16px;
+    color: #6F6F6F;
+}
+
+    .form-control:hover,
+    .form-control:focus {
+        border: 2px #89BC72 solid;
+    }
+/* form style end */

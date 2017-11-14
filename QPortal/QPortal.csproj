@@ -204,10 +204,12 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LineeGuidaController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CreateReport.cs" />
     <Compile Include="Models\Farms.cs" />
     <Compile Include="Models\FilePaths.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -260,12 +262,14 @@
     <Content Include="Content\bootswatch\yeti\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Images\appNullThumb.png" />
     <Content Include="Content\Images\Avatar.jpg" />
     <Content Include="Content\Images\centroIS.jpg" />
     <Content Include="Content\Images\appNull.png" />
     <Content Include="Content\Images\appNull2.png" />
     <Content Include="Content\Images\bgcharts.jpeg" />
     <Content Include="Content\Images\bgcharts2.jpeg" />
+    <Content Include="Content\Images\centroIS16x9.jpg" />
     <Content Include="Content\Images\docs.png" />
     <Content Include="Content\Images\favicon.ico" />
     <Content Include="Content\Images\help.png" />
@@ -362,6 +366,8 @@
     <Content Include="Views\Home\TestHeader.cshtml" />
     <Content Include="Views\LineeGuida\Index.cshtml" />
     <Content Include="Views\Shared\_SecNavBar.cshtml" />
+    <Content Include="Views\Reports\CreateReport.cshtml" />
+    <Content Include="Views\Reports\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

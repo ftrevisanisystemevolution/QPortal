@@ -11,12 +11,15 @@
         <iframe id="frame" src=""></iframe>
     </div>
     <div class="collapse in" id="farms">
-
-        <div class="message">Business Intelligence Center</div>
+        @*<div class="container">
+            <div class="row">
+                <div class="message col-md-10 col-lg-offset-1">Business Intelligence Center</div>
+            </div>
+        </div>*@
 
         <div class="container vcenter">
             <div class="row">
-
+                <div class="message col-md-12">Business Intelligence Center</div>
                 <div class="col-md-4">
                     <div class="thumbnail block-card h-250">
                         <div class="container-fluid">
@@ -30,11 +33,11 @@
                                         @using (Html.BeginForm("Hub", "Home"))
                                         {
                                             <div class="form-group">
-                                                @Html.DropDownListFor(m => m.FarmList, new SelectList(Model.FarmList.SelectMany(m => m.Nodes), "Id", "Name"), null, new { @class = "form-control mb-5"})
+                                                @Html.DropDownListFor(m => m.FarmList, new SelectList(Model.FarmList.SelectMany(m => m.Nodes), "Id", "Name"), null, new { @class = "form-control mb-5" })
                                             </div>
 
                                             <button href="#" type="submit" class="btn btn-primary center-block w-100">ACCEDI</button>
-                                        } 
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -85,7 +88,7 @@
                 <div>
                     <a href="https://www.qlik.com" target="_blank">
                         <span class="qliklogotext">Powered by</span>
-                    <img class="logo qliklogo" src='@Url.Content("~/Content/Images/Qlik.png")' alt="Qlik logo" title="Qlik logo">
+                        <img class="logo qliklogo" src='@Url.Content("~/Content/Images/Qlik.png")' alt="Qlik logo" title="Qlik logo">
                     </a>
                 </div>
             </div>
@@ -101,8 +104,8 @@ else
     </div>
 }
 
-    @section scripts{
-        <script type="text/javascript">
+@section scripts{
+    <script type="text/javascript">
 
         //$(document).ready(function () {
 
@@ -175,6 +178,6 @@ else
             });
         }
        //}
-        </script>
-    }
+    </script>
+}
 
