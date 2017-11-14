@@ -1,8 +1,8 @@
 ﻿body {
     padding-top: 50px;
     height: 100vh;
-    /*padding-bottom: 20px;
-    background-color: #e6e6e6;*/
+    padding-bottom: 40px;
+    /*background-color: #e6e6e6;*/
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -856,3 +856,11 @@ label:hover input[type="radio"] ~ i.fa {
         border: 2px #89BC72 solid;
     }
 /* form style end */
+
+/*table.dataTable thead .sorting_desc::after {
+    content: "\f161";
+}
+
+table.dataTable thead .sorting_asc::after {
+    content: "\f160";
+}*/
