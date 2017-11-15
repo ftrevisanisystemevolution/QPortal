@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = ViewBag.FarmName;
+}
+
+<div id="ifr" class="intrinsic-container intrinsic-container-16x9">
+    <iframe id="frame" src="" allowfullscreen></iframe>
+</div>
+
+    @section scripts{
+        <script type="text/javascript">
+
+        //$(document).ready(function () {
+
+        function setIframeSize() {
+            $("#ifr").collapse('show');
+            $('#farms').collapse();
+
+            var theIframe = document.querySelector("#frame"); //select the iframe element
+
+            var w = window,
+                d = document,
+                e = d.documentElement,
+                g = d.getElementsByTagName('body')[0],
+                x = w.innerWidth || e.clientWidth || g.clientWidth,
+                y = w.innerHeight || e.clientHeight || g.clientHeight;
+
+            theIframe.style.height = y - $('#primaryNav').height() + "px"; //set the height
+            theIframe.style.width = $(window).width() + "px"; //set the width
+        }
+
+        setIframeSize();
+        var myFrame = document.querySelector("#frame");
+        myFrame.src = ""; //clear the frame
+
+        //Get Farm attributes from xml configuration file and create the link di the action that call Hub
+        var link ="@Url.Action("OpenFrame", "Home")";
+        link += "?server=@ViewBag.Server&vp=@ViewBag.VirtualProxy";
+
+
+        myFrame.src = link;
+
+        function openIframe() {
+            setIframeSize();
+            var myFrame = document.querySelector("#frame");
+            myFrame.src = ""; //clear the frame
+            myFrame.src = "@Url.Action("Hub", "Home")";
+            //myFrame.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d91737.51273778046!2d12.566428499999994!3d44.06689465000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132cc3a48fa6592b%3A0xc1f284db17f1449d!2sRimini+RN!5e0!3m2!1sit!2sit!4v1427492339750";
+
+            $("#newreport").css("display", "unset");
+            $("#share").css("display", "unset");
+            $("#exit").css("display", "unset");
+        }
+
+        var $iframes = $("iframe");
+
+        // Resize the iframes when the window is resized
+        $(window).resize(function () {
+            $iframes.each(function () {
+                // Get the parent container width
+                var width = $(this).parent().width();
+                var height = $(window).height() - $('#primaryNav').height();
+                $(this).width(width).height(height);
+            });
+            // Resize iframes on page load.
+        }).resize();
+
+
+        //new method
+        function openIframeV2(element) {
+            var frameId = $(element).attr("data-frame-id");
+            var nodeId = $(element).attr("data-node-id");
+
+            $.ajax({
+                url: "/api/Farms/" + frameId + "/" + nodeId,
+                method: "GET",
+                success: function (data) {
+                    setIframeSize();
+                    var myFrame = document.querySelector("#frame");
+                    myFrame.src = ""; //clear the frame
+
+                    //Get Farm attributes from xml configuration file and create the link di the action that call Hub
+                    var link = myFrame.src = "@Url.Action("Hub", "Home")";
+                    link += "?server=" + data.Server + "&vp=" + data.VirtualProxy;
+
+                    myFrame.src = link;
+                    //myFrame.src = data.Link;
+                },
+                error: function (data) {
+                    toastr.error(data.status + " - " + data.statusText);
+                }
+            });
+        }
+       //}
+        </script>
+    }
+

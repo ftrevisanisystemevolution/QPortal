@@ -50,6 +50,7 @@ namespace QPortal.Utility
                         Node n = new Node
                         {
                             Id = Convert.ToInt32(node.Attribute("id").Value),
+                            IdFarmNode = farm.Attribute("id").Value + "|" + node.Attribute("id").Value,
                             Server = node.Attribute("server").Value,
                             VirtualProxy = node.Attribute("vp").Value,
                             Name = farm.Attribute("name").Value + " - " + node.Value

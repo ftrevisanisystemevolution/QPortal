@@ -12,27 +12,81 @@ using System.Xml.Linq;
 
 namespace QPortal.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
-            //receive the list of roles
+
             List<string> roles = new List<string>();
-            roles.Add("YA2C04");
-            //uncomment to add roles
+
 #if DEBUG
-            Session["UserID"] = "bixth";
-            Session["UserDirectory"] = "desktop-29ba4mu";
-#else
-            UserRequest userRequest = new UserRequest(Request.Headers.AllKeys.Count(), Request.Headers.AllKeys, Request.Headers);
-            Session["UserID"] = userRequest.UserID;
-            Session["UserDirectory"] = userRequest.UserDirectory;
-            UserProfile userProfile = new UserProfile(userRequest.SWAProfileID, userRequest.LinkSWP);
-            foreach(var role in userProfile.Profiles)
+            if (!Request.Cookies.AllKeys.Contains("IsAuthenticated"))
             {
-                roles.Add(role.RoleID);
+                SetCookie("IsAuthenticated", "true");
+
+                SetCookie("UserID", "bixth");
+                SetCookie("UserDirectory", "desktop-29ba4mu");
+                SetCookie("UserIdentity", "Fabrizio Trevisani");
+                //SetCookie("UserID", "SYSSPIMI");
+                //SetCookie("UserDirectory", "U0J4169");
+                //SetCookie("UserIdentity", "Davide Carbone");
             }
+
+            ViewBag.UserIdentity = GetCookie("UserIdentity");
+            roles.Add("YA2C04");
+
+#else
+            
+            if (!Request.Cookies.AllKeys.Contains("IsAuthenticated"))
+            {
+                SetCookie("IsAuthenticated", "true");
+            
+                SetCookie("UserID", "SYSSPIMI");
+                SetCookie("UserDirectory", "U0J4169");
+                SetCookie("UserIdentity", "Davide Carbone");
+            }
+
+            ViewBag.UserIdentity = GetCookie("UserIdentity");
+            roles.Add("YA2C04");
+
+
+            //UserProfile userProfile = null;
+            //UserRequest userRequest = new UserRequest(Request.Headers.AllKeys.Count(), Request.Headers.AllKeys, Request.Headers);
+
+            //if (userRequest.IsValid)
+            //{
+            //    SetCookie("IsAuthenticated", "true");
+            //    SetCookie("UserID", userRequest.UserID);
+            //    SetCookie("UserDirectory", userRequest.UserDirectory);
+            //    SetCookie("UserIdentity", userRequest.UserIdentity);
+            //    SetCookie("SWAProfileID", userRequest.SWAProfileID);
+            //    SetCookie("LinkSWP", userRequest.LinkSWP);
+            //    ViewBag.UserIdentity = userRequest.UserIdentity;
+            //    userProfile = new UserProfile(userRequest.SWAProfileID, userRequest.LinkSWP);
+            //}
+            //else
+            //{
+            //    if (!Request.Cookies.AllKeys.Contains("IsAuthenticated"))
+            //    {
+            //        SetCookie("UserIdentity", "Utenza non riconosciuta");
+            //        ViewBag.UserIdentity = GetCookie("UserIdentity");
+            //    }
+            //    else
+            //    {
+            //        userProfile = new UserProfile(GetCookie("SWAProfileID"), GetCookie("LinkSWP"));
+            //    }
+
+            //    if (userProfile != null && userProfile.IsValid)
+            //    {
+            //        foreach (var role in userProfile.Profiles)
+            //        {
+            //            roles.Add(role.RoleID);
+            //        }
+            //    }
+            //}
 #endif
+
+
             string path = Server.MapPath(Url.Content(FilePaths.RolesXML));
             XDocument root = FarmsUtility.GetXmlDocument(path);
             
@@ -46,6 +100,8 @@ namespace QPortal.Controllers
                 {
                     FarmList = FarmList
                 };
+
+
 
                 return View(viewModel);
             }
@@ -69,15 +125,37 @@ namespace QPortal.Controllers
 
         public ActionResult Hub(string server, string vp)
         {
-            string UserID = Session["UserID"].ToString();
-            string UserDirectory = Session["UserDirectory"].ToString();
+            string farmNode = Request["FarmList"];
+            if (string.IsNullOrEmpty(farmNode) || !farmNode.Contains("|")) { return RedirectToAction("Index");  }
+            int farmId = Convert.ToInt32(farmNode.Split('|')[0]);
+            int nodeId = Convert.ToInt32(farmNode.Split('|')[1]);
+            var node = FarmsUtility.GetFarmNode(farmId, nodeId);
+            var farm = FarmsUtility.GetFarmsById(new List<string>() { farmId.ToString() });
+            ViewBag.FarmName = farm.FirstOrDefault().Name + " - " + node.Name;
+            SetCookie("FarmName", ViewBag.FarmName);
+            ViewBag.Server = node.Server;
+            ViewBag.VirtualProxy = node.VirtualProxy;
+            ViewBag.UserIdentity = GetCookie("UserIdentity");
+            return View();
+        }
 
-            QSession qSession = new QSession("POST", server, vp, UserID, UserDirectory);
-            qSession.OpenSession(HttpContext.ApplicationInstance.Context);
-            Request.Cookies.Add(qSession.GetCookie());
-            Response.Cookies.Add(qSession.GetCookie());
+        public ActionResult OpenFrame(string server, string vp)
+        {
+            string UserID = GetCookie("UserID");
+            string UserDirectory = GetCookie("UserDirectory");
+            try
+            {
+                QSession qSession = new QSession("POST", server, vp, UserID, UserDirectory);
+                qSession.OpenSession(HttpContext.ApplicationInstance.Context);
+                Request.Cookies.Add(qSession.GetCookie());
+                Response.Cookies.Add(qSession.GetCookie());
+                return Redirect(qSession.GetHubURL());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("{0} - {1}", UserID, UserDirectory), ex);
+            }
 
-            return Redirect(qSession.GetHubURL());
         }
 
         public ActionResult TestHeader()
