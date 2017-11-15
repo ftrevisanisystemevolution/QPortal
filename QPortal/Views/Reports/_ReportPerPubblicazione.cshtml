@@ -1,0 +1,39 @@
+﻿
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h2>Report per Pubblicazione</h2>
+
+        @using (Html.BeginForm())
+            {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2 h3" })*@
+
+                <h3>Pubblica nello Stream</h3>
+
+                <div class="footer-card">
+                    <div class="form-group">
+                        @*@Html.DropDownListFor(m => m.FarmList, new SelectList(Model.FarmList.SelectMany(m => m.Nodes), "Id", "Name"), null, new { @class = "form-control mb-5" })*@
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+
+            </div>
+
+            <div class="row">
+                <div class="float-right">
+                    <div class="btn-group" role="group" aria-label="crea report">
+                        <button href="#" type="reset" class="btn btn-primary equalsize">Annulla</button>
+                        <button href="#" type="submit" class="btn btn-primary equalsize">Crea</button>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

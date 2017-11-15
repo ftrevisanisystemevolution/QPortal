@@ -1,0 +1,73 @@
+﻿@model QPortal.ViewModels.ReportViewModel
+
+@{
+    ViewBag.Title = "ReportPerPubblicazione";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h2>Report per Pubblicazione</h2>
+
+        @using (Html.BeginForm())
+            {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <div class="row">
+                    <h3 class="lead">Pubblica nello Stream</h3>
+                    @Html.DropDownListFor(m => m.Streams, new SelectList(Model.Streams), null, new { @class = "form-control col-md-2 h3" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h3 class="lead">Report privati presenti nello stream di lavoro</h3>
+                <table id="reports" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Owner</th>
+                            <th>Report</th>
+                            <th>Seleziona</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var report in Model.Reports)
+                        {
+                        <tr>
+                            <td>@report.Owner</td>
+                            <td>@report.ReportName</td>
+                            <td>@report.Selected</td>
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="row">
+                <div class="float-right">
+                    <div class="btn-group" role="group" aria-label="crea report">
+                        <button href="#" type="reset" class="btn btn-primary equalsize">Annulla</button>
+                        <button href="#" type="submit" class="btn btn-primary equalsize">Crea</button>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+@section scripts
+    {
+        <script>
+            $(document).ready(function () {
+
+                $("#reports").DataTable();
+
+            });
+        </script>
+    }
