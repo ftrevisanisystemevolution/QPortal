@@ -23,10 +23,13 @@ namespace QPortal
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/BootstrapMenu.min.js",
                       "~/Scripts/respond.js",
-                      "~/Scripts/toastr.js"));
+                      "~/Scripts/toastr.js",
+                      "~/Scripts/datatables/jquery.datatables.js",
+                      "~/Scripts/datatables/datatables.bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootswatch/cosmo/bootstrap.css",
+                      "~/Content/datatables/css/datatables.bootstrap.css",
                       //"~/Content/bootstrap-cosmo.css",
                       "~/Content/font-awesome.css",
                       "~/Content/toastr.css",
