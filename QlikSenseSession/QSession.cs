@@ -38,9 +38,11 @@ namespace QlikSenseSession
         public void OpenSession(HttpContext context)
         {
             SessionID = CreateSession(context);
-
+#if DEBUG
+            CertificateFoo = GetCertificate(StoreLocation.CurrentUser);
+#else
             CertificateFoo = GetCertificate(StoreLocation.LocalMachine);
-            //CertificateFoo = GetCertificate(StoreLocation.CurrentUser);
+#endif
 
             //Create URL to REST endpoint for tickets
             string url = "https://" + Server + ":4243/qps/" + VirtualProxy + "/session";
@@ -101,7 +103,7 @@ namespace QlikSenseSession
 
         public string GetHubURL()
         {
-            return string.Format("https://{0}/{1}/hub/", Server, VirtualProxy);
+            return string.Format("http://{0}/{1}/hub/", Server, VirtualProxy);
         }
 
         private X509Certificate2 GetCertificate(StoreLocation storelocation)

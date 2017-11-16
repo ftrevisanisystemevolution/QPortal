@@ -1,7 +1,12 @@
 ﻿<nav id="subnav" class="navbar navbar-default navbar-sub" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
+            @if (!string.IsNullOrEmpty(ViewBag.FarmName))
+            {
+                <span class="navbar-brand">@ViewBag.FarmName</span>
+            }
             <ul class="nav navbar-nav">
+                <li class="divider-vertical"></li>
                 <li id="home">
                     <a href="@Url.Action("Index", "Home")">
                         <span class="subnav-icon">
@@ -37,5 +42,4 @@
             </ul>
         </div>
     </div>
-
 </nav>

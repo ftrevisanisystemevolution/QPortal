@@ -6,11 +6,18 @@ using System.Web.Mvc;
 
 namespace QPortal.Controllers
 {
-    public class LineeGuidaController : Controller
+    public class LineeGuidaController : BaseController
     {
         // GET: LineeGuida
         public ActionResult Index()
         {
+            SetCookie("FarmName", "");
+            ViewBag.FarmName = "";
+
+            ViewBag.UserIdentity = GetCookie("UserIdentity");
+            
+            if (string.IsNullOrEmpty(ViewBag.UserIdentity)) { return RedirectToAction("Index", "Home"); }
+            
             return View();
         }
     }

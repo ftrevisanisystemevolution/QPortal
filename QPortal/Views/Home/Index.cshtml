@@ -33,7 +33,7 @@
                                         @using (Html.BeginForm("Hub", "Home"))
                                         {
                                             <div class="form-group">
-                                                @Html.DropDownListFor(m => m.FarmList, new SelectList(Model.FarmList.SelectMany(m => m.Nodes), "Id", "Name"), null, new { @class = "form-control mb-5" })
+                                                @Html.DropDownListFor(m => m.FarmList, new SelectList(Model.FarmList.SelectMany(m => m.Nodes), "IdFarmNode", "Name"), null, new { @class = "form-control mb-5"})
                                             </div>
 
                                             <button href="#" type="submit" class="btn btn-primary center-block w-100">ACCEDI</button>

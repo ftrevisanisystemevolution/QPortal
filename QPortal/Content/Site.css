@@ -465,7 +465,7 @@ a:hover, a:visited, a:link, a:active {
     width: 100%;
     height: 100%;
     min-height: 100%;
-    background-image: url(../../Content/Images/centroIS16x9.jpg);
+    background-image: url('Images/centroIS16x9.jpg');
     background-repeat: no-repeat;
 }
 
@@ -820,6 +820,30 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
     float: right;
 }
 
+.intrinsic-container {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+ 
+/* 16x9 Aspect Ratio */
+.intrinsic-container-16x9 {
+  padding-bottom: 56.25%;
+}
+ 
+/* 4x3 Aspect Ratio */
+.intrinsic-container-4x3 {
+  padding-bottom: 75%;
+}
+ 
+.intrinsic-container iframe {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .mr-25{
     margin-right: 25px;
 }
@@ -865,9 +889,15 @@ label:hover input[type="radio"] ~ i.fa {
     }
 /* form style end */
 
+<<<<<<< HEAD
 /* Datatable restyle start*/
 table.dataTable tbody > tr {
     background-color: #F8F8F8;
+=======
+/*table.dataTable thead .sorting_desc::after {
+    content: "\f161";
+>>>>>>> .merge_file_a05180
+>>>>>>> upstream/master
 }
 
 table.dataTable tbody > tr.selected,
