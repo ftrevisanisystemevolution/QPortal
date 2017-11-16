@@ -123,16 +123,18 @@ namespace QPortal.Controllers
             return View();
         }
 
-        public ActionResult Hub(string server, string vp)
+        public ActionResult Hub()
         {
             string farmNode = Request["FarmList"];
-            if (string.IsNullOrEmpty(farmNode) || !farmNode.Contains("|")) { return RedirectToAction("Index");  }
+            if (string.IsNullOrEmpty(farmNode) || !farmNode.Contains("|")) { return RedirectToAction("Index");  }            
             int farmId = Convert.ToInt32(farmNode.Split('|')[0]);
             int nodeId = Convert.ToInt32(farmNode.Split('|')[1]);
             var node = FarmsUtility.GetFarmNode(farmId, nodeId);
             var farm = FarmsUtility.GetFarmsById(new List<string>() { farmId.ToString() });
-            ViewBag.FarmName = farm.FirstOrDefault().Name + " - " + node.Name;
-            SetCookie("FarmName", ViewBag.FarmName);
+            SetCookie("FarmId", farmNode.Split('|')[0]);
+            SetCookie("NodeId", farmNode.Split('|')[1]);
+            SetCookie("FarmName", farm.FirstOrDefault().Name + " - " + node.Name);
+            ViewBag.FarmName = GetCookie("FarmName");
             ViewBag.Server = node.Server;
             ViewBag.VirtualProxy = node.VirtualProxy;
             ViewBag.UserIdentity = GetCookie("UserIdentity");
@@ -143,6 +145,8 @@ namespace QPortal.Controllers
         {
             string UserID = GetCookie("UserID");
             string UserDirectory = GetCookie("UserDirectory");
+            SetCookie("Server", server);
+            SetCookie("VirtualProxy", vp);
             try
             {
                 QSession qSession = new QSession("POST", server, vp, UserID, UserDirectory);

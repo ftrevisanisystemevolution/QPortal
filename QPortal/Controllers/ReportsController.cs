@@ -1,4 +1,6 @@
-﻿using QPortal.ViewModels;
+﻿using APIInterface;
+using QPortal.Utility;
+using QPortal.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +9,7 @@ using System.Web.Mvc;
 
 namespace QPortal.Controllers
 {
-    public class ReportsController : Controller
+    public class ReportsController : BaseController
     {
         // GET: Reports
         public ActionResult Index()
@@ -18,7 +20,21 @@ namespace QPortal.Controllers
         // GET: CreateReport
         public ActionResult CreateReport()
         {
-            return View("CreateReport");
+            ViewBag.FarmName = GetCookie("FarmName");
+            ViewBag.UserIdentity = GetCookie("UserIdentity");
+            ViewBag.FarmList = GetCookie("FarmId") + "|" + GetCookie("NodeId");
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateReport(string Name, string Description, string FarmList)
+        {
+            string appId = "";
+            
+            QlikAPI qlikAPI = new QlikAPI(FarmsUtility.GetFarmNode(GetCookie("FarmId"), GetCookie("NodeId")).Link);
+            qlikAPI.CreateApp(Name, Description, out appId);
+            return RedirectToAction("Hub", "Home", new { FarmList = FarmList });
+            //return Redirect("https://desktop-29ba4mu/vp/sense/app/" + appId);
         }
 
         //GET: Pubblicazione

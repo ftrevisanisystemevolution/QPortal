@@ -66,6 +66,11 @@ namespace QPortal.Utility
             return Farms;
         }
 
+        public static Node GetFarmNode(string id, string node)
+        {
+            return GetFarmNode(Convert.ToInt32(id), Convert.ToInt32(node));
+        }
+
         public static Node GetFarmNode(int id, int node)
         {
             Node result = new Node();
