@@ -889,15 +889,9 @@ label:hover input[type="radio"] ~ i.fa {
     }
 /* form style end */
 
-<<<<<<< HEAD
 /* Datatable restyle start*/
 table.dataTable tbody > tr {
     background-color: #F8F8F8;
-=======
-/*table.dataTable thead .sorting_desc::after {
-    content: "\f161";
->>>>>>> .merge_file_a05180
->>>>>>> upstream/master
 }
 
 table.dataTable tbody > tr.selected,
@@ -908,7 +902,6 @@ table.dataTable tbody > tr > .selected {
 table.dataTable tbody tr.selected {
     background-color: #89BC72;
 }
-
 
 table.dataTable tbody tr.selected,
 table.dataTable tbody th.selected,
@@ -922,4 +915,4 @@ table.dataTable tbody th.select-checkbox::before {
     border: 1px solid #6F6F6F;
     border-radius: 0px;
 }
-/* Datatable restyle end*/
+/* Datatable restyle end */

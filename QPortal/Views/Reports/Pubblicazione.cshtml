@@ -10,7 +10,7 @@
     <div class="col-md-10 col-md-offset-1">
         <h2>Report per Pubblicazione</h2>
 
-        @using (Html.BeginForm("Publish","Reports", FormMethod.Post))
+        @using (Html.BeginForm("Publish", "Reports", FormMethod.Post, new { id =  "reportForm" } ))
         {
             @Html.AntiForgeryToken()
 
@@ -32,7 +32,6 @@
                         </tr>
                     </thead>
                     <tbody>
-
                         @foreach (var report in Model.Reports)
                         {
                             <tr class="text-center">
@@ -49,16 +48,29 @@
                                 </td>
                             </tr>
                         }
-
                     </tbody>
                 </table>
+
+                <!-- ajax table start-->
+                <table id="reportsAjax" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Owner</th>
+                            <th>Report</th>
+                            <th>Seleziona</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <!-- ajax table end-->
+
             </div>
 
             <div class="row">
                 <div class="float-right">
                     <div class="btn-group" role="group" aria-label="crea report">
                         <button href="#" type="reset" class="btn btn-primary equalsize">Annulla</button>
-                        <button href="#" type="submit" class="btn btn-primary equalsize">Pubblica</button>
+                        <button href="#" type="submit" class="btn btn-primary equalsize js-publish" id="btnpublish">Pubblica</button>
                     </div>
                 </div>
             </div>
@@ -89,10 +101,67 @@
             });
 
             table.on('select', function (e, dt, type, indexes) {
-                var rowData = table.rows(indexes).data().toArray();
+                var rowData = table.rows().data().toArray();
                 console.log(JSON.stringify(rowData));
-                console.log(rowData.innerHTML);
+                console.log(rowData[0][0] + " " + rowData[0][1]);
             });
+
+
+            var tableAjax = $("#reportsAjax").DataTable({
+                ajax: {
+                    url: "/api/reports",
+                    dataSrc: ""
+                },
+                columns: [
+                    //first column
+                    {
+                        data: "Owner"
+                    },
+                    //second column
+                    {
+                        data: "ReportName"
+                    },
+                    //third column
+                    {
+                        data: "Id",
+                        render: function (data) {
+                            return "<div class='hidden data-report-id=" + data + "'></div>";
+                        }
+                    }
+                ],
+                columnDefs: [{
+                    orderable: false,
+                    className: 'select-checkbox',
+                    targets: 2
+                }],
+                select: {
+                    style: 'single'
+                }
+            });
+
+            // Publish button
+            $("#btnpublish").on("click", ".js-publish", function () {
+                var button = $(this);
+                        $.ajax({
+                            url: "/api/reports/" + button.attr("data-report-id"), //stream and id
+                            method: "POST",
+                            success: function () {
+                                //table.row(button.parents("tr")).remove().draw();
+                            }
+                        });
+                });
+
+            //$("#reportForm").on("submit", function (e) {
+
+            //    $.ajax({
+            //        url: this.action,
+            //        type: this.method,
+            //        data: $(this).serialize(),
+            //        success: function (data) {
+            //            alert("ok");
+            //        }
+            //    });
+            //});
 
         });
     </script>
