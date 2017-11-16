@@ -239,10 +239,18 @@ a.nav-button:hover {
     height: 50px;
 }
 
-    /*
+.navbar-right-button {
+    border-right: 1px solid rgba(255,255,255,.3);
+}
+    .navbar-right-icon {
+        width:20px;
+        height:20px;
+        font-size:29px;
+    }
+
+/*
 
     */
-
 @media (max-width: 767px) {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
         color: #fff;
@@ -857,10 +865,31 @@ label:hover input[type="radio"] ~ i.fa {
     }
 /* form style end */
 
-/*table.dataTable thead .sorting_desc::after {
-    content: "\f161";
+/* Datatable restyle start*/
+table.dataTable tbody > tr {
+    background-color: #F8F8F8;
 }
 
-table.dataTable thead .sorting_asc::after {
-    content: "\f160";
-}*/
+table.dataTable tbody > tr.selected,
+table.dataTable tbody > tr > .selected {
+    background-color: #89BC72;
+}
+
+table.dataTable tbody tr.selected {
+    background-color: #89BC72;
+}
+
+
+table.dataTable tbody tr.selected,
+table.dataTable tbody th.selected,
+table.dataTable tbody td.selected {
+    color: #258900;
+    font-weight: bold;
+}
+
+table.dataTable tbody td.select-checkbox::before,
+table.dataTable tbody th.select-checkbox::before {
+    border: 1px solid #6F6F6F;
+    border-radius: 0px;
+}
+/* Datatable restyle end*/

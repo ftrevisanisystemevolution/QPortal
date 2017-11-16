@@ -51,8 +51,26 @@ namespace QPortal.Controllers
             rModel.Reports = rList;
 
             //string partialView = "_ReportPerPubblicazione";
-            return View("ReportPerPubblicazione",rModel);
+            return View("Pubblicazione",rModel);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Publish(ReportViewModel report)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Content("Not");
+            }
+
+            //if (!(String.IsNullOrWhiteSpace(report.Owner) && String.IsNullOrWhiteSpace(report.ReportName)))
+            //    return Content(report.Owner + " - " + report.ReportName);
+            else
+            {
+                return Content("Not");
+            }
+
+            //return RedirectToAction("Index", "Reports");
+        }
     }
 }
