@@ -10,7 +10,7 @@ namespace QPortal.Controllers.Api
 {
     public class ReportsController : ApiController
     {
-        // GET /api/customers
+        // GET /api/Pubblicazione
         public IHttpActionResult GetReportsPubblicazione()
         {
             List<string> streams = new List<string>();
@@ -18,24 +18,41 @@ namespace QPortal.Controllers.Api
             streams.Add("Stream 2");
             streams.Add("Stream 3");
 
+            Report zero = new Report();
+            zero.Id = 0;
+            zero.Owner = "Giacomo Guilizzoni";
+            zero.ReportName = "Founder & CEO";
+            
             Report one = new Report();
+            one.Id = 1;
             one.Owner = "Giacomo Guilizzoni";
-            one.ReportName = "Founder & CEO";
+            one.ReportName = "CFO";
 
             Report two = new Report();
-            two.Owner = "Giacomo Guilizzoni";
-            two.ReportName = "CFO";
+            two.Id = 2;
+            two.Owner = "Test PErson";
+            two.ReportName = "NAN";
 
             ReportViewModel rModel = new ReportViewModel();
             rModel.Streams = new List<string>(streams);
 
             List<Report> rList = new List<Report>();
+            rList.Add(zero);
             rList.Add(one);
             rList.Add(two);
             rModel.Reports = rList;
 
-
-            return Ok(rModel);
+            return Ok(rList);
         }
+
+        // POST /api/ReportsPubblicazione
+        [HttpPost]
+        public IHttpActionResult CreatePubblicazione(string stream, int id)
+        {
+
+
+            return Ok();
+        }
+
     }
 }

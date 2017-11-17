@@ -1,0 +1,168 @@
+﻿@model QPortal.ViewModels.ReportViewModel
+
+@{
+    ViewBag.Title = "Report Per Pubblicazione";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h2>Report per Pubblicazione</h2>
+
+        @using (Html.BeginForm("Publish", "Reports", FormMethod.Post, new { id =  "reportForm" } ))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <h3 class="lead">Pubblica nello Stream</h3>
+                @Html.DropDownListFor(m => m.Streams, new SelectList(Model.Streams), null, new { @class = "form-control h3" })
+            </div>
+
+            <div class="form-group">
+                <h3 class="lead">Report privati presenti nello stream di lavoro</h3>
+                <table id="reports" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Owner</th>
+                            <th>Report</th>
+                            <th>Seleziona</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var report in Model.Reports)
+                        {
+                            <tr class="text-center">
+                                <td>
+                                    @report.Owner
+                                </td>
+                                <td>
+                                    @report.ReportName
+                                </td>
+                                <td class="select-checkbox">
+                                    <div class="checkbox">
+                                        <input id="checkbox" type="checkbox">
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <!-- API table start-->
+                <table id="reportsAPI" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Owner</th>
+                            <th>Report</th>
+                            <th>Seleziona</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <!-- API table end-->
+
+            </div>
+
+            <div class="row">
+                <div class="float-right">
+                    <div class="btn-group" role="group" aria-label="crea report">
+                        <button href="#" type="reset" class="btn btn-primary equalsize">Annulla</button>
+                        <button href="#" type="submit" class="btn btn-primary equalsize js-publish" id="btnpublish">Pubblica</button>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+@section scripts
+    {
+    <script>
+        $(document).ready(function () {
+
+            var table = $("#reports").DataTable({
+                columnDefs: [{
+                    orderable: false,
+                    className: 'select-checkbox',
+                    targets: 2
+                }],
+                //select: {
+                //    style: 'os',
+                //    selector: 'td:last-child'
+                //}
+                select: {
+                    style: 'single'
+                }
+
+            });
+
+            table.on('select', function (e, dt, type, indexes) {
+                var rowData = table.rows().data().toArray();
+                console.log(JSON.stringify(rowData));
+                console.log(rowData[0][0] + " " + rowData[0][1]);
+            });
+
+
+            var tableAjax = $("#reportsAPI").DataTable({
+                ajax: {
+                    url: "/api/reports",
+                    dataSrc: ""
+                },
+                columns: [
+                    //first column
+                    {
+                        data: "Owner"
+                    },
+                    //second column
+                    {
+                        data: "ReportName"
+                    },
+                    //third column
+                    {
+                        data: "Id",
+                        render: function (data) {
+                            return "<div class='hidden data-report-id=" + data + "'></div>";
+                        }
+                    }
+                ],
+                columnDefs: [{
+                    orderable: false,
+                    className: 'select-checkbox',
+                    targets: 2
+                }],
+                select: {
+                    style: 'single'
+                }
+            });
+
+            // Publish button
+            $("#btnpublish").on("click", ".js-publish", function () {
+                var button = $(this);
+                        $.ajax({
+                            url: "/api/reports/" + button.attr("data-report-id"), //add stream and id
+                            method: "POST",
+                            success: function () {
+                                //table.row(button.parents("tr")).remove().draw();
+                            }
+                        });
+                });
+
+            //$("#reportForm").on("submit", function (e) {
+
+            //    $.ajax({
+            //        url: this.action,
+            //        type: this.method,
+            //        data: $(this).serialize(),
+            //        success: function (data) {
+            //            alert("ok");
+            //        }
+            //    });
+            //});
+
+        });
+    </script>
+}

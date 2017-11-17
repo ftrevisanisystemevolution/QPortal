@@ -1,9 +1,11 @@
-﻿<nav id="subnav" class="navbar navbar-default navbar-sub" role="navigation">
+﻿@model QPortal.Models.SecondaryNavBarModel
+
+<nav id="subnav" class="navbar navbar-default navbar-sub" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            @if (!string.IsNullOrEmpty(ViewBag.FarmName))
+            @if (!string.IsNullOrEmpty(Model.FarmName))
             {
-                <span class="navbar-brand">@ViewBag.FarmName</span>
+                <span class="navbar-brand">@Model.FarmName</span>
             }
             <ul class="nav navbar-nav">
                 <li class="divider-vertical"></li>
@@ -15,14 +17,52 @@
                         <span class="hidden-xs">Home</span>
                     </a>
                 </li>
-                <li id="home">
-                    <a href="@Url.Action("CreateReport", "Reports")">
-                        <span class="subnav-icon">
-                            <i class="fa fa-plus-circle"></i>
-                        </span>
-                        <span class="hidden-xs">Nuovo</span>
-                    </a>
-                </li>
+                @if (!string.IsNullOrWhiteSpace(Model.FarmName) && Model.FarmName.Equals("Self-service BI") && !string.IsNullOrWhiteSpace(Model.Role))
+                {
+                    if (Model.Role.Equals("supervisor") || Model.Role.Equals("developer"))
+                    {
+                        <li id="new">
+                            <a href="@Url.Action("CreateReport", "Reports")">
+                                <span class="subnav-icon">
+                                    <i class="fa fa-plus-circle"></i>
+                                </span>
+                                <span class="hidden-xs">Nuovo</span>
+                            </a>
+                        </li>
+                        <li id="publish">
+                            <a href="@Url.Action("Index", "Home")">
+                                <span class="subnav-icon">
+                                    <i class="fa fa-share-alt"></i>
+                                </span>
+                                <span class="hidden-xs">Pubblica</span>
+                            </a>
+                        </li>
+                        if (Model.Role.Equals("supervisor"))
+                        {
+                            <li id="distribute">
+                                <a href="@Url.Action("Index", "Home")">
+                                    <span class="subnav-icon">
+                                        <i class="fa fa-share-square-o"></i>
+                                    </span>
+                                    <span class="hidden-xs">Distribuisci</span>
+                                </a>
+                            </li>
+                        }
+                    }
+                }
+
+                @if (!string.IsNullOrWhiteSpace(Model.FarmName) && Model.FarmName.Equals("Report Distribuiti"))
+                {
+                    <li id="archive">
+                        <a href="@Url.Action("Index", "Home")">
+                            <span class="subnav-icon">
+                                <i class="fa fa-folder-o"></i>
+                            </span>
+                            <span class="hidden-xs">Archivio</span>
+                        </a>
+                    </li>
+                }
+
                 <li id="guidelines">
                     <a href="@Url.Action("Index", "LineeGuida")">
                         <span class="subnav-icon">
@@ -39,7 +79,7 @@
                         <span class="hidden-xs">Manuale Utente</span>
                     </a>
                 </li>
-                <li id="docs">
+                <li id="support">
                     <a href="@Url.Action("Index", "Home")">
                         <span class="subnav-icon">
                             <i class="fa fa-support"></i>
@@ -48,6 +88,7 @@
                     </a>
                 </li>
             </ul>
+
         </div>
     </div>
 </nav>

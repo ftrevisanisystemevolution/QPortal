@@ -21,16 +21,18 @@ namespace QPortal
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/BootstrapMenu.min.js",
+                      //"~/Scripts/BootstrapMenu.min.js",
                       "~/Scripts/respond.js",
                       "~/Scripts/toastr.js",
                       "~/Scripts/datatables/jquery.datatables.js",
-                      "~/Scripts/datatables/datatables.bootstrap.js"));
+                      "~/Scripts/datatables/datatables.bootstrap.js",
+                      "~/Scripts/datatables/datatables.select.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootswatch/cosmo/bootstrap.css",
+                      //"~/Content/bootswatch/cosmo/bootstrap.css",
+                      "~/Content/bootstrap-cosmo.css",
                       "~/Content/datatables/css/datatables.bootstrap.css",
-                      //"~/Content/bootstrap-cosmo.css",
+                      "~/Content/datatables/css/select.bootstrap.css",
                       "~/Content/font-awesome.css",
                       "~/Content/toastr.css",
                       "~/Content/site.css"));

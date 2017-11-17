@@ -101,5 +101,21 @@ namespace QPortal.Utility
 
             return result;
         }
+
+        public static string GetFarmIdByName(string farmName)
+        {
+            string path = System.Web.Hosting.HostingEnvironment.MapPath(FilePaths.FarmsXML);
+            XDocument root = FarmsUtility.GetXmlDocument(path);
+
+            string farmId = null;
+            if (root != null)
+            {
+                farmId = (from f in root.Elements("farms").Elements("farm").Elements("node")
+                          where f.Value.Equals(farmName)
+                          select f)
+                         .Select(f => f.Parent.Attribute("id").Value).SingleOrDefault();
+            }
+            return farmId;
+        }
     }
 }
