@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Nuovo Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form id="FormNewReport" method="post">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <h2>Nuovo Report</h2>
+            <p></p>
+            <div class="row lead">
+                <div class="col-md-11 col-md-offset-1">
+                    <p>
+                        <input id="txtNomeReport" />
+                    </p>
+                    <br />
+                    <p>
+                        <input id="txtDescrizioneReport" />
+                    </p>
+                </div>
+            </div>
+            <input id="Button1" type="submit" value="Crea" />
+            <input id="Button2" type="button" value="Annulla" />
+        </div>
+    </div>
+</form>

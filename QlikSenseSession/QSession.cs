@@ -103,7 +103,7 @@ namespace QlikSenseSession
 
         public string GetHubURL()
         {
-            return string.Format("http://{0}/{1}/hub/", Server, VirtualProxy);
+            return string.Format("https://{0}/{1}/hub/", Server, VirtualProxy);
         }
 
         private X509Certificate2 GetCertificate(StoreLocation storelocation)

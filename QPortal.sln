@@ -9,10 +9,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QlikSenseSession", "QlikSen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Profiler", "Profiler\Profiler.csproj", "{3774F0E2-6ADC-4B95-ACB5-14ACA278CFC7}"
 EndProject
+<<<<<<< HEAD
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{03404E91-E860-41C0-BCBC-31808AB16278}"
 	ProjectSection(SolutionItems) = preProject
 		WebEssentials2015-Settings.json = WebEssentials2015-Settings.json
 	EndProjectSection
+=======
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIInterface", "APIInterface\APIInterface.csproj", "{30F3748C-8469-4C85-B572-D000AC825946}"
+>>>>>>> 65d3a234fa763a9e47fb5590ae2043be92f3a740
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +36,10 @@ Global
 		{3774F0E2-6ADC-4B95-ACB5-14ACA278CFC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3774F0E2-6ADC-4B95-ACB5-14ACA278CFC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3774F0E2-6ADC-4B95-ACB5-14ACA278CFC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30F3748C-8469-4C85-B572-D000AC825946}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30F3748C-8469-4C85-B572-D000AC825946}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30F3748C-8469-4C85-B572-D000AC825946}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30F3748C-8469-4C85-B572-D000AC825946}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

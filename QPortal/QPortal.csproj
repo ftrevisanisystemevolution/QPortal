@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>QPortal</RootNamespace>
     <AssemblyName>QPortal</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <!--<MvcBuildViews>false</MvcBuildViews>-->
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -608,7 +608,12 @@
     <Content Include="Views\Reports\CreateReport.cshtml" />
     <Content Include="Views\Reports\Index.cshtml" />
     <Content Include="Views\Reports\_ReportPerPubblicazione.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Reports\Pubblicazione.cshtml" />
+=======
+    <Content Include="Views\Reports\ReportPerPubblicazione.cshtml" />
+    <Content Include="Views\NewReport\Index.cshtml" />
+>>>>>>> 65d3a234fa763a9e47fb5590ae2043be92f3a740
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -618,6 +623,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\APIInterface\APIInterface.csproj">
+      <Project>{30f3748c-8469-4c85-b572-d000ac825946}</Project>
+      <Name>APIInterface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Profiler\Profiler.csproj">
       <Project>{3774f0e2-6adc-4b95-acb5-14aca278cfc7}</Project>
       <Name>Profiler</Name>
