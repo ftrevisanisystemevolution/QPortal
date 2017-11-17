@@ -607,13 +607,9 @@
     <Content Include="Views\Home\Hub.cshtml" />
     <Content Include="Views\Reports\CreateReport.cshtml" />
     <Content Include="Views\Reports\Index.cshtml" />
-    <Content Include="Views\Reports\_ReportPerPubblicazione.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Reports\Pubblicazione.cshtml" />
-=======
     <Content Include="Views\Reports\ReportPerPubblicazione.cshtml" />
     <Content Include="Views\NewReport\Index.cshtml" />
->>>>>>> 65d3a234fa763a9e47fb5590ae2043be92f3a740
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
