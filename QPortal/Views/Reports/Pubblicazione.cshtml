@@ -51,8 +51,8 @@
                     </tbody>
                 </table>
 
-                <!-- ajax table start-->
-                <table id="reportsAjax" class="table table-bordered table-hover">
+                <!-- API table start-->
+                <table id="reportsAPI" class="table table-bordered table-hover">
                     <thead>
                         <tr>
                             <th>Owner</th>
@@ -62,7 +62,7 @@
                     </thead>
                     <tbody></tbody>
                 </table>
-                <!-- ajax table end-->
+                <!-- API table end-->
 
             </div>
 
@@ -107,7 +107,7 @@
             });
 
 
-            var tableAjax = $("#reportsAjax").DataTable({
+            var tableAjax = $("#reportsAPI").DataTable({
                 ajax: {
                     url: "/api/reports",
                     dataSrc: ""
@@ -143,7 +143,7 @@
             $("#btnpublish").on("click", ".js-publish", function () {
                 var button = $(this);
                         $.ajax({
-                            url: "/api/reports/" + button.attr("data-report-id"), //stream and id
+                            url: "/api/reports/" + button.attr("data-report-id"), //add stream and id
                             method: "POST",
                             success: function () {
                                 //table.row(button.parents("tr")).remove().draw();
