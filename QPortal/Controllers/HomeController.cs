@@ -134,6 +134,7 @@ namespace QPortal.Controllers
             SetCookie("FarmId", farmNode.Split('|')[0]);
             SetCookie("NodeId", farmNode.Split('|')[1]);
             SetCookie("FarmName", farm.FirstOrDefault().Name + " - " + node.Name);
+            SetCookie("UrlWebTicket", node.UrlWebTicket);
             ViewBag.FarmName = GetCookie("FarmName");
             ViewBag.Server = node.Server;
             ViewBag.VirtualProxy = node.VirtualProxy;
@@ -145,11 +146,12 @@ namespace QPortal.Controllers
         {
             string UserID = GetCookie("UserID");
             string UserDirectory = GetCookie("UserDirectory");
+            string UrlWebTicket = GetCookie("UrlWebTicket");
             SetCookie("Server", server);
             SetCookie("VirtualProxy", vp);
             try
             {
-                QSession qSession = new QSession("POST", server, vp, UserID, UserDirectory);
+                QSession qSession = new QSession("POST", server, vp, UserID, UserDirectory, UrlWebTicket);
                 qSession.OpenSession(HttpContext.ApplicationInstance.Context);
                 Request.Cookies.Add(qSession.GetCookie());
                 Response.Cookies.Add(qSession.GetCookie());

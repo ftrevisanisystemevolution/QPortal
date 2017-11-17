@@ -53,7 +53,9 @@ namespace QPortal.Utility
                             IdFarmNode = farm.Attribute("id").Value + "|" + node.Attribute("id").Value,
                             Server = node.Attribute("server").Value,
                             VirtualProxy = node.Attribute("vp").Value,
-                            Name = farm.Attribute("name").Value + " - " + node.Value
+                            Name = farm.Attribute("name").Value + " - " + node.Value,
+                            UrlWebTicket = node.Attribute("urlWebTicket").Value,
+                            Link = node.Attribute("link").Value
                         };
 
                         if (n != null)
@@ -86,11 +88,14 @@ namespace QPortal.Utility
                           .Where(f => f.Attribute("id").Value.Equals(node.ToString()))
                           .Select(f => new Node
                           {
+                              //IdFarmNode = farm.Attribute("id").Value + "|" + node.Attribute("id").Value,
+                              //UrlWebTicket = node.Attribute("UrlWebTicket").Value,
                               Id = Convert.ToInt32(f.Attribute("id").Value),
                               Name = f.Value,
                               Server = f.Attribute("server").Value,
                               VirtualProxy = f.Attribute("vp").Value,
-                              Link = f.Attribute("link").Value
+                              Link = f.Attribute("link").Value,
+                              UrlWebTicket = f.Attribute("urlWebTicket").Value
                           }).SingleOrDefault();
             }
 

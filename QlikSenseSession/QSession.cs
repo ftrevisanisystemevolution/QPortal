@@ -18,6 +18,7 @@ namespace QlikSenseSession
         public string VirtualProxy { get; private set; }
         public string User { get; private set; }
         public string UserDirectory { get; private set; }
+        public string UrlWebTicket { get; private set; }
         public string SessionID { get; private set; }
         public X509Certificate2 CertificateFoo { get; private set; }
         public string ResponseSerialized { get; private set; }
@@ -26,13 +27,14 @@ namespace QlikSenseSession
 
         private HttpCookie QCookie = null;
 
-        public QSession(string method, string server, string virtualProxy, string user, string userdirectory)
+        public QSession(string method, string server, string virtualProxy, string user, string userdirectory, string urlWebTicket)
         {
             Method = method;
             Server = server;
             VirtualProxy = virtualProxy;
             User = user;
             UserDirectory = userdirectory;
+            UrlWebTicket = urlWebTicket;
         }
 
         public void OpenSession(HttpContext context)
@@ -44,10 +46,10 @@ namespace QlikSenseSession
             CertificateFoo = GetCertificate(StoreLocation.LocalMachine);
 #endif
 
+
             //Create URL to REST endpoint for tickets
-            string url = "https://" + Server + ":4243/qps/" + VirtualProxy + "/session";
-
-
+            //string url = "https://" + Server + ":4243/qps/" + VirtualProxy + "/session";
+            string url = String.Format(UrlWebTicket, Server, VirtualProxy);
 
             //Create the HTTP Request and add required headers and content in Xrfkey
             string Xrfkey = "0123456789abcdef";

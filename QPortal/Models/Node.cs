@@ -8,5 +8,6 @@
         public string Link { get; set; }
         public string Server { get; set; }
         public string VirtualProxy { get; set; }
+        public string UrlWebTicket { get; set; }
     }
 }
