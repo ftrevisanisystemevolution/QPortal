@@ -8,6 +8,7 @@ namespace QPortal.ViewModels
 {
     public class Report
     {
+        public int Id { get; set; }
         public string Owner { get; set; }
         public string ReportName { get; set; }
         public bool Selected { get; set; }
