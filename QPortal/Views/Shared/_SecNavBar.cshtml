@@ -1,5 +1,14 @@
 ﻿@model QPortal.Models.SecondaryNavBarModel
 
+@{ 
+    string SelfServiceString = "SELF-SERVICE BI";
+    string ReportDistribuitiString = "REPORT DISTRIBUITI";
+    string DeveloperString = "DEVELOPER";
+    string UserString = "USER";
+    string SupervisorString = "SUPERVISOR";
+    string CertifierString = "CERTIFIER";
+}
+
 <nav id="subnav" class="navbar navbar-default navbar-sub" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -17,9 +26,10 @@
                         <span class="hidden-xs">Home</span>
                     </a>
                 </li>
-                @if (!string.IsNullOrWhiteSpace(Model.FarmName) && Model.FarmName.Equals("Self-service BI") && !string.IsNullOrWhiteSpace(Model.Role))
+                @if (!string.IsNullOrWhiteSpace(Model.FarmName) && 
+                    Model.FarmName.ToUpper().Contains(SelfServiceString) && !string.IsNullOrWhiteSpace(Model.Role))
                 {
-                    if (Model.Role.Equals("supervisor") || Model.Role.Equals("developer"))
+                    if (Model.Role.ToUpper().Equals(SupervisorString) || Model.Role.ToUpper().Equals(DeveloperString))
                     {
                         <li id="new">
                             <a href="@Url.Action("CreateReport", "Reports")">
@@ -30,14 +40,14 @@
                             </a>
                         </li>
                         <li id="publish">
-                            <a href="@Url.Action("Index", "Home")">
+                            <a href="@Url.Action("Index", "Publish")">
                                 <span class="subnav-icon">
                                     <i class="fa fa-share-alt"></i>
                                 </span>
                                 <span class="hidden-xs">Pubblica</span>
                             </a>
                         </li>
-                        if (Model.Role.Equals("supervisor"))
+                        if (Model.Role.ToUpper().Equals(SupervisorString))
                         {
                             <li id="distribute">
                                 <a href="@Url.Action("Index", "Home")">
@@ -51,7 +61,7 @@
                     }
                 }
 
-                @if (!string.IsNullOrWhiteSpace(Model.FarmName) && Model.FarmName.Equals("Report Distribuiti"))
+                @if (!string.IsNullOrWhiteSpace(Model.FarmName) && Model.FarmName.ToUpper().Contains(ReportDistribuitiString))
                 {
                     <li id="archive">
                         <a href="@Url.Action("Index", "Home")">

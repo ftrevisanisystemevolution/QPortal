@@ -11,39 +11,39 @@ namespace QPortal.Controllers.Api
     public class ReportsController : ApiController
     {
         // GET /api/Pubblicazione
-        public IHttpActionResult GetReportsPubblicazione()
-        {
-            List<string> streams = new List<string>();
-            streams.Add("Stream 1");
-            streams.Add("Stream 2");
-            streams.Add("Stream 3");
+        //public IHttpActionResult GetReportsPubblicazione()
+        //{
+        //    List<string> streams = new List<string>();
+        //    streams.Add("Stream 1");
+        //    streams.Add("Stream 2");
+        //    streams.Add("Stream 3");
 
-            Report zero = new Report();
-            zero.Id = 0;
-            zero.Owner = "Giacomo Guilizzoni";
-            zero.ReportName = "Founder & CEO";
+        //    Report zero = new Report();
+        //    zero.Id = "0";
+        //    zero.Owner = "Giacomo Guilizzoni";
+        //    zero.ReportName = "Founder & CEO";
             
-            Report one = new Report();
-            one.Id = 1;
-            one.Owner = "Giacomo Guilizzoni";
-            one.ReportName = "CFO";
+        //    Report one = new Report();
+        //    one.Id = "0";
+        //    one.Owner = "Giacomo Guilizzoni";
+        //    one.ReportName = "CFO";
 
-            Report two = new Report();
-            two.Id = 2;
-            two.Owner = "Test PErson";
-            two.ReportName = "NAN";
+        //    Report two = new Report();
+        //    two.Id = "0";
+        //    two.Owner = "Test PErson";
+        //    two.ReportName = "NAN";
 
-            ReportViewModel rModel = new ReportViewModel();
-            rModel.Streams = new List<string>(streams);
+        //    ReportViewModel rModel = new ReportViewModel();
+        //    rModel.Streams = new List<string>(streams);
 
-            List<Report> rList = new List<Report>();
-            rList.Add(zero);
-            rList.Add(one);
-            rList.Add(two);
-            rModel.Reports = rList;
+        //    List<Report> rList = new List<Report>();
+        //    rList.Add(zero);
+        //    rList.Add(one);
+        //    rList.Add(two);
+        //    rModel.Reports = rList;
 
-            return Ok(rList);
-        }
+        //    return Ok(rList);
+        //}
 
         // POST /api/ReportsPubblicazione
         [HttpPost]

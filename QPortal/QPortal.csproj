@@ -49,6 +49,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Mvc.Grid.Core, Version=4.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NonFactors.Grid.Core.Mvc5.4.2.0\lib\net45\Mvc.Grid.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -204,6 +208,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LineeGuidaController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PublishController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -225,6 +230,7 @@
     <Compile Include="ViewModels\ReportViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="cert\README.txt" />
     <Content Include="Content\bootstrap-cosmo.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -437,6 +443,7 @@
     <Content Include="Content\Images\logo-intesasanpaolo.png" />
     <Content Include="Content\Images\Logo.png" />
     <Content Include="Content\Images\Qlik.png" />
+    <Content Include="Content\MvcGrid\mvc-grid.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="Farms.xml">
@@ -467,6 +474,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <Content Include="cert\client.pfx" />
+    <Content Include="Content\MvcGrid\Fonts\GridGlyphs.woff" />
     <None Include="Properties\PublishProfiles\DebugFileSystem.pubxml" />
     <Content Include="Content\DataTables\css\semanticui.scss" />
     <Content Include="Content\DataTables\css\mixins.scss" />
@@ -562,6 +571,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\MvcGrid\mvc-grid.js" />
+    <Content Include="Scripts\MvcGrid\mvc-grid.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\toastr.js" />
@@ -611,6 +622,11 @@
     <Content Include="Views\Reports\Index.cshtml" />
     <Content Include="Views\Reports\Pubblicazione.cshtml" />
     <Content Include="Views\NewReport\Index.cshtml" />
+    <Content Include="Views\Publish\Index.cshtml" />
+    <Content Include="Views\Shared\MvcGrid\_Pager.cshtml" />
+    <Content Include="Views\Shared\MvcGrid\_Grid.cshtml" />
+    <Content Include="Views\Shared\MvcGrid\_AjaxGrid.cshtml" />
+    <Content Include="Views\Publish\ReportsGrid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

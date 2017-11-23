@@ -11,6 +11,8 @@ namespace QPortal.Controllers
         // GET: LineeGuida
         public ActionResult Index()
         {
+            ViewBag.PageType = "GuideLines";
+
             SetCookie("FarmName", "");
             ViewBag.FarmName = "";
 

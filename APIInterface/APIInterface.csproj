@@ -78,6 +78,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectionManager.cs" />
+    <Compile Include="Model\SenseStream.cs" />
+    <Compile Include="Model\SenseApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QlikAPI.cs" />
   </ItemGroup>

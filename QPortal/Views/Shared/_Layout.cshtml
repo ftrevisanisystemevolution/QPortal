@@ -8,21 +8,26 @@
     <title>@ViewBag.Title - Qlik Portal</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <link href="~/Content/MvcGrid/mvc-grid.css" rel="stylesheet">
 </head>
 <body>
     @Html.Partial("_NavBar")
-    @if (ViewBag.Title != "Home Page") //render secondary navbar if we are not on the homepage
+    @if (ViewBag.PageType != "HomePage" && ViewBag.PageType != "InternalAction")
     {
-        @*@Html.Partial("_SecNavBar")*@
-        { Html.RenderAction("SecondayNavbar", "Home"); }
+        { Html.RenderAction("SecondaryNavbarResponse", "Home"); }
+        <div class="container-fluid body-content nopaddinglr">
+            @RenderBody()
+        </div>
+    }
+    else if (ViewBag.PageType != "HomePage" && ViewBag.PageType == "InternalAction")
+    {
+        { Html.RenderAction("SecondaryNavbarRequest", "Home"); }
         <div class="container-fluid body-content nopaddinglr">
             @RenderBody()
         </div>
     }
     else
     {
-        
         <div class="container-fluid body-content nopaddinglr">
             @RenderBody()
         </div>
@@ -34,6 +39,10 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/MvcGrid/mvc-grid.js"></script>
+    <script>
+            $('.mvc-grid').mvcgrid();
+    </script>
     @RenderSection("scripts", required: false)
 
 </body>

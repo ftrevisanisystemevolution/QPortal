@@ -15,12 +15,7 @@ namespace QPortal.Controllers
     public class HomeController : BaseController
 
     {
-        private List<string> _roles;
-        public List<string> Roles
-        {
-            get { return _roles; }
-            set { _roles = value; }
-        }
+        
 
         public HomeController()
         {
@@ -28,37 +23,12 @@ namespace QPortal.Controllers
             Roles = new List<string>();
             Roles.Add("YA2C05");
         }
-
-        // this needs too be activated on every page that displays the secondary navigation request, except Home-Index
-        // a new controller can be created, or leave it here
-        // if it will be moved, the Roles needs to be passed to it as well.. store them in cookie? or get them at each page load? or constructor
-        [ChildActionOnly]
-        public ActionResult SecondayNavbar()
-        {
-            //get farm from FarmName cookie
-            //string FarmName = GetCookie("FarmName"); //commented for testing purposes
-
-            //string FarmName = "Report Distribuiti";
-            string FarmName = "Self-service BI";
-
-            //create a model and pass it to the view so that you don't need to set a Role cookie
-            SecondaryNavBarModel model = new SecondaryNavBarModel();
-
-            if (!String.IsNullOrWhiteSpace(FarmName))
-            {
-                // we know the FarmName so we get the Id of the farm with that name
-                int farmId = Convert.ToInt32(FarmsUtility.GetFarmIdByName(FarmName));
-
-                model.FarmName = FarmName;
-                model.Role = RolesUtility.GetFarmRoleById(farmId, Roles);
-            }
-
-            //build the secondary navbar here? so that we remove the logic from inside the partial view?
-            return PartialView("_SecNavBar", model);
-        }
+        
 
         public ActionResult Index()
         {
+            ViewBag.PageType = "HomePage";
+
 #if DEBUG
             if (!Request.Cookies.AllKeys.Contains("IsAuthenticated"))
             {
@@ -67,9 +37,6 @@ namespace QPortal.Controllers
                 SetCookie("UserID", "bixth");
                 SetCookie("UserDirectory", "desktop-29ba4mu");
                 SetCookie("UserIdentity", "Fabrizio Trevisani");
-                //SetCookie("UserID", "SYSSPIMI");
-                //SetCookie("UserDirectory", "U0J4169");
-                //SetCookie("UserIdentity", "Davide Carbone");
             }
 
             ViewBag.UserIdentity = GetCookie("UserIdentity");
@@ -79,14 +46,18 @@ namespace QPortal.Controllers
             if (!Request.Cookies.AllKeys.Contains("IsAuthenticated"))
             {
                 SetCookie("IsAuthenticated", "true");
-            
-                SetCookie("UserID", "SYSSPIMI");
-                SetCookie("UserDirectory", "U0J4169");
-                SetCookie("UserIdentity", "Davide Carbone");
+
+                SetCookie("UserID", "bixth");
+                SetCookie("UserDirectory", "desktop-29ba4mu");
+                SetCookie("UserIdentity", "Fabrizio Trevisani");
+
+                //SetCookie("UserID", "U0I4169");
+                //SetCookie("UserDirectory", "SYSSPIMI");
+                //SetCookie("UserIdentity", "Davide Carbone");
             }
 
             ViewBag.UserIdentity = GetCookie("UserIdentity");
-            Roles.Add("YA2C04");
+            //Roles.Add("YA2C04");
 
 
             //UserProfile userProfile = null;
@@ -162,6 +133,8 @@ namespace QPortal.Controllers
 
         public ActionResult Hub()
         {
+            ViewBag.PageType = "Hub";
+
             string farmNode = Request["FarmList"];
             if (string.IsNullOrEmpty(farmNode) || !farmNode.Contains("|")) { return RedirectToAction("Index");  }            
             int farmId = Convert.ToInt32(farmNode.Split('|')[0]);
