@@ -45,7 +45,7 @@ namespace APIInterface
                 X509Certificate2 x509 = new X509Certificate2();
                 //Create X509Certificate2 object from .cer file.
                 byte[] rawData = File.ReadAllBytes(path);
-                x509.Import(rawData, "SysEvo", X509KeyStorageFlags.UserKeySet);
+                x509.Import(rawData, "SysEvo", X509KeyStorageFlags.MachineKeySet);
                 X509Certificate2Collection certificateCollection = new X509Certificate2Collection(x509);
                 // Defining the location as a direct connection to Qlik Sense Server
                 location = Location.FromUri(uri);

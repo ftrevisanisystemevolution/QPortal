@@ -9,6 +9,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/MvcGrid/mvc-grid.css" rel="stylesheet">
+    <link href="~/Content/jquery.fancybox.css" rel="stylesheet" />
 </head>
 <body>
     @Html.Partial("_NavBar")
@@ -40,10 +41,63 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     <script src="~/Scripts/MvcGrid/mvc-grid.js"></script>
-    <script>
-            $('.mvc-grid').mvcgrid();
-    </script>
+
     @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+
+
+        $('.fancybox').fancybox({
+		    openEffect: 'elastic',
+		    closeEffect: 'elastic',
+		    helpers: {
+		        title: {
+		            type: 'inside'
+		        }
+		    }
+		});
+
+		$('.fancyboxgray').fancybox({
+		    openEffect: 'elastic',
+		    closeEffect: 'elastic',
+		    helpers: {
+		        title: {
+		            type: 'inside'
+		        }
+		    },
+		    beforeShow: function () {
+		        $(".fancybox-skin").css("backgroundColor", "rgb(180, 168, 154);");
+		}
+		});
+
+		$('.fancyboxgray300').fancybox({
+		    openEffect: 'elastic',
+		    closeEffect: 'elastic',
+		    width: '300px',
+		    helpers: {
+		        title: {
+		            type: 'inside'
+		        }
+		    },
+		    beforeShow: function () {
+		        $(".fancybox-skin").css("backgroundColor", "rgb(180, 168, 154);");
+		    }
+		});
+
+		$('.mvc-grid').mvcgrid();
+
+		$(document).ready(function () { 
+		    $('#Streams').change(function () {
+		        $('#idstream').val(this.value);
+		        $('#desstream').val($(this).find("option:selected").text());
+		    })
+		});
+
+		function clicka(val)
+		{
+		    val.href += "&idstream=" + $('#idstream').val() + "&selstream=" + $('#desstream').val() + "&FarmList=" + $('#FarmList').val();
+		}
+    </script>
 
 </body>
 </html>

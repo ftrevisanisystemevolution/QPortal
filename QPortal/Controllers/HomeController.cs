@@ -20,8 +20,8 @@ namespace QPortal.Controllers
         public HomeController()
         {
             //populate roles here?
-            Roles = new List<string>();
-            Roles.Add("YA2C05");
+            //Roles = new List<string>();
+            //Roles.Add("YA2C03");
         }
         
 
@@ -37,28 +37,44 @@ namespace QPortal.Controllers
                 SetCookie("UserID", "bixth");
                 SetCookie("UserDirectory", "desktop-29ba4mu");
                 SetCookie("UserIdentity", "Fabrizio Trevisani");
+                Roles = new List<string>();
+                Roles.Add("YA2C03");
+                SetRolesCookie(Roles);
             }
-
+            else { Roles = GetRolesCookie(); }
             ViewBag.UserIdentity = GetCookie("UserIdentity");
 
 #else
-            
-            if (!Request.Cookies.AllKeys.Contains("IsAuthenticated"))
-            {
-                SetCookie("IsAuthenticated", "true");
 
-                SetCookie("UserID", "bixth");
-                SetCookie("UserDirectory", "desktop-29ba4mu");
-                SetCookie("UserIdentity", "Fabrizio Trevisani");
+            // Da utilizzare se NON c'è SWA SWP
+            SetCookie("IsAuthenticated", "true");
 
-                //SetCookie("UserID", "U0I4169");
-                //SetCookie("UserDirectory", "SYSSPIMI");
-                //SetCookie("UserIdentity", "Davide Carbone");
-            }
+            // Per sviluppi su mia macchina
+            SetCookie("UserID", "bixth");
+            SetCookie("UserDirectory", "desktop-29ba4mu");
+            SetCookie("UserIdentity", "Fabrizio Trevisani");
+            //
+
+            //// Per sviluppi su macchina Intesa SCWAMOT0027.syssede.systest.sanpaoloimi.com
+            //SetCookie("UserID", "U0I4169");
+            //SetCookie("UserDirectory", "SYSSPIMI");
+            //SetCookie("UserIdentity", "Davide Carbone");
+            //// oppure 
+            //SetCookie("UserID", "U0J1749");
+            //SetCookie("UserDirectory", "SYSSPIMI");
+            //SetCookie("UserIdentity", "Fabrizio Trevisani");
+            ////
+
+            Roles = new List<string>();
+            Roles.Add("YA2C03");
+            SetRolesCookie(Roles);
 
             ViewBag.UserIdentity = GetCookie("UserIdentity");
-            //Roles.Add("YA2C04");
 
+            // FINE NON SWA SWP
+
+
+            //// Da utilizzare se c'è SWA SWP
 
             //UserProfile userProfile = null;
             //UserRequest userRequest = new UserRequest(Request.Headers.AllKeys.Count(), Request.Headers.AllKeys, Request.Headers);
@@ -72,7 +88,7 @@ namespace QPortal.Controllers
             //    SetCookie("SWAProfileID", userRequest.SWAProfileID);
             //    SetCookie("LinkSWP", userRequest.LinkSWP);
             //    ViewBag.UserIdentity = userRequest.UserIdentity;
-            //    userProfile = new UserProfile(userRequest.SWAProfileID, userRequest.LinkSWP);
+            //    userProfile = new UserProfile(userRequest.UserID, userRequest.LinkSWP);
             //}
             //else
             //{
@@ -86,21 +102,30 @@ namespace QPortal.Controllers
             //        userProfile = new UserProfile(GetCookie("SWAProfileID"), GetCookie("LinkSWP"));
             //    }
 
-            //    if (userProfile != null && userProfile.IsValid)
-            //    {
-            //        foreach (var role in userProfile.Profiles)
-            //        {
-            //            Roles.Add(role.RoleID);
-            //        }
-            //    }
             //}
-#endif
 
+            //if (userProfile != null && userProfile.IsValid)
+            //{
+            //    Roles = new List<string>();
+            //    foreach (var role in userProfile.Profiles)
+            //    {
+            //        Roles.Add(role.RoleID);
+            //    }
+            //    SetRolesCookie(Roles);
+            //}
+
+            // FINE SWA SWP
+
+            // Da usare solo per test!!!!
+            //if (userProfile == null) { throw new Exception("User Profile Null"); }
+            //if (userProfile != null && !userProfile.IsValid) { throw new Exception("User Profile Invalid. " + userProfile.ErrorMessage); }
+#endif
 
             string path = Server.MapPath(Url.Content(FilePaths.RolesXML));
             XDocument root = FarmsUtility.GetXmlDocument(path);
-            
-            List<FarmRoles> FarmRoles = new List<FarmRoles>(RolesUtility.GetRoles(root, Roles));
+
+            List<FarmRoles> FarmRoles = new List<FarmRoles>();
+            if (Roles != null) { FarmRoles = RolesUtility.GetRoles(root, Roles); }
 
             if (FarmRoles.Count != 0)
             {

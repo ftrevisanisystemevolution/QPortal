@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Report Per Distribuzione";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h2>Report per Distribuzione</h2>
+
+        @using (Html.BeginForm("Detail", "Share", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            if (string.IsNullOrEmpty(ViewBag.Error))
+            {
+
+                <div class="form-group">
+                    <h4 class="lead">Distribuisci nello Stream: <b>@ViewBag.desStream</b></h4>
+                </div>
+                <div class="form-group">
+                    <h4 class="lead">Distribuisci il report con il nome:</h4>
+                    @Html.TextArea("AppName", (string)ViewBag.name, 2, 20, new { @class = "form-control", @style="font-size:22.5px;" })
+                </div>
+                @Html.Hidden("AppId", (string)ViewBag.id)
+                @Html.Hidden("StreamId", (string)ViewBag.idStream)
+                @Html.Hidden("FarmList", (string)ViewBag.FarmList)
+                @Html.Hidden("StreamName", (string)ViewBag.desStream)
+                @Html.Hidden("dummy", "")
+            }
+            else
+            {
+                <div class="form-group">
+                    <h4 class="lead">Errore:</h4>
+                    @ViewBag.Error
+                </div>
+            }
+
+            <div class="row">
+                <div class="float-right">
+                    <div class="btn-group" role="group" aria-label="crea report">
+                        @if (string.IsNullOrEmpty(ViewBag.Error))
+                        {
+                            <a href="@Url.Action("Index", "Share")" type="button" class="btn btn-primary equalsize">Annulla</a>
+                        }
+                        <button type="submit" class="btn btn-primary equalsize">Avanti <i class="fa fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

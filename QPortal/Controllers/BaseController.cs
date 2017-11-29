@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace QPortal.Controllers
 {
@@ -28,6 +29,18 @@ namespace QPortal.Controllers
             else { Response.Cookies[key].Value = value; }
         }
 
+        public void SetRolesCookie(List<string> roles)
+        {
+            string myObjectJson = new JavaScriptSerializer().Serialize(roles);
+            if (!Request.Cookies.AllKeys.Contains("rolescookie"))
+            {
+                HttpCookie cookie = new HttpCookie("rolescookie");
+                cookie.Value = myObjectJson;
+                Response.Cookies.Add(cookie);
+            }
+            else { Response.Cookies["rolescookie"].Value = myObjectJson; }           
+        }
+
         public string GetCookie(string key)
         {
             if (Request.Cookies.AllKeys.Contains(key))
@@ -35,6 +48,21 @@ namespace QPortal.Controllers
                 return Request.Cookies[key].Value;
             }
             return "";
+        }
+
+        public List<string> GetRolesCookie()
+        {
+            if (Request.Cookies.AllKeys.Contains("rolescookie"))
+            {
+                string serialized = Request.Cookies["rolescookie"].Value;
+                return (List<string>) new JavaScriptSerializer().Deserialize(serialized, typeof(List<string>));
+            }
+            else if (Response.Cookies.AllKeys.Contains("rolescookie"))
+            {
+                string serialized = Response.Cookies["rolescookie"].Value;
+                return (List<string>)new JavaScriptSerializer().Deserialize(serialized, typeof(List<string>));
+            }
+            return new List<string>();
         }
 
         public string GetResponseCookie(string key)
@@ -46,15 +74,28 @@ namespace QPortal.Controllers
             return "";
         }
 
+        public List<string> GetResponseRolesCookie()
+        {
+            if (Response.Cookies.AllKeys.Contains("rolescookie"))
+            {
+                string serialized = Response.Cookies["rolescookie"].Value;
+                return (List<string>)new JavaScriptSerializer().Deserialize(serialized, typeof(List<string>));
+            }
+            return new List<string>();
+        }
+
         // this needs too be activated on every page that displays the secondary navigation request, except Home-Index
         // a new controller can be created, or leave it here
         // if it will be moved, the Roles needs to be passed to it as well.. store them in cookie? or get them at each page load? or constructor
         [ChildActionOnly]
         public ActionResult SecondaryNavbarRequest()
         {
+            
+
             //get farm from FarmName cookie
             string FarmName = GetCookie("FarmName");
             string FarmId = GetCookie("FarmId");
+            Roles = GetRolesCookie();
 
             //create a model and pass it to the view so that you don't need to set a Role cookie
             SecondaryNavBarModel model = new SecondaryNavBarModel();
@@ -75,6 +116,7 @@ namespace QPortal.Controllers
             //get farm from FarmName cookie
             string FarmName = GetResponseCookie("FarmName");
             string FarmId = GetResponseCookie("FarmId");
+            Roles = GetRolesCookie();
 
             //create a model and pass it to the view so that you don't need to set a Role cookie
             SecondaryNavBarModel model = new SecondaryNavBarModel();

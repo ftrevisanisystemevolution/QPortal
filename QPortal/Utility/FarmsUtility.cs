@@ -55,7 +55,8 @@ namespace QPortal.Utility
                             VirtualProxy = node.Attribute("vp").Value,
                             Name = farm.Attribute("name").Value + " - " + node.Value,
                             UrlWebTicket = node.Attribute("urlWebTicket").Value,
-                            Link = node.Attribute("link").Value
+                            Link = node.Attribute("link").Value,
+                            NodeType = node.Attribute("type").Value
                         };
 
                         if (n != null)
@@ -95,7 +96,8 @@ namespace QPortal.Utility
                               Server = f.Attribute("server").Value,
                               VirtualProxy = f.Attribute("vp").Value,
                               Link = f.Attribute("link").Value,
-                              UrlWebTicket = f.Attribute("urlWebTicket").Value
+                              UrlWebTicket = f.Attribute("urlWebTicket").Value,
+                              NodeType = f.Attribute("type").Value
                           }).SingleOrDefault();
             }
 

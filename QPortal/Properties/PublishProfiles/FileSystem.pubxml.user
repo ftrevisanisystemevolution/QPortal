@@ -16,7 +16,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/22/2013 03:43:40</publishTime>
     </File>
     <File Include="bin/APIInterface.dll">
-      <publishTime>11/23/2017 01:07:16</publishTime>
+      <publishTime>11/29/2017 18:02:31</publishTime>
     </File>
     <File Include="bin/ApplicationInsights.config">
       <publishTime>10/05/2017 13:14:51</publishTime>
@@ -106,10 +106,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/27/2012 08:00:52</publishTime>
     </File>
     <File Include="bin/Profiler.dll">
-      <publishTime>11/17/2017 10:37:37</publishTime>
+      <publishTime>11/29/2017 10:13:04</publishTime>
     </File>
     <File Include="bin/Profiler.XmlSerializers.dll">
-      <publishTime>11/17/2017 10:37:38</publishTime>
+      <publishTime>11/29/2017 10:13:05</publishTime>
     </File>
     <File Include="bin/Qlik.Engine.dll">
       <publishTime>10/12/2017 12:40:08</publishTime>
@@ -121,10 +121,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/12/2017 12:40:08</publishTime>
     </File>
     <File Include="bin/QlikSenseSession.dll">
-      <publishTime>11/21/2017 15:03:32</publishTime>
+      <publishTime>11/29/2017 10:13:04</publishTime>
     </File>
     <File Include="bin/QPortal.dll">
-      <publishTime>11/23/2017 01:09:34</publishTime>
+      <publishTime>11/29/2017 18:04:16</publishTime>
+    </File>
+    <File Include="bin/RestSharp.dll">
+      <publishTime>11/19/2017 01:44:00</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>04/13/2017 14:47:48</publishTime>
@@ -900,6 +903,27 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/DataTables/swf/flashExport.swf">
       <publishTime>11/15/2017 13:57:26</publishTime>
     </File>
+    <File Include="Content/fancybox/blank.gif">
+      <publishTime>11/23/2017 16:03:01</publishTime>
+    </File>
+    <File Include="Content/fancybox/fancybox_buttons.png">
+      <publishTime>11/23/2017 16:03:01</publishTime>
+    </File>
+    <File Include="Content/fancybox/fancybox_loading%402x.gif">
+      <publishTime>11/23/2017 16:03:01</publishTime>
+    </File>
+    <File Include="Content/fancybox/fancybox_loading.gif">
+      <publishTime>11/23/2017 16:03:01</publishTime>
+    </File>
+    <File Include="Content/fancybox/fancybox_overlay.png">
+      <publishTime>11/23/2017 16:03:01</publishTime>
+    </File>
+    <File Include="Content/fancybox/fancybox_sprite%402x.png">
+      <publishTime>11/23/2017 16:03:01</publishTime>
+    </File>
+    <File Include="Content/fancybox/fancybox_sprite.png">
+      <publishTime>11/23/2017 16:03:01</publishTime>
+    </File>
     <File Include="Content/font-awesome.css">
       <publishTime>10/06/2017 09:13:18</publishTime>
     </File>
@@ -960,6 +984,15 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/Images/Qlik.png">
       <publishTime>11/10/2017 23:45:42</publishTime>
     </File>
+    <File Include="Content/jquery.fancybox-buttons.css">
+      <publishTime>11/23/2017 16:03:01</publishTime>
+    </File>
+    <File Include="Content/jquery.fancybox-thumbs.css">
+      <publishTime>11/23/2017 16:03:01</publishTime>
+    </File>
+    <File Include="Content/jquery.fancybox.css">
+      <publishTime>11/23/2017 16:03:01</publishTime>
+    </File>
     <File Include="Content/MvcGrid/Fonts/GridGlyphs.woff">
       <publishTime>11/22/2017 23:59:38</publishTime>
     </File>
@@ -982,7 +1015,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/27/2017 16:43:34</publishTime>
     </File>
     <File Include="Farms.xml">
-      <publishTime>11/21/2017 15:06:18</publishTime>
+      <publishTime>11/24/2017 12:37:59</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>10/05/2017 13:13:42</publishTime>
@@ -1281,6 +1314,24 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/jquery-3.2.1.slim.min.map">
       <publishTime>10/06/2017 01:05:30</publishTime>
     </File>
+    <File Include="Scripts/jquery.fancybox-buttons.js">
+      <publishTime>11/23/2017 16:03:01</publishTime>
+    </File>
+    <File Include="Scripts/jquery.fancybox-media.js">
+      <publishTime>11/23/2017 16:03:01</publishTime>
+    </File>
+    <File Include="Scripts/jquery.fancybox-thumbs.js">
+      <publishTime>11/23/2017 16:03:01</publishTime>
+    </File>
+    <File Include="Scripts/jquery.fancybox.js">
+      <publishTime>11/23/2017 16:03:01</publishTime>
+    </File>
+    <File Include="Scripts/jquery.fancybox.pack.js">
+      <publishTime>11/23/2017 16:03:01</publishTime>
+    </File>
+    <File Include="Scripts/jquery.mousewheel-3.0.6.pack.js">
+      <publishTime>11/23/2017 16:03:01</publishTime>
+    </File>
     <File Include="Scripts/jquery.validate.js">
       <publishTime>10/05/2017 13:14:18</publishTime>
     </File>
@@ -1389,11 +1440,20 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/NewReport/Index.cshtml">
       <publishTime>11/15/2017 15:46:41</publishTime>
     </File>
+    <File Include="Views/Publish/Detail.cshtml">
+      <publishTime>11/28/2017 15:44:17</publishTime>
+    </File>
+    <File Include="Views/Publish/Detailfancy.cshtml">
+      <publishTime>11/27/2017 17:36:37</publishTime>
+    </File>
     <File Include="Views/Publish/Index.cshtml">
-      <publishTime>11/23/2017 01:40:59</publishTime>
+      <publishTime>11/27/2017 17:51:56</publishTime>
     </File>
     <File Include="Views/Publish/ReportsGrid.cshtml">
-      <publishTime>11/23/2017 01:35:55</publishTime>
+      <publishTime>11/29/2017 17:37:30</publishTime>
+    </File>
+    <File Include="Views/Publish/ToPublish.cshtml">
+      <publishTime>11/28/2017 16:17:40</publishTime>
     </File>
     <File Include="Views/Reports/CreateReport.cshtml">
       <publishTime>11/16/2017 23:34:24</publishTime>
@@ -1409,6 +1469,15 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/Reports/_ReportPerPubblicazione.cshtml">
       <publishTime>11/15/2017 13:57:26</publishTime>
+    </File>
+    <File Include="Views/Share/Detail.cshtml">
+      <publishTime>11/29/2017 17:46:57</publishTime>
+    </File>
+    <File Include="Views/Share/Index.cshtml">
+      <publishTime>11/29/2017 17:42:06</publishTime>
+    </File>
+    <File Include="Views/Share/ReportsGrid.cshtml">
+      <publishTime>11/29/2017 17:39:00</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>11/15/2017 01:24:04</publishTime>
@@ -1426,7 +1495,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/22/2017 23:59:38</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>11/23/2017 01:02:41</publishTime>
+      <publishTime>11/27/2017 17:52:29</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>10/05/2017 13:14:23</publishTime>
@@ -1435,7 +1504,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/17/2017 17:51:06</publishTime>
     </File>
     <File Include="Views/Shared/_SecNavBar.cshtml">
-      <publishTime>11/22/2017 14:49:29</publishTime>
+      <publishTime>11/24/2017 10:25:47</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>11/22/2017 23:59:38</publishTime>
@@ -1444,7 +1513,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/05/2017 13:13:42</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/23/2017 01:07:18</publishTime>
+      <publishTime>11/29/2017 10:13:12</publishTime>
     </File>
   </ItemGroup>
 </Project>

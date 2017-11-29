@@ -2,7 +2,7 @@
 
 <farms>
   <farm id="0" name="CFO">
-    <node id="0" server="DESKTOP-29BA4MU" vp="vp" link="https://desktop-29ba4mu" urlWebTicket="https://{0}:4243/qps/{1}/session">Report Distribuiti</node>
-    <node id="1" server="DESKTOP-29BA4MU" vp="vp" link="https://desktop-29ba4mu" urlWebTicket="https://{0}:4243/qps/{1}/session">Self-service BI</node>
+    <node id="0" type="D" server="DESKTOP-29BA4MU" vp="vp" link="https://desktop-29ba4mu" urlWebTicket="https://{0}:4243/qps/{1}/session">Report Distribuiti</node>
+    <node id="1" type="S" server="DESKTOP-29BA4MU" vp="vp" link="https://desktop-29ba4mu" urlWebTicket="https://{0}:4243/qps/{1}/session">Self-service BI</node>
   </farm>
 </farms>

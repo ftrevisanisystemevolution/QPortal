@@ -65,11 +65,17 @@ namespace Profiler
 
                     ProfilerService.ServiceSoap srv = new ProfilerService.ServiceSoap();
 
-                    if (!string.IsNullOrEmpty(webServiceURL)) { srv.Url = webServiceURL; }              
+                    
+                    if (!string.IsNullOrEmpty(webServiceURL))
+                    {
+                        srv.Url = webServiceURL.EndsWith("/") ? webServiceURL + "ServiceSoap" : webServiceURL + "/ServiceSoap";
+                        //srv.Url = "http://sswp20.syssede.systest.sanpaoloimi.com:8024/scriptSwp20/swp2/ServiceSoap";
+                    }
 
                     // Call the web service
                     var result = srv.getProfilazione(userID, "", "", "", "", "true", "true", "true", "", "", "", "", "", "", "Qlik");
 
+                    
                     // Test the result status
                     if (result.responseStatus.retCode == "000" && result.responseStatus.numeroElementi > 0)
                     {
@@ -88,6 +94,8 @@ namespace Profiler
                             Profiles.Add(new Profile(profile.abilitazioni[j].codice,
                                 profile.abilitazioni[j].anagraficaFunzione));
                         }
+                        
+
                         SetResult("", "", true);
                     }
                     else
@@ -129,7 +137,7 @@ namespace Profiler
                 ex = ex.InnerException;
                 errorMessage += "-->" + ex.Message;
             }
-            SetResult(ErrorMessage, "999", false);
+            SetResult(errorMessage, "999", false);
         }
 
         private void SetResult(string errorMessage, string errorCode, bool isValid)
