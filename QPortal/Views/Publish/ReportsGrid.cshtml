@@ -1,0 +1,24 @@
+﻿@using NonFactors.Mvc.Grid;
+
+@model QPortal.ViewModels.ReportViewModel
+
+
+@(Html
+    .Grid(Model.Reports)
+    .Build(columns =>
+    {
+        //columns.Add(model => "<a class=\"padding518 btn btn-short btn-success fancyboxgray fancybox.ajax\"  href=\"" + Url.Content("~/Publish/Detail/?id=" + model.Id) + "\"><i class=\"fa fa-share-alt\"></i> Pubblica</a>").Encoded(false);
+        columns.Add(model => "<a id='apublish' class=\"padding518 btn btn-short btn-success\" onclick=\"clicka(this);\" href=\"" + Url.Content("~/Publish/Detail/?id=" + model.Id + "&name=" + model.ReportName) + "\"><i class=\"fa fa-share-alt\"></i> Pubblica</a>").Encoded(false);
+        //columns.Add(model => model.Id).Titled("ID");
+        columns.Add(model => model.ReportName).Titled("Nome");
+        columns.Add(model => model.Description).Titled("Descrizione");
+    })
+    .Filterable()
+    .Sortable()
+    .Empty("Nessun report da pubblicare")
+)
+
+@Html.Hidden("idstream", (string)ViewBag.idStream)
+@Html.Hidden("desstream", (string)ViewBag.desStream)
+
+

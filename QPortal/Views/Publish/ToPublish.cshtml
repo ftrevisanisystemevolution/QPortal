@@ -1,0 +1,63 @@
+﻿@model QPortal.ViewModels.AppToPublishViewModel
+@{
+    ViewBag.Title = "Report Per Pubblicazione";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h2>Report per Pubblicazione</h2>
+
+        @using (Html.BeginForm("ToPublish", "Publish", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            if (string.IsNullOrEmpty(ViewBag.Error))
+            {
+
+                <div class="form-group">
+                    <h4 class="lead">Pubblica nello Stream: <b>@Model.StreamName</b></h4>
+                </div>
+                <div class="form-group">
+                    <h4 class="lead">Pubblica il report con il nome: <b>@Model.AppName</b></h4>
+                </div>
+                if (Model.OverwriteRequired)
+                {
+                    <div class="form-group">
+                        <h4 class="lead">Esiste già un report con questo nome nello stream. Il report nello stream di destinazione verrà sovrascritto.</h4>
+                    </div>
+                }
+                @Html.Hidden("AppId", Model.AppId)
+                @Html.Hidden("AppName", Model.AppName)
+                @Html.Hidden("OverwriteRequired", Model.OverwriteRequired.ToString())
+                @Html.Hidden("StreamID", Model.StreamID)
+                @Html.Hidden("StreamName", Model.StreamName)
+                @Html.Hidden("AppToOverwriteId", Model.AppToOverwriteId)
+                @Html.Hidden("FarmList", (string)ViewBag.FarmList)
+            }
+            else
+            {
+                <div class="form-group">
+                    <h4 class="lead">Errore:</h4>
+                    @ViewBag.Error
+                </div>
+            }
+
+            <div class="row">
+                <div class="float-right">
+                    <div class="btn-group" role="group" aria-label="crea report">
+                        @if (string.IsNullOrEmpty(ViewBag.Error))
+                        {
+                            <a href="@Url.Action("Index", "Publish")" type="button" class="btn btn-primary equalsize">Annulla</a>
+                        }
+                        <button type="submit" class="btn btn-primary equalsize">Pubblica</button>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
