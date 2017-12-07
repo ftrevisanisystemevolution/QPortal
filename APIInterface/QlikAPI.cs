@@ -70,7 +70,34 @@ namespace APIInterface
             {
                 return false;
             }
-        }        
+        }
+
+        public bool PublishApp(string appId, string name, string streamId, out string errorMessage)
+        {
+            errorMessage = "";
+            try
+            {
+                if (!conn.IsConnected) { return false; }
+
+                using (IHub hub = conn.location.Hub())
+                {
+                    var app = hub.OpenApp(appId);
+                    app.Publish(streamId, name);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                errorMessage = ex.Message;
+                while (ex.InnerException != null)
+                {
+                    ex = ex.InnerException;
+                    errorMessage += " -> " + ex.Message;
+                }
+                return false;
+            }
+        }
 
         public bool RenameApp(string appId, string newName)
         {
@@ -241,7 +268,7 @@ namespace APIInterface
                     hub.ReplaceAppFromID(destAppID, sourceAppID, new List<string>());
                 }
 
-                return false;
+                return true;
 
             }
             catch (Exception ex)
@@ -249,5 +276,34 @@ namespace APIInterface
                 return false;
             }
         }
+
+        public bool ReplaceApp(string sourceAppID, string destAppID, out string errorMessage)
+        {
+            errorMessage = "";
+            try
+            {
+                if (!conn.IsConnected) { return false; }
+
+                using (IHub hub = conn.location.Hub())
+                {
+                    hub.ReplaceAppFromID(destAppID, sourceAppID, new List<string>());
+                }
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                errorMessage = ex.Message;
+                while (ex.InnerException != null)
+                {
+                    ex = ex.InnerException;
+                    errorMessage += " -> " + ex.Message;
+                }
+                return false; 
+            }
+        }
+
+        
     }
 }

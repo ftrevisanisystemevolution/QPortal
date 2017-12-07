@@ -661,6 +661,8 @@
     <Content Include="Views\Publish\ToPublish.cshtml" />
     <Content Include="Views\Share\Detail.cshtml" />
     <Content Include="Views\Share\ToShare.cshtml" />
+    <Content Include="Views\Home\OpenFrame.cshtml" />
+    <Content Include="Views\Share\ToShare2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

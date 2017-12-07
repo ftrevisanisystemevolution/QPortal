@@ -16,7 +16,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/22/2013 03:43:40</publishTime>
     </File>
     <File Include="bin/APIInterface.dll">
-      <publishTime>11/29/2017 18:02:31</publishTime>
+      <publishTime>12/06/2017 12:42:26</publishTime>
     </File>
     <File Include="bin/ApplicationInsights.config">
       <publishTime>10/05/2017 13:14:51</publishTime>
@@ -106,10 +106,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/27/2012 08:00:52</publishTime>
     </File>
     <File Include="bin/Profiler.dll">
-      <publishTime>11/29/2017 10:13:04</publishTime>
+      <publishTime>12/05/2017 12:55:34</publishTime>
     </File>
     <File Include="bin/Profiler.XmlSerializers.dll">
-      <publishTime>11/29/2017 10:13:05</publishTime>
+      <publishTime>12/05/2017 12:55:35</publishTime>
     </File>
     <File Include="bin/Qlik.Engine.dll">
       <publishTime>10/12/2017 12:40:08</publishTime>
@@ -121,10 +121,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/12/2017 12:40:08</publishTime>
     </File>
     <File Include="bin/QlikSenseSession.dll">
-      <publishTime>11/29/2017 10:13:04</publishTime>
+      <publishTime>12/05/2017 12:55:34</publishTime>
     </File>
     <File Include="bin/QPortal.dll">
-      <publishTime>11/29/2017 18:04:16</publishTime>
+      <publishTime>12/07/2017 11:08:33</publishTime>
     </File>
     <File Include="bin/RestSharp.dll">
       <publishTime>11/19/2017 01:44:00</publishTime>
@@ -310,7 +310,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/20/2017 17:07:03</publishTime>
     </File>
     <File Include="cert/README.txt">
-      <publishTime>11/21/2017 01:09:13</publishTime>
+      <publishTime>11/30/2017 09:17:17</publishTime>
     </File>
     <File Include="Content/bootstrap-cosmo.css">
       <publishTime>11/17/2017 17:51:06</publishTime>
@@ -952,6 +952,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/10/2017 23:45:42</publishTime>
     </File>
     <File Include="Content/Images/centroIS16x9.jpg">
+      <publishTime>11/30/2017 10:16:27</publishTime>
+    </File>
+    <File Include="Content/Images/centroIS16x9_old.jpg">
       <publishTime>11/15/2017 13:57:26</publishTime>
     </File>
     <File Include="Content/Images/docs.png">
@@ -1000,7 +1003,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/22/2017 23:59:38</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>11/23/2017 01:36:27</publishTime>
+      <publishTime>11/30/2017 10:22:27</publishTime>
     </File>
     <File Include="Content/toastr.css">
       <publishTime>10/27/2017 16:43:34</publishTime>
@@ -1014,8 +1017,20 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/toastr.scss">
       <publishTime>10/27/2017 16:43:34</publishTime>
     </File>
+    <File Include="Docs/README.txt">
+      <publishTime>11/30/2017 09:16:38</publishTime>
+    </File>
+    <File Include="Docs/REPQ0-LineeGuida-ReportDistribuiti.pdf">
+      <publishTime>11/30/2017 09:31:34</publishTime>
+    </File>
+    <File Include="Docs/REPQ0-LineeGuida-ReportSelfService.pdf">
+      <publishTime>11/30/2017 09:31:34</publishTime>
+    </File>
+    <File Include="Docs/REPQ0-ManualeUtente.pdf">
+      <publishTime>11/30/2017 09:31:34</publishTime>
+    </File>
     <File Include="Farms.xml">
-      <publishTime>11/24/2017 12:37:59</publishTime>
+      <publishTime>12/06/2017 12:32:49</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>10/05/2017 13:13:42</publishTime>
@@ -1411,13 +1426,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/15/2017 14:30:52</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>11/17/2017 17:51:06</publishTime>
+      <publishTime>11/30/2017 10:16:04</publishTime>
+    </File>
+    <File Include="Views/Home/OpenFrame.cshtml">
+      <publishTime>12/05/2017 12:00:56</publishTime>
     </File>
     <File Include="Views/Home/TestHeader.cshtml">
       <publishTime>11/05/2017 18:02:13</publishTime>
     </File>
     <File Include="Views/LineeGuida/Index.cshtml">
-      <publishTime>11/10/2017 23:45:42</publishTime>
+      <publishTime>11/30/2017 09:42:49</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>10/05/2017 13:14:23</publishTime>
@@ -1441,7 +1459,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/15/2017 15:46:41</publishTime>
     </File>
     <File Include="Views/Publish/Detail.cshtml">
-      <publishTime>11/28/2017 15:44:17</publishTime>
+      <publishTime>11/29/2017 23:57:19</publishTime>
     </File>
     <File Include="Views/Publish/Detailfancy.cshtml">
       <publishTime>11/27/2017 17:36:37</publishTime>
@@ -1453,10 +1471,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/29/2017 17:37:30</publishTime>
     </File>
     <File Include="Views/Publish/ToPublish.cshtml">
-      <publishTime>11/28/2017 16:17:40</publishTime>
+      <publishTime>11/29/2017 23:53:58</publishTime>
     </File>
     <File Include="Views/Reports/CreateReport.cshtml">
-      <publishTime>11/16/2017 23:34:24</publishTime>
+      <publishTime>11/30/2017 09:13:17</publishTime>
     </File>
     <File Include="Views/Reports/Index.cshtml">
       <publishTime>11/17/2017 17:51:06</publishTime>
@@ -1477,7 +1495,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/29/2017 17:42:06</publishTime>
     </File>
     <File Include="Views/Share/ReportsGrid.cshtml">
-      <publishTime>11/29/2017 17:39:00</publishTime>
+      <publishTime>11/29/2017 23:24:12</publishTime>
+    </File>
+    <File Include="Views/Share/ToShare.cshtml">
+      <publishTime>11/29/2017 23:56:56</publishTime>
+    </File>
+    <File Include="Views/Share/ToShare2.cshtml">
+      <publishTime>12/05/2017 17:38:17</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>11/15/2017 01:24:04</publishTime>
@@ -1501,10 +1525,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/05/2017 13:14:23</publishTime>
     </File>
     <File Include="Views/Shared/_NavBar.cshtml">
-      <publishTime>11/17/2017 17:51:06</publishTime>
+      <publishTime>11/30/2017 09:15:49</publishTime>
     </File>
     <File Include="Views/Shared/_SecNavBar.cshtml">
-      <publishTime>11/24/2017 10:25:47</publishTime>
+      <publishTime>11/30/2017 09:44:26</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>11/22/2017 23:59:38</publishTime>
@@ -1513,7 +1537,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/05/2017 13:13:42</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/29/2017 10:13:12</publishTime>
+      <publishTime>12/05/2017 12:55:42</publishTime>
     </File>
   </ItemGroup>
 </Project>

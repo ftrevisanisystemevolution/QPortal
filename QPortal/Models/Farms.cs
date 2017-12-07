@@ -8,5 +8,8 @@ namespace QPortal.Models
         public string Name { get; set; }
         public List<Node> Nodes { get; set; }
         public string role { get; set; }
+        public string superuserid { get; set; }
+        public string superuserdom { get; set; }
+        public string centralnode { get; set; }
     }
 }

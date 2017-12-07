@@ -83,7 +83,7 @@ namespace QlikSenseSession
             GetSessionCode = GetSessionArray[3].Split(new Char[] { ':' });
         }
 
-        public HttpCookie GetCookie(bool forceCreate = false)
+        public HttpCookie GetCookie(string server, bool forceCreate = false)
         {
             if (forceCreate || QCookie == null)
             {
@@ -93,7 +93,8 @@ namespace QlikSenseSession
                 QCookie.Expires = DateTime.MinValue;
                 QCookie.HttpOnly = true;
                 //add the domain for the cookie to ensure the Qlik Sense server uses the cookie created by this page located on the IIS web server
-                //QCookie.Domain = getDomain(txtServer.Text);
+                if (server.Contains(".")) { server = server.Substring(server.IndexOf(".") + 1); }
+                if (server.Contains(".")) { QCookie.Domain = server; }                
             }
             return QCookie;
         }

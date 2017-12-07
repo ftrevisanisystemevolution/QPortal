@@ -211,13 +211,19 @@ namespace APIInterface
             errorMessage = "";
             try
             {
-                RestClient client = conn.CreateRestClientPost("app/" + destAppID + "/replace?app=" + sourceAppID, userID, userDirectory, out restRequest);
+                RestClient client = conn.CreateRestClientPut("app/" + sourceAppID + "/replace?app=" + destAppID, userID, userDirectory, out restRequest);
 
                 var response = client.Execute<QRSSenseApp>(restRequest);
 
                 if (!response.IsSuccessful)
                 {
-                    errorMessage = response.ErrorMessage;
+                    errorMessage = response.ErrorMessage + "  |  ";
+                    errorMessage += response.StatusCode + "  |  ";
+                    errorMessage += response.StatusDescription + "  |  ";
+                    errorMessage += response.ResponseStatus.ToString() + "  |  ";
+                    errorMessage += response.Server + "  |  ";
+                    errorMessage += client.BaseUrl.AbsolutePath + "  |  ";
+                    errorMessage += client.BaseUrl.AbsoluteUri + "  |  ";
                 }
 
                 return response.IsSuccessful;

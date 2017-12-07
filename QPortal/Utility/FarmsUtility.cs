@@ -62,11 +62,25 @@ namespace QPortal.Utility
                         if (n != null)
                             FarmNodes.Add(n);
                     }
-                    Farms.Add(new Farms { Id = farm.Attribute("id").Value, Name = farm.Attribute("name").Value, Nodes = FarmNodes });
+                    Farms.Add(new Farms
+                    {
+                        Id = farm.Attribute("id").Value,
+                        Name = farm.Attribute("name").Value,
+                        Nodes = FarmNodes,
+                        superuserid = farm.Attribute("superuserid").Value,
+                        superuserdom = farm.Attribute("superuserdom").Value,
+                        centralnode = farm.Attribute("centralnode").Value
+                    }
+                    );
                 }
             }
 
             return Farms;
+        }
+
+        public static Farms GetFarmById(string farmId)
+        {
+            return GetFarmsById(new List<string>() { farmId }).FirstOrDefault();
         }
 
         public static Node GetFarmNode(string id, string node)

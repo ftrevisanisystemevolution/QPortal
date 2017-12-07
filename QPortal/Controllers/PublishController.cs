@@ -43,6 +43,7 @@ namespace QPortal.Controllers
             {
                 ViewBag.Error = "Errore nel reperimento degli streams. " + errorMessage;
             }
+            if (string.IsNullOrEmpty(ViewBag.Error) && (myStreams == null || myStreams.Count == 0)) { ViewBag.Error = "Non sei abilitato a nessuno stream dell'ambito Report Self-Service BI su cui distribuire il report."; }
             return View(model);
         }
 
@@ -94,7 +95,7 @@ namespace QPortal.Controllers
 
             // Prendo la lista delle app pubblicate
             List<SenseApplication> publishedApps;
-            QlikAPI qlikAPIMaster = new QlikAPI(FarmsUtility.GetFarmNode(GetCookie("FarmId"), GetCookie("NodeId")).Link, ConfigurationManager.AppSettings["QlikUser"], ConfigurationManager.AppSettings["QlikUserDirectory"], path);
+            QlikAPI qlikAPIMaster = new QlikAPI(FarmsUtility.GetFarmNode(GetCookie("FarmId"), GetCookie("NodeId")).Link, GetCookie("UserID"), GetCookie("UserDirectory"), path);
             qlikAPIMaster.GetPublishedApps(out publishedApps);
 
             model.OverwriteRequired = false;

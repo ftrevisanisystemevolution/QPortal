@@ -47,72 +47,74 @@ namespace QPortal.Controllers
 #else
 
             // Da utilizzare se NON c'è SWA SWP
-            SetCookie("IsAuthenticated", "true");
+            //SetCookie("IsAuthenticated", "true");
 
-            // Per sviluppi su mia macchina
-            SetCookie("UserID", "bixth");
-            SetCookie("UserDirectory", "desktop-29ba4mu");
-            SetCookie("UserIdentity", "Fabrizio Trevisani");
-            //
-
-            //// Per sviluppi su macchina Intesa SCWAMOT0027.syssede.systest.sanpaoloimi.com
-            //SetCookie("UserID", "U0I4169");
-            //SetCookie("UserDirectory", "SYSSPIMI");
-            //SetCookie("UserIdentity", "Davide Carbone");
-            //// oppure 
-            //SetCookie("UserID", "U0J1749");
-            //SetCookie("UserDirectory", "SYSSPIMI");
+            //// Per sviluppi su mia macchina
+            //SetCookie("UserID", "bixth");
+            //SetCookie("UserDirectory", "desktop-29ba4mu");
             //SetCookie("UserIdentity", "Fabrizio Trevisani");
             ////
 
-            Roles = new List<string>();
-            Roles.Add("YA2C03");
-            SetRolesCookie(Roles);
-
-            ViewBag.UserIdentity = GetCookie("UserIdentity");
+            // Per sviluppi su macchina Intesa SCWAMOT0027.syssede.systest.sanpaoloimi.com
+            //SetCookie("UserID", "U0I4169");
+            //SetCookie("UserDirectory", "SYSSPIMI");
+            //SetCookie("UserIdentity", "Davide Carbone");
+            //Roles = new List<string>();
+            //Roles.Add("YA2C03");
+            //SetRolesCookie(Roles);
+            //ViewBag.UserIdentity = GetCookie("UserIdentity");
+            ////// oppure 
+            //SetCookie("UserID", "U0J1748");
+            //SetCookie("UserDirectory", "SYSSPIMI");
+            //SetCookie("UserIdentity", "Fabrizio Trevisani");
+            //Roles = new List<string>();
+            //Roles.Add("YA2C05");
+            //SetRolesCookie(Roles);
+            //ViewBag.UserIdentity = GetCookie("UserIdentity");
+            ////////
 
             // FINE NON SWA SWP
 
 
-            //// Da utilizzare se c'è SWA SWP
+            // Da utilizzare se c'è SWA SWP
 
-            //UserProfile userProfile = null;
-            //UserRequest userRequest = new UserRequest(Request.Headers.AllKeys.Count(), Request.Headers.AllKeys, Request.Headers);
+            UserProfile userProfile = null;
+            UserRequest userRequest = new UserRequest(Request.Headers.AllKeys.Count(), Request.Headers.AllKeys, Request.Headers);
 
-            //if (userRequest.IsValid)
-            //{
-            //    SetCookie("IsAuthenticated", "true");
-            //    SetCookie("UserID", userRequest.UserID);
-            //    SetCookie("UserDirectory", userRequest.UserDirectory);
-            //    SetCookie("UserIdentity", userRequest.UserIdentity);
-            //    SetCookie("SWAProfileID", userRequest.SWAProfileID);
-            //    SetCookie("LinkSWP", userRequest.LinkSWP);
-            //    ViewBag.UserIdentity = userRequest.UserIdentity;
-            //    userProfile = new UserProfile(userRequest.UserID, userRequest.LinkSWP);
-            //}
-            //else
-            //{
-            //    if (!Request.Cookies.AllKeys.Contains("IsAuthenticated"))
-            //    {
-            //        SetCookie("UserIdentity", "Utenza non riconosciuta");
-            //        ViewBag.UserIdentity = GetCookie("UserIdentity");
-            //    }
-            //    else
-            //    {
-            //        userProfile = new UserProfile(GetCookie("SWAProfileID"), GetCookie("LinkSWP"));
-            //    }
+            if (userRequest.IsValid)
+            {
+                SetCookie("IsAuthenticated", "true");
+                SetCookie("UserID", userRequest.UserID);
+                SetCookie("UserDirectory", userRequest.UserDirectory);
+                SetCookie("UserIdentity", userRequest.UserIdentity);
+                SetCookie("SWAProfileID", userRequest.SWAProfileID);
+                SetCookie("LinkSWP", userRequest.LinkSWP);
+                ViewBag.UserIdentity = userRequest.UserIdentity;
+                userProfile = new UserProfile(userRequest.UserID, userRequest.LinkSWP);
+            }
+            else
+            {
+                if (!Request.Cookies.AllKeys.Contains("IsAuthenticated"))
+                {
+                    SetCookie("UserIdentity", "Utenza non riconosciuta");
+                    ViewBag.UserIdentity = GetCookie("UserIdentity");
+                }
+                else
+                {
+                    userProfile = new UserProfile(GetCookie("SWAProfileID"), GetCookie("LinkSWP"));
+                }
 
-            //}
+            }
 
-            //if (userProfile != null && userProfile.IsValid)
-            //{
-            //    Roles = new List<string>();
-            //    foreach (var role in userProfile.Profiles)
-            //    {
-            //        Roles.Add(role.RoleID);
-            //    }
-            //    SetRolesCookie(Roles);
-            //}
+            if (userProfile != null && userProfile.IsValid)
+            {
+                Roles = new List<string>();
+                foreach (var role in userProfile.Profiles)
+                {
+                    Roles.Add(role.RoleID);
+                }
+                SetRolesCookie(Roles);
+            }
 
             // FINE SWA SWP
 
@@ -188,8 +190,9 @@ namespace QPortal.Controllers
             {
                 QSession qSession = new QSession("POST", server, vp, UserID, UserDirectory, UrlWebTicket);
                 qSession.OpenSession(HttpContext.ApplicationInstance.Context);
-                Request.Cookies.Add(qSession.GetCookie());
-                Response.Cookies.Add(qSession.GetCookie());
+                Request.Cookies.Add(qSession.GetCookie(server));
+                Response.Cookies.Add(qSession.GetCookie(server));
+                //return View(qSession.GetCookie(server));
                 return Redirect(qSession.GetHubURL());
             }
             catch (Exception ex)

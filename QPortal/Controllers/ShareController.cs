@@ -1,5 +1,6 @@
 ﻿using APIInterface;
 using APIInterface.Model;
+using QPortal.Models;
 using QPortal.Utility;
 using QPortal.ViewModels;
 using System;
@@ -44,7 +45,7 @@ namespace QPortal.Controllers
             {
                 ViewBag.Error = "Errore nel reperimento degli stream di distribuzione." + errorMessage;
             }
-            
+            if (string.IsNullOrEmpty(ViewBag.Error) && (streams == null || streams.Count == 0)) { ViewBag.Error = "Non sei abilitato a nessuno stream dell'ambito Report Distribuiti su cui distribuire il report."; }
             return View(model);
         }
         public ActionResult GetReportsGrid(string idStream, string desStream)
@@ -71,7 +72,7 @@ namespace QPortal.Controllers
             //
 
             // Prendo le app pubblicate in self-service controllando che siano nella lista creata prima
-            QlikAPI qlikAPIMaster = new QlikAPI(FarmsUtility.GetFarmNode(GetCookie("FarmId"), GetCookie("NodeId")).Link, ConfigurationManager.AppSettings["QlikUser"], ConfigurationManager.AppSettings["QlikUserDirectory"], path);
+            QlikAPI qlikAPIMaster = new QlikAPI(FarmsUtility.GetFarmNode(GetCookie("FarmId"), GetCookie("NodeId")).Link, GetCookie("UserID"), GetCookie("UserDirectory"), path);
             if (qlikAPIMaster.GetPublishedAppsInSelectedStreams(streamIdList ,out publishedApps))
             {
                 foreach (var app in publishedApps)
@@ -144,7 +145,7 @@ namespace QPortal.Controllers
             string path = Server.MapPath("~/cert/client.pfx");
 
             // Prendo il nodo dei Report Distribuiti
-            var farm = FarmsUtility.GetFarmsById(new List<string>() { GetCookie("FarmId") }).FirstOrDefault();
+            var farm = FarmsUtility.GetFarmById(GetCookie("FarmId"));
             var distrNode = (from f in farm.Nodes where f.NodeType == "D" select f).FirstOrDefault();
             //
 
@@ -152,24 +153,64 @@ namespace QPortal.Controllers
             QRSSenseApp newApp = new QRSSenseApp();
             string errorMessage = "";
             QRSQlikAPI QRSqlikAPI = new QRSQlikAPI(FarmsUtility.GetFarmNode(GetCookie("FarmId"), GetCookie("NodeId")).Server, path);
+            //QRSQlikAPI QRSqlikAPI = new QRSQlikAPI(FarmsUtility.GetFarmNode(GetCookie("FarmId"), distrNode.Id.ToString()).Server, path);
             QRSqlikAPI.CopyApp(GetCookie("UserID"), GetCookie("UserDirectory"), AppId, AppName, out newApp, out errorMessage);
+            bool publishResult = true;
 
             if (OverwriteRequired.ToLower() == "false")
-            {
-                // Pubblico l'app
-                QlikAPI qlikAPI = new QlikAPI(FarmsUtility.GetFarmNode(GetCookie("FarmId"), distrNode.Id.ToString()).Link, GetCookie("UserID"), GetCookie("UserDirectory"), path);
-                qlikAPI.PublishApp(newApp.id, AppName, StreamID);
+            {                
+                // Pubblico l'app                
+                QlikAPI qlikAPI = new QlikAPI(FarmsUtility.GetFarmNode(GetCookie("FarmId"), GetCookie("NodeId")).Link, GetCookie("UserID"), GetCookie("UserDirectory"), path);
+                publishResult = qlikAPI.PublishApp(newApp.id, AppName, StreamID, out errorMessage);                
             }
             else
             {
+                // Dovrebbe funzionare così ma non funziona!!!               
+
                 // Rimpiazzo l'app
-                QlikAPI qlikAPI = new QlikAPI(FarmsUtility.GetFarmNode(GetCookie("FarmId"), distrNode.Id.ToString()).Link, GetCookie("UserID"), GetCookie("UserDirectory"), path);
-                qlikAPI.ReplaceApp(newApp.id, AppToOverwriteId);
+                //QlikAPI qlikAPI = new QlikAPI(FarmsUtility.GetFarmNode(GetCookie("FarmId"), GetCookie("NodeId")).Link, GetCookie("UserID"), GetCookie("UserDirectory"), path);
+                QlikAPI qlikAPI = new QlikAPI(farm.centralnode, GetCookie("UserID"), GetCookie("UserDirectory"), path);
+                publishResult = qlikAPI.ReplaceApp(newApp.id, AppToOverwriteId, out errorMessage);
 
                 // Elimino l'app duplicata
                 qlikAPI.DeleteApp(newApp.id);
+
+
+                ////// Allora faccio così  
+
+                //List<SenseApplication> publishedApps;
+                //QlikAPI qlikAPI = new QlikAPI(FarmsUtility.GetFarmNode(GetCookie("FarmId"), GetCookie("NodeId")).Link, GetCookie("UserID"), GetCookie("UserDirectory"), path);
+                //publishResult = qlikAPI.PublishApp(newApp.id, AppName, StreamID, out errorMessage);
+                //qlikAPI.GetPublishedApps(out publishedApps);
+                //string appToDelete = "";
+                //DateTime publishTime = DateTime.MaxValue;
+                //int count = 0;
+                //foreach (var publishedApp in publishedApps)
+                //{
+                //    if (publishedApp.StreamID == StreamID && publishedApp.Name == AppName)
+                //    {
+                //        count++;
+                //        if (publishedApp.PublishDate.CompareTo(publishTime) < 0)
+                //        {
+                //            publishTime = publishedApp.PublishDate;
+                //            appToDelete = publishedApp.AppId;
+                //        }
+                //    }
+                //}
+                //if (count == 2 && !string.IsNullOrEmpty(appToDelete)) { qlikAPI.DeleteApp(appToDelete); }
+
             }
-            
+            //ViewBag.UserID = GetCookie("UserID");
+            //ViewBag.UserDirectory = GetCookie("UserDirectory");
+            //ViewBag.newAppId = newApp.id;
+            //ViewBag.AppName = AppName;
+            //ViewBag.StreamID = StreamID;
+            //ViewBag.distrNode = distrNode.Id.ToString();
+            //ViewBag.OverwriteRequired = AppToOverwriteId;
+            //ViewBag.Link = FarmsUtility.GetFarmNode(GetCookie("FarmId"), distrNode.Id.ToString()).Link;
+            //ViewBag.publishResult = publishResult.ToString();
+            //ViewBag.errorMessage = errorMessage;
+            //return View("ToShare2");
             return RedirectToAction("Hub", "Home", new { FarmList = FarmList });
         }
     }
