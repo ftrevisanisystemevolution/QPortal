@@ -64,7 +64,7 @@
                 @if (!string.IsNullOrWhiteSpace(Model.FarmName) && Model.FarmName.ToUpper().Contains(ReportDistribuitiString))
                 {
                     <li id="archive">
-                        <a href="@Url.Action("Index", "Home")">
+                        <a href="#">
                             <span class="subnav-icon">
                                 <i class="fa fa-folder-o"></i>
                             </span>
@@ -90,7 +90,7 @@
                     </a>
                 </li>
                 <li id="support">
-                    <a href="@Url.Action("Index", "Home")">
+                    <a href="#" disabled='disabled'>
                         <span class="subnav-icon">
                             <i class="fa fa-support"></i>
                         </span>
