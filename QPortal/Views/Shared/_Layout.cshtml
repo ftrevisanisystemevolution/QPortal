@@ -68,6 +68,18 @@
 
 	@RenderSection("scripts", required: false)
 
+    <script>
+        //used to set initials based on name
+        $('.user-icon').initial(
+            {
+                width: 38,
+                height: 38,
+                color: '#FFFFFF',
+                textColor: '#5CA740'
+            }
+        );
+    </script>
+
 	<script type="text/javascript">
 
 		$('.fancybox').fancybox({
