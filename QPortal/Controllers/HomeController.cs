@@ -46,13 +46,19 @@ namespace QPortal.Controllers
 
 #else
 
-            // Da utilizzare se NON c'è SWA SWP
-            //SetCookie("IsAuthenticated", "true");
+            ////// Da utilizzare se NON c'è SWA SWP
+            ////SetCookie("IsAuthenticated", "true");
 
             //// Per sviluppi su mia macchina
+            //SetCookie("IsAuthenticated", "true");
+
             //SetCookie("UserID", "bixth");
             //SetCookie("UserDirectory", "desktop-29ba4mu");
             //SetCookie("UserIdentity", "Fabrizio Trevisani");
+            //Roles = new List<string>();
+            //Roles.Add("YA2C03");
+            //SetRolesCookie(Roles);
+            //ViewBag.UserIdentity = GetCookie("UserIdentity");
             ////
 
             // Per sviluppi su macchina Intesa SCWAMOT0027.syssede.systest.sanpaoloimi.com
@@ -76,7 +82,7 @@ namespace QPortal.Controllers
             // FINE NON SWA SWP
 
 
-            // Da utilizzare se c'è SWA SWP
+            //// Da utilizzare se c'è SWA SWP
 
             UserProfile userProfile = null;
             UserRequest userRequest = new UserRequest(Request.Headers.AllKeys.Count(), Request.Headers.AllKeys, Request.Headers);
@@ -116,7 +122,7 @@ namespace QPortal.Controllers
                 SetRolesCookie(Roles);
             }
 
-            // FINE SWA SWP
+            //// FINE SWA SWP
 
             // Da usare solo per test!!!!
             //if (userProfile == null) { throw new Exception("User Profile Null"); }
