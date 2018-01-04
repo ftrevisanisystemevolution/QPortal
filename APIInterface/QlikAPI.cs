@@ -52,6 +52,28 @@ namespace APIInterface
             }
         }
 
+        public bool RenameApp(string appId, string description)
+        {
+            try
+            {
+                if (!conn.IsConnected) { return false; }
+
+                using (IHub hub = conn.location.Hub())
+                {                    
+                    var app = hub.OpenApp(appId);
+                    NxAppProperties properties = app.GetAppProperties();
+                    properties.Set<string>("description", description);
+                    app.SetAppProperties(properties);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
         public bool PublishApp(string appId, string name, string streamId)
         {
             try
@@ -98,29 +120,7 @@ namespace APIInterface
                 return false;
             }
         }
-
-        public bool RenameApp(string appId, string newName)
-        {
-            try
-            {
-                if (!conn.IsConnected) { return false; }
-
-                using (IHub hub = conn.location.Hub())
-                {
-                    var app = hub.OpenApp(appId);
-                    NxAppProperties properties = app.GetAppProperties();
-                    properties.Set<string>("Title", newName);
-                    app.SetAppProperties(properties);                    
-                }
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
-
+        
 
         public bool GetMyReportsNotPublished(out List<SenseApplication> notPublishedApps)
         {

@@ -33,11 +33,24 @@
                     <label class="mr-25">
                         Report vuoto<br />
                         <img src="~/Content/Images/appNullThumb.png" alt="..." class="img-thumbnail img-check">
-                        <input type="radio" name="chk1" class="" checked>
+                        <input type="radio" name="SelectedTemplate" class="" checked value="void">
                         <i class="fa fa-circle-thin fa-2x "></i>
                         <i class="fa fa-dot-circle-o fa-2x"></i> 
                     </label>
                     
+                    @if (Model != null && Model.TemplateItems != null && Model.TemplateItems.Count > 0)
+                    {
+                        foreach (var template in Model.TemplateItems)
+                        {                   
+                            <label class="mr-25">
+                                @template.TemplateDescription<br />
+                                <img src="~/Content/Images/appNullThumb.png" alt="..." class="img-thumbnail img-check">
+                                <input type="radio" name="SelectedTemplate" class="" value="@template.TemplateID">
+                                <i class="fa fa-circle-thin fa-2x "></i>
+                                <i class="fa fa-dot-circle-o fa-2x"></i>
+                            </label>
+                        }
+                    }
 
                     <div class="row">
                         <div class="float-right">

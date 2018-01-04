@@ -225,6 +225,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Node.cs" />
+    <Compile Include="Models\ReportTemplate.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\SecondaryNavBarModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -75,7 +75,7 @@ namespace Profiler
                     // Call the web service
                     var result = srv.getProfilazione(userID, "", "", "", "", "true", "true", "true", "", "", "", "", "", "", "Qlik");
 
-                    
+
                     // Test the result status
                     if (result.responseStatus.retCode == "000" && result.responseStatus.numeroElementi > 0)
                     {
@@ -86,17 +86,35 @@ namespace Profiler
                         SetBasicFields(basic);
 
                         // Set user profiles
-                        ProfileNumber = result.responseStatus.numeroElementi;
-                        var profile = result.profilazione.userinfo[0].userprofile[0];
-                        Profiles = new List<Profile>();
-                        for (int j = 0; j < ProfileNumber; j++)
+                        //ProfileNumber = result.responseStatus.numeroElementi;
+                        //Console.WriteLine(ProfileNumber);
+                        ProfileNumber = 0;
+                        for (int i = 0; i < result.profilazione.userinfo[0].userprofile.Length; i++)
                         {
-                            Profiles.Add(new Profile(profile.abilitazioni[j].codice,
-                                profile.abilitazioni[j].anagraficaFunzione));
+                            var profile = result.profilazione.userinfo[0].userprofile[i];
+                            //Console.WriteLine(result.profilazione.userinfo[0].userprofile[i].abilitazioni.Length);
+                            //if (ProfileNumber > 0 && profile.abilitazioni != null && profile.abilitazioni.Length < ProfileNumber) { ProfileNumber = profile.abilitazioni.Length; }
+
+                            Profiles = new List<Profile>();
+                            for (int j = 0; j < profile.abilitazioni.Length; j++)
+                            {
+                                if (profile.abilitazioni != null && profile.abilitazioni[j] != null)
+                                {
+                                    Profiles.Add(new Profile(profile.abilitazioni[j].codice,
+                                        profile.abilitazioni[j].anagraficaFunzione));
+                                    ProfileNumber++;
+                                }
+                            }
+
                         }
-                        
+
+                        //foreach(var Profile in Profiles)
+                        //{
+                        //    Console.WriteLine(Profile.RoleID);
+                        //}
 
                         SetResult("", "", true);
+
                     }
                     else
                     {

@@ -15,5 +15,7 @@ namespace QPortal.Models
 
         [Display(Name = "Scegli un template dalla Galleria")]
         public List<string> Templates { get; set; }
+
+        public List<ReportTemplate> TemplateItems { get; set; }
     }
 }

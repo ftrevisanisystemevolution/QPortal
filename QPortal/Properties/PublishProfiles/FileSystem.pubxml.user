@@ -16,7 +16,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/22/2013 03:43:40</publishTime>
     </File>
     <File Include="bin/APIInterface.dll">
-      <publishTime>12/06/2017 12:42:26</publishTime>
+      <publishTime>12/22/2017 10:57:21</publishTime>
     </File>
     <File Include="bin/ApplicationInsights.config">
       <publishTime>10/05/2017 13:14:51</publishTime>
@@ -106,10 +106,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/27/2012 08:00:52</publishTime>
     </File>
     <File Include="bin/Profiler.dll">
-      <publishTime>12/05/2017 12:55:34</publishTime>
+      <publishTime>12/22/2017 10:57:20</publishTime>
     </File>
     <File Include="bin/Profiler.XmlSerializers.dll">
-      <publishTime>12/05/2017 12:55:35</publishTime>
+      <publishTime>12/22/2017 10:57:21</publishTime>
     </File>
     <File Include="bin/Qlik.Engine.dll">
       <publishTime>10/12/2017 12:40:08</publishTime>
@@ -121,10 +121,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/12/2017 12:40:08</publishTime>
     </File>
     <File Include="bin/QlikSenseSession.dll">
-      <publishTime>12/05/2017 12:55:34</publishTime>
+      <publishTime>12/15/2017 17:52:55</publishTime>
     </File>
     <File Include="bin/QPortal.dll">
-      <publishTime>12/07/2017 11:08:33</publishTime>
+      <publishTime>12/22/2017 10:57:22</publishTime>
     </File>
     <File Include="bin/RestSharp.dll">
       <publishTime>11/19/2017 01:44:00</publishTime>
@@ -1381,10 +1381,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/27/2017 16:43:34</publishTime>
     </File>
     <File Include="Views/Account/ConfirmEmail.cshtml">
-      <publishTime>10/05/2017 13:14:22</publishTime>
+      <publishTime>12/12/2017 11:29:42</publishTime>
     </File>
     <File Include="Views/Account/ExternalLoginConfirmation.cshtml">
-      <publishTime>10/05/2017 13:14:22</publishTime>
+      <publishTime>12/12/2017 11:29:42</publishTime>
     </File>
     <File Include="Views/Account/ExternalLoginFailure.cshtml">
       <publishTime>10/05/2017 13:14:22</publishTime>
@@ -1414,7 +1414,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/05/2017 13:14:23</publishTime>
     </File>
     <File Include="Views/Account/_ExternalLoginsListPartial.cshtml">
-      <publishTime>10/05/2017 13:14:22</publishTime>
+      <publishTime>12/12/2017 11:29:42</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>10/05/2017 13:13:42</publishTime>
@@ -1474,7 +1474,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/29/2017 23:53:58</publishTime>
     </File>
     <File Include="Views/Reports/CreateReport.cshtml">
-      <publishTime>11/30/2017 09:13:17</publishTime>
+      <publishTime>12/18/2017 14:44:45</publishTime>
     </File>
     <File Include="Views/Reports/Index.cshtml">
       <publishTime>11/17/2017 17:51:06</publishTime>
@@ -1528,7 +1528,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/30/2017 09:15:49</publishTime>
     </File>
     <File Include="Views/Shared/_SecNavBar.cshtml">
-      <publishTime>11/30/2017 09:44:26</publishTime>
+      <publishTime>12/12/2017 10:32:22</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>11/22/2017 23:59:38</publishTime>
@@ -1537,7 +1537,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/05/2017 13:13:42</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/05/2017 12:55:42</publishTime>
+      <publishTime>12/12/2017 10:33:34</publishTime>
     </File>
   </ItemGroup>
 </Project>
