@@ -24,7 +24,9 @@ namespace QPortal
                       //"~/Scripts/BootstrapMenu.min.js",
                       "~/Scripts/respond.js",
                       "~/Scripts/toastr.js",
-                      "~/Scripts/jquery.fancybox.js"));
+                      "~/Scripts/jquery.fancybox.js",
+                      "~/Scripts/cookieconsent/cookieconsent.js",
+                      "~/Scripts/initial/initial.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       //"~/Content/bootswatch/cosmo/bootstrap.css",
@@ -33,6 +35,7 @@ namespace QPortal
                       "~/Content/datatables/css/select.bootstrap.css",
                       "~/Content/font-awesome.css",
                       "~/Content/toastr.css",
+                      "~/Content/cookieconsent/cookieconsent.7.css",
                       "~/Content/site.css"));
         }
     }
