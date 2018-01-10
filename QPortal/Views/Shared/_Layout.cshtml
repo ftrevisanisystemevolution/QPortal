@@ -1,103 +1,138 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="~/Content/Images/favicon.ico" />
-    <link rel="shortcut icon" type="image/x-icon" href="~/Content/Images/favicon.ico" />
-    <title>@ViewBag.Title - Qlik Portal</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    <link href="~/Content/MvcGrid/mvc-grid.css" rel="stylesheet">
-    <link href="~/Content/jquery.fancybox.css" rel="stylesheet" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/x-icon" href="~/Content/Images/favicon.ico" />
+	<link rel="shortcut icon" type="image/x-icon" href="~/Content/Images/favicon.ico" />
+	<title>@ViewBag.Title - Qlik Portal</title>
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/modernizr")
+	<link href="~/Content/MvcGrid/mvc-grid.css" rel="stylesheet">
+	<link href="~/Content/jquery.fancybox.css" rel="stylesheet" />
 </head>
 <body>
-    @Html.Partial("_NavBar")
-    @if (ViewBag.PageType != "HomePage" && ViewBag.PageType != "InternalAction")
-    {
-        { Html.RenderAction("SecondaryNavbarResponse", "Home"); }
-        <div class="container-fluid body-content nopaddinglr">
-            @RenderBody()
-        </div>
-    }
-    else if (ViewBag.PageType != "HomePage" && ViewBag.PageType == "InternalAction")
-    {
-        { Html.RenderAction("SecondaryNavbarRequest", "Home"); }
-        <div class="container-fluid body-content nopaddinglr">
-            @RenderBody()
-        </div>
-    }
-    else
-    {
-        <div class="container-fluid body-content nopaddinglr">
-            @RenderBody()
-        </div>
-    }
-        @*<hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Qlik Portal</p>
-        </footer>*@
+	@Html.Partial("_NavBar")
+	@if (ViewBag.PageType != "HomePage" && ViewBag.PageType != "InternalAction")
+	{
+		{ Html.RenderAction("SecondaryNavbarResponse", "Home"); }
+		<div class="container-fluid body-content nopaddinglr">
+			@RenderBody()
+		</div>
+	}
+	else if (ViewBag.PageType != "HomePage" && ViewBag.PageType == "InternalAction")
+	{
+		{ Html.RenderAction("SecondaryNavbarRequest", "Home"); }
+		<div class="container-fluid body-content nopaddinglr">
+			@RenderBody()
+		</div>
+	}
+	else
+	{
+		<div class="container-fluid body-content nopaddinglr">
+			@RenderBody()
+		</div>
+	}
+		@*<hr />
+		<footer>
+			<p>&copy; @DateTime.Now.Year - Qlik Portal</p>
+		</footer>*@
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    <script src="~/Scripts/MvcGrid/mvc-grid.js"></script>
+    <!-- Begin Cookie Consent script https://cookiescript.info/ -->
+    <script>
+        window.addEventListener("load", function () {
+            window.cookieconsent.initialise({
+                "palette": {
+                    "popup": {
+                        "background": "#ffffff"
+                    },
+                    "button": {
+                        "background": "#258900"
+                    }
+                },
+                "content": {
+                    "message": "I nostri siti Web utilizzano i cookie per offrire agli utenti la migliore esperienza possibile. Continuando a utilizzare questo sito Web, l'utente acconsente al loro utilizzo in base alla nostra Informativa sulla privacy.",
+                    "dismiss": "CHIUDI",
+                    "link": "Informativa sulla privacy e politica dei cookie",
+                    "href": "https://en.wikipedia.org/wiki/HTTP_cookie"
+                }
+            })
+        });
+    </script>
+    <!-- End Cookie Consent script -->
 
-    @RenderSection("scripts", required: false)
 
-    <script type="text/javascript">
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	<script src="~/Scripts/MvcGrid/mvc-grid.js"></script>
 
+	@RenderSection("scripts", required: false)
 
-        $('.fancybox').fancybox({
-		    openEffect: 'elastic',
-		    closeEffect: 'elastic',
-		    helpers: {
-		        title: {
-		            type: 'inside'
-		        }
-		    }
+    <script>
+        //used to set initials based on name
+        $('.user-icon').initial(
+            {
+                width: 38,
+                height: 38,
+                color: '#FFFFFF',
+                textColor: '#5CA740'
+            }
+        );
+    </script>
+
+	<script type="text/javascript">
+
+		$('.fancybox').fancybox({
+			openEffect: 'elastic',
+			closeEffect: 'elastic',
+			helpers: {
+				title: {
+					type: 'inside'
+				}
+			}
 		});
 
 		$('.fancyboxgray').fancybox({
-		    openEffect: 'elastic',
-		    closeEffect: 'elastic',
-		    helpers: {
-		        title: {
-		            type: 'inside'
-		        }
-		    },
-		    beforeShow: function () {
-		        $(".fancybox-skin").css("backgroundColor", "rgb(180, 168, 154);");
+			openEffect: 'elastic',
+			closeEffect: 'elastic',
+			helpers: {
+				title: {
+					type: 'inside'
+				}
+			},
+			beforeShow: function () {
+				$(".fancybox-skin").css("backgroundColor", "rgb(180, 168, 154);");
 		}
 		});
 
 		$('.fancyboxgray300').fancybox({
-		    openEffect: 'elastic',
-		    closeEffect: 'elastic',
-		    width: '300px',
-		    helpers: {
-		        title: {
-		            type: 'inside'
-		        }
-		    },
-		    beforeShow: function () {
-		        $(".fancybox-skin").css("backgroundColor", "rgb(180, 168, 154);");
-		    }
+			openEffect: 'elastic',
+			closeEffect: 'elastic',
+			width: '300px',
+			helpers: {
+				title: {
+					type: 'inside'
+				}
+			},
+			beforeShow: function () {
+				$(".fancybox-skin").css("backgroundColor", "rgb(180, 168, 154);");
+			}
 		});
 
 		$('.mvc-grid').mvcgrid();
 
 		$(document).ready(function () { 
-		    $('#Streams').change(function () {
-		        $('#idstream').val(this.value);
-		        $('#desstream').val($(this).find("option:selected").text());
-		    })
+			$('#Streams').change(function () {
+				$('#idstream').val(this.value);
+				$('#desstream').val($(this).find("option:selected").text());
+			})
 		});
 
 		function clicka(val)
 		{
-		    val.href += "&idstream=" + $('#idstream').val() + "&selstream=" + $('#desstream').val() + "&FarmList=" + $('#FarmList').val();
+			val.href += "&idstream=" + $('#idstream').val() + "&selstream=" + $('#desstream').val() + "&FarmList=" + $('#FarmList').val();
 		}
-    </script>
+	</script>
 
 </body>
 </html>
