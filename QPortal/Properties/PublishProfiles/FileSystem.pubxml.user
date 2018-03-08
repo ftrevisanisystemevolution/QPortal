@@ -16,7 +16,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/22/2013 03:43:40</publishTime>
     </File>
     <File Include="bin/APIInterface.dll">
-      <publishTime>12/22/2017 10:57:21</publishTime>
+      <publishTime>02/19/2018 15:08:35</publishTime>
     </File>
     <File Include="bin/ApplicationInsights.config">
       <publishTime>10/05/2017 13:14:51</publishTime>
@@ -106,10 +106,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/27/2012 08:00:52</publishTime>
     </File>
     <File Include="bin/Profiler.dll">
-      <publishTime>12/22/2017 10:57:20</publishTime>
+      <publishTime>02/19/2018 15:08:37</publishTime>
     </File>
     <File Include="bin/Profiler.XmlSerializers.dll">
-      <publishTime>12/22/2017 10:57:21</publishTime>
+      <publishTime>02/19/2018 15:08:38</publishTime>
     </File>
     <File Include="bin/Qlik.Engine.dll">
       <publishTime>10/12/2017 12:40:08</publishTime>
@@ -121,10 +121,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/12/2017 12:40:08</publishTime>
     </File>
     <File Include="bin/QlikSenseSession.dll">
-      <publishTime>12/15/2017 17:52:55</publishTime>
+      <publishTime>02/19/2018 15:08:36</publishTime>
     </File>
     <File Include="bin/QPortal.dll">
-      <publishTime>12/22/2017 10:57:22</publishTime>
+      <publishTime>02/19/2018 15:08:39</publishTime>
     </File>
     <File Include="bin/RestSharp.dll">
       <publishTime>11/19/2017 01:44:00</publishTime>
@@ -422,6 +422,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Content/bootswatch/yeti/bootstrap.min.css">
       <publishTime>10/18/2017 10:46:56</publishTime>
+    </File>
+    <File Include="Content/cookieconsent/cookieconsent.7.css">
+      <publishTime>01/10/2018 11:54:54</publishTime>
     </File>
     <File Include="Content/DataTables/css/autoFill.bootstrap.css">
       <publishTime>11/15/2017 13:57:26</publishTime>
@@ -984,8 +987,44 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/Images/Logo.png">
       <publishTime>10/18/2017 15:16:46</publishTime>
     </File>
+    <File Include="Content/Images/NotUsed/appNull.png">
+      <publishTime>01/10/2018 11:54:54</publishTime>
+    </File>
+    <File Include="Content/Images/NotUsed/appNull2.png">
+      <publishTime>01/10/2018 11:54:54</publishTime>
+    </File>
+    <File Include="Content/Images/NotUsed/bgcharts.jpeg">
+      <publishTime>01/10/2018 11:54:54</publishTime>
+    </File>
+    <File Include="Content/Images/NotUsed/bgcharts2.jpeg">
+      <publishTime>01/10/2018 11:54:54</publishTime>
+    </File>
+    <File Include="Content/Images/NotUsed/centroIS.jpg">
+      <publishTime>01/10/2018 11:54:54</publishTime>
+    </File>
+    <File Include="Content/Images/NotUsed/centroIS16x9_old.jpg">
+      <publishTime>01/10/2018 11:54:54</publishTime>
+    </File>
+    <File Include="Content/Images/NotUsed/Hero_1.jpg">
+      <publishTime>01/10/2018 11:54:54</publishTime>
+    </File>
+    <File Include="Content/Images/NotUsed/Hero_2.jpg">
+      <publishTime>01/10/2018 11:54:54</publishTime>
+    </File>
+    <File Include="Content/Images/NotUsed/Hero_3.jpg">
+      <publishTime>01/10/2018 11:54:54</publishTime>
+    </File>
+    <File Include="Content/Images/NotUsed/Logo.png">
+      <publishTime>01/10/2018 11:54:54</publishTime>
+    </File>
+    <File Include="Content/Images/NotUsed/Qlik.png">
+      <publishTime>01/10/2018 11:54:54</publishTime>
+    </File>
+    <File Include="Content/Images/NotUsed/Qlik.svg">
+      <publishTime>01/10/2018 11:54:54</publishTime>
+    </File>
     <File Include="Content/Images/Qlik.png">
-      <publishTime>11/10/2017 23:45:42</publishTime>
+      <publishTime>01/10/2018 11:54:54</publishTime>
     </File>
     <File Include="Content/jquery.fancybox-buttons.css">
       <publishTime>11/23/2017 16:03:01</publishTime>
@@ -1003,7 +1042,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/22/2017 23:59:38</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>11/30/2017 10:22:27</publishTime>
+      <publishTime>01/10/2018 11:54:54</publishTime>
     </File>
     <File Include="Content/toastr.css">
       <publishTime>10/27/2017 16:43:34</publishTime>
@@ -1021,13 +1060,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/30/2017 09:16:38</publishTime>
     </File>
     <File Include="Docs/REPQ0-LineeGuida-ReportDistribuiti.pdf">
-      <publishTime>11/30/2017 09:31:34</publishTime>
+      <publishTime>01/23/2018 16:47:39</publishTime>
     </File>
     <File Include="Docs/REPQ0-LineeGuida-ReportSelfService.pdf">
-      <publishTime>11/30/2017 09:31:34</publishTime>
+      <publishTime>01/23/2018 16:47:06</publishTime>
     </File>
     <File Include="Docs/REPQ0-ManualeUtente.pdf">
-      <publishTime>11/30/2017 09:31:34</publishTime>
+      <publishTime>12/19/2017 14:44:44</publishTime>
     </File>
     <File Include="Farms.xml">
       <publishTime>12/06/2017 12:32:49</publishTime>
@@ -1082,6 +1121,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Scripts/BootstrapMenu.min.js">
       <publishTime>10/06/2017 08:32:49</publishTime>
+    </File>
+    <File Include="Scripts/cookieconsent/cookieconsent.js">
+      <publishTime>01/10/2018 11:54:54</publishTime>
     </File>
     <File Include="Scripts/DataTables/autoFill.bootstrap.js">
       <publishTime>11/15/2017 13:57:26</publishTime>
@@ -1311,6 +1353,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/DataTables/responsive.semanticui.min.js">
       <publishTime>11/15/2017 13:57:26</publishTime>
     </File>
+    <File Include="Scripts/initial/initial.js">
+      <publishTime>01/10/2018 11:54:54</publishTime>
+    </File>
+    <File Include="Scripts/initial/initial.min.js">
+      <publishTime>01/10/2018 11:54:54</publishTime>
+    </File>
     <File Include="Scripts/jquery-3.2.1.js">
       <publishTime>10/06/2017 01:05:30</publishTime>
     </File>
@@ -1426,7 +1474,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/15/2017 14:30:52</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>11/30/2017 10:16:04</publishTime>
+      <publishTime>01/10/2018 11:54:54</publishTime>
     </File>
     <File Include="Views/Home/OpenFrame.cshtml">
       <publishTime>12/05/2017 12:00:56</publishTime>
@@ -1519,13 +1567,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/22/2017 23:59:38</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>11/27/2017 17:52:29</publishTime>
+      <publishTime>01/16/2018 12:45:18</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>10/05/2017 13:14:23</publishTime>
     </File>
     <File Include="Views/Shared/_NavBar.cshtml">
-      <publishTime>11/30/2017 09:15:49</publishTime>
+      <publishTime>01/16/2018 12:46:23</publishTime>
     </File>
     <File Include="Views/Shared/_SecNavBar.cshtml">
       <publishTime>12/12/2017 10:32:22</publishTime>

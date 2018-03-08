@@ -133,7 +133,7 @@ namespace QlikSenseSession
             string OldID = Context.Session.SessionID;
             bool redirected = false;
             bool IsAdded = false;
-            Manager.SaveSessionID(Context, NewID, out redirected, out IsAdded);
+            Manager.SaveSessionID(Context, NewID, out redirected, out IsAdded);            
             return NewID;
         }
     }

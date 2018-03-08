@@ -196,9 +196,8 @@ namespace QPortal.Controllers
             {
                 QSession qSession = new QSession("POST", server, vp, UserID, UserDirectory, UrlWebTicket);
                 qSession.OpenSession(HttpContext.ApplicationInstance.Context);
-                Request.Cookies.Add(qSession.GetCookie(server));
-                Response.Cookies.Add(qSession.GetCookie(server));
-                //return View(qSession.GetCookie(server));
+                Request.Cookies.Add(qSession.GetCookie(server, true));
+                Response.Cookies.Add(qSession.GetCookie(server, true));
                 return Redirect(qSession.GetHubURL());
             }
             catch (Exception ex)
