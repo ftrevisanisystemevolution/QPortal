@@ -130,18 +130,18 @@ namespace QPortal.Controllers
 #endif
 
             string path = Server.MapPath(Url.Content(FilePaths.RolesXML));
-            XDocument root = FarmsUtility.GetXmlDocument(path);
+            XDocument root = AmbitiUtility.GetXmlDocument(path);
 
-            List<FarmRoles> FarmRoles = new List<FarmRoles>();
-            if (Roles != null) { FarmRoles = RolesUtility.GetRoles(root, Roles); }
+            List<AmbitoRoles> AmbitoRoles = new List<AmbitoRoles>();
+            if (Roles != null) { AmbitoRoles = RolesUtility.GetRoles(root, Roles); }
 
-            if (FarmRoles.Count != 0)
+            if (AmbitoRoles.Count != 0)
             {
-                List<Farms> FarmList = new List<Farms>(RolesUtility.AssignFarmRoles(FarmRoles));
+                List<Ambiti> AmbitoList = new List<Ambiti>(RolesUtility.AssignAmbitoRoles(AmbitoRoles));
 
-                var viewModel = new FarmsViewModel()
+                var viewModel = new AmbitiViewModel()
                 {
-                    FarmList = FarmList
+                    AmbitoList = AmbitoList
                 };
 
                 return View(viewModel);
@@ -168,17 +168,17 @@ namespace QPortal.Controllers
         {
             ViewBag.PageType = "Hub";
 
-            string farmNode = Request["FarmList"];
-            if (string.IsNullOrEmpty(farmNode) || !farmNode.Contains("|")) { return RedirectToAction("Index");  }            
-            int farmId = Convert.ToInt32(farmNode.Split('|')[0]);
-            int nodeId = Convert.ToInt32(farmNode.Split('|')[1]);
-            var node = FarmsUtility.GetFarmNode(farmId, nodeId);
-            var farm = FarmsUtility.GetFarmsById(new List<string>() { farmId.ToString() });
-            SetCookie("FarmId", farmNode.Split('|')[0]);
-            SetCookie("NodeId", farmNode.Split('|')[1]);
-            SetCookie("FarmName", farm.FirstOrDefault().Name + " - " + node.Name);
+            string ambitoNode = Request["AmbitoList"];
+            if (string.IsNullOrEmpty(ambitoNode) || !ambitoNode.Contains("|")) { return RedirectToAction("Index");  }            
+            int ambitoId = Convert.ToInt32(ambitoNode.Split('|')[0]);
+            int nodeId = Convert.ToInt32(ambitoNode.Split('|')[1]);
+            var node = AmbitiUtility.GetAmbitoNode(ambitoId, nodeId);
+            var ambito = AmbitiUtility.GetAmbitiById(new List<string>() { ambitoId.ToString() });
+            SetCookie("AmbitoId", ambitoNode.Split('|')[0]);
+            SetCookie("NodeId", ambitoNode.Split('|')[1]);
+            SetCookie("AmbitoName", ambito.FirstOrDefault().Name + " - " + node.Name);
             SetCookie("UrlWebTicket", node.UrlWebTicket);
-            ViewBag.FarmName = GetCookie("FarmName");
+            ViewBag.AmbitoName = GetCookie("AmbitoName");
             ViewBag.Server = node.Server;
             ViewBag.VirtualProxy = node.VirtualProxy;
             ViewBag.UserIdentity = GetCookie("UserIdentity");

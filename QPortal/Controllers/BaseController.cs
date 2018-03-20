@@ -90,20 +90,18 @@ namespace QPortal.Controllers
         [ChildActionOnly]
         public ActionResult SecondaryNavbarRequest()
         {
-            
-
-            //get farm from FarmName cookie
-            string FarmName = GetCookie("FarmName");
-            string FarmId = GetCookie("FarmId");
+            //get ambito from AmbitoName cookie
+            string AmbitoName = GetCookie("AmbitoName");
+            string AmbitoId = GetCookie("AmbitoId");
             Roles = GetRolesCookie();
 
             //create a model and pass it to the view so that you don't need to set a Role cookie
             SecondaryNavBarModel model = new SecondaryNavBarModel();
 
-            if (!String.IsNullOrWhiteSpace(FarmId))
+            if (!String.IsNullOrWhiteSpace(AmbitoId))
             {
-                model.FarmName = FarmName;
-                model.Role = RolesUtility.GetFarmRoleById(Convert.ToInt32(FarmId), Roles);
+                model.AmbitoName = AmbitoName;
+                model.Role = RolesUtility.GetAmbitoRoleById(Convert.ToInt32(AmbitoId), Roles);
             }
 
             //build the secondary navbar here? so that we remove the logic from inside the partial view?
@@ -113,18 +111,18 @@ namespace QPortal.Controllers
         [ChildActionOnly]
         public ActionResult SecondaryNavbarResponse()
         {
-            //get farm from FarmName cookie
-            string FarmName = GetResponseCookie("FarmName");
-            string FarmId = GetResponseCookie("FarmId");
+            //get ambito from AmbitoName cookie
+            string AmbitoName = GetResponseCookie("AmbitoName");
+            string AmbitoId = GetResponseCookie("AmbitoId");
             Roles = GetRolesCookie();
 
             //create a model and pass it to the view so that you don't need to set a Role cookie
             SecondaryNavBarModel model = new SecondaryNavBarModel();
 
-            if (!String.IsNullOrWhiteSpace(FarmId))
+            if (!String.IsNullOrWhiteSpace(AmbitoId))
             {
-                model.FarmName = FarmName;
-                model.Role = RolesUtility.GetFarmRoleById(Convert.ToInt32(FarmId), Roles);
+                model.AmbitoName = AmbitoName;
+                model.Role = RolesUtility.GetAmbitoRoleById(Convert.ToInt32(AmbitoId), Roles);
             }
 
             //build the secondary navbar here? so that we remove the logic from inside the partial view?

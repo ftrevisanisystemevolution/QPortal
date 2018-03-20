@@ -14,7 +14,7 @@ namespace QPortal.Controllers.Api
         {
             //To Do : check if user has permission first 
 
-            var requested = FarmsUtility.GetFarmNode(id, node);
+            var requested = AmbitiUtility.GetAmbitoNode(id, node);
 
             if (requested == null)
                 return NotFound();

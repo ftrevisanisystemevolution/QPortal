@@ -19,20 +19,20 @@ namespace QPortal.Controllers
         {
             ViewBag.PageType = "InternalAction";
 
-            ViewBag.FarmName = GetCookie("FarmName");
+            ViewBag.AmbitoName = GetCookie("AmbitoName");
             ViewBag.UserIdentity = GetCookie("UserIdentity");
-            ViewBag.FarmList = GetCookie("FarmId") + "|" + GetCookie("NodeId");
+            ViewBag.AmbitoList = GetCookie("AmbitoId") + "|" + GetCookie("NodeId");
 
             string path = Server.MapPath("~/cert/client.pfx");
             ReportViewModel model = new ReportViewModel();
 
             // Prendo il nodo dei Report Distribuiti
-            var farm = FarmsUtility.GetFarmsById(new List<string>() { GetCookie("FarmId") }).FirstOrDefault();
-            var distrNode = (from f in farm.Nodes where f.NodeType == "D" select f).FirstOrDefault();
+            var ambito = AmbitiUtility.GetAmbitoById(new List<string>() { GetCookie("AmbitoId") }).FirstOrDefault();
+            var distrNode = (from f in ambito.Nodes where f.NodeType == "D" select f).FirstOrDefault();
             //
 
             // Prendo tutti gli stream del nodo dei report distribuiti
-            QRSQlikAPI QRSqlikAPIMaster = new QRSQlikAPI(FarmsUtility.GetFarmNode(GetCookie("FarmId"), distrNode.Id.ToString()).Server, path);
+            QRSQlikAPI QRSqlikAPIMaster = new QRSQlikAPI(AmbitiUtility.GetAmbitoNode(GetCookie("AmbitoId"), distrNode.Id.ToString()).Server, path);
             List<SenseApplication> publishedApps = new List<SenseApplication>();
             List<SenseStream> streams;
             string errorMessage = "";
@@ -62,7 +62,7 @@ namespace QPortal.Controllers
             string errorMessage = "";
 
             // Prendo gli stream di self-service e creo una lista
-            QRSQlikAPI QRSqlikAPIMaster = new QRSQlikAPI(FarmsUtility.GetFarmNode(GetCookie("FarmId"), GetCookie("NodeId")).Server, path);
+            QRSQlikAPI QRSqlikAPIMaster = new QRSQlikAPI(AmbitiUtility.GetAmbitoNode(GetCookie("AmbitoId"), GetCookie("NodeId")).Server, path);
             QRSqlikAPIMaster.GetStreamsByCustomProperty(GetCookie("UserID"), GetCookie("UserDirectory"), "StreamType", "Self-Service", out streams, out errorMessage);
             List<string> streamIdList = new List<string>();
             if (streams != null)
@@ -72,7 +72,7 @@ namespace QPortal.Controllers
             //
 
             // Prendo le app pubblicate in self-service controllando che siano nella lista creata prima
-            QlikAPI qlikAPIMaster = new QlikAPI(FarmsUtility.GetFarmNode(GetCookie("FarmId"), GetCookie("NodeId")).Link, GetCookie("UserID"), GetCookie("UserDirectory"), path);
+            QlikAPI qlikAPIMaster = new QlikAPI(AmbitiUtility.GetAmbitoNode(GetCookie("AmbitoId"), GetCookie("NodeId")).Link, GetCookie("UserID"), GetCookie("UserDirectory"), path);
             if (qlikAPIMaster.GetPublishedAppsInSelectedStreams(streamIdList ,out publishedApps))
             {
                 foreach (var app in publishedApps)
@@ -90,7 +90,7 @@ namespace QPortal.Controllers
             return PartialView("ReportsGrid", model);
         }
 
-        public ActionResult Detail(string id, string name, string idstream, string selstream, string FarmList)
+        public ActionResult Detail(string id, string name, string idstream, string selstream, string AmbitoList)
         {
             ViewBag.id = id;
             ViewBag.name = name;
@@ -100,7 +100,7 @@ namespace QPortal.Controllers
         }
 
         [HttpPost]
-        public ActionResult Detail(string AppName, string AppId, string StreamId, string FarmList, string StreamName, string dummy)
+        public ActionResult Detail(string AppName, string AppId, string StreamId, string AmbitoList, string StreamName, string dummy)
         {
             AppToPublishViewModel model = new AppToPublishViewModel();
             model.AppId = AppId;
@@ -108,7 +108,7 @@ namespace QPortal.Controllers
             model.StreamName = StreamName;
             model.StreamID = StreamId;
 
-            ViewBag.FarmList = FarmList;
+            ViewBag.AmbitoList = AmbitoList;
 
             string path = Server.MapPath("~/cert/client.pfx");
 
@@ -116,13 +116,13 @@ namespace QPortal.Controllers
             QRSSenseApp newApp = new QRSSenseApp();
             
             // Prendo il nodo dei Report Distribuiti
-            var farm = FarmsUtility.GetFarmsById(new List<string>() { GetCookie("FarmId") }).FirstOrDefault();
-            var distrNode = (from f in farm.Nodes where f.NodeType == "D" select f).FirstOrDefault();
+            var ambito = AmbitiUtility.GetAmbitoById(new List<string>() { GetCookie("AmbitoId") }).FirstOrDefault();
+            var distrNode = (from f in ambito.Nodes where f.NodeType == "D" select f).FirstOrDefault();
             //
 
             // Prendo le app pubblicate nel nodo dei Report Distribuiti
             List<SenseApplication> publishedApps;
-            QlikAPI qlikAPIMaster = new QlikAPI(FarmsUtility.GetFarmNode(GetCookie("FarmId"), distrNode.Id.ToString()).Link, GetCookie("UserID"), GetCookie("UserDirectory"), path);
+            QlikAPI qlikAPIMaster = new QlikAPI(AmbitiUtility.GetAmbitoNode(GetCookie("AmbitoId"), distrNode.Id.ToString()).Link, GetCookie("UserID"), GetCookie("UserDirectory"), path);
             qlikAPIMaster.GetPublishedApps(out publishedApps);
 
             model.OverwriteRequired = false;
@@ -140,78 +140,40 @@ namespace QPortal.Controllers
         }
 
         [HttpPost]
-        public ActionResult ToShare(string AppId, string AppName, string OverwriteRequired, string StreamID, string StreamName, string AppToOverwriteId, string checkOverwrite, string FarmList)
+        public ActionResult ToShare(string AppId, string AppName, string OverwriteRequired, string StreamID, string StreamName, string AppToOverwriteId, string checkOverwrite, string AmbitoList)
         {
             string path = Server.MapPath("~/cert/client.pfx");
 
             // Prendo il nodo dei Report Distribuiti
-            var farm = FarmsUtility.GetFarmById(GetCookie("FarmId"));
-            var distrNode = (from f in farm.Nodes where f.NodeType == "D" select f).FirstOrDefault();
+            var ambito = AmbitiUtility.GetAmbitoById(GetCookie("AmbitoId"));
+            var distrNode = (from f in ambito.Nodes where f.NodeType == "D" select f).FirstOrDefault();
             //
 
             // Duplico l'app
             QRSSenseApp newApp = new QRSSenseApp();
             string errorMessage = "";
-            QRSQlikAPI QRSqlikAPI = new QRSQlikAPI(FarmsUtility.GetFarmNode(GetCookie("FarmId"), GetCookie("NodeId")).Server, path);
-            //QRSQlikAPI QRSqlikAPI = new QRSQlikAPI(FarmsUtility.GetFarmNode(GetCookie("FarmId"), distrNode.Id.ToString()).Server, path);
+            QRSQlikAPI QRSqlikAPI = new QRSQlikAPI(AmbitiUtility.GetAmbitoNode(GetCookie("AmbitoId"), GetCookie("NodeId")).Server, path);
             QRSqlikAPI.CopyApp(GetCookie("UserID"), GetCookie("UserDirectory"), AppId, AppName, out newApp, out errorMessage);
             bool publishResult = true;
 
             if (OverwriteRequired.ToLower() == "false")
             {                
                 // Pubblico l'app                
-                QlikAPI qlikAPI = new QlikAPI(FarmsUtility.GetFarmNode(GetCookie("FarmId"), GetCookie("NodeId")).Link, GetCookie("UserID"), GetCookie("UserDirectory"), path);
+                QlikAPI qlikAPI = new QlikAPI(AmbitiUtility.GetAmbitoNode(GetCookie("AmbitoId"), GetCookie("NodeId")).Link, GetCookie("UserID"), GetCookie("UserDirectory"), path);
                 publishResult = qlikAPI.PublishApp(newApp.id, AppName, StreamID, out errorMessage);                
             }
             else
             {
-                // Dovrebbe funzionare così ma non funziona!!!               
-
                 // Rimpiazzo l'app
-                //QlikAPI qlikAPI = new QlikAPI(FarmsUtility.GetFarmNode(GetCookie("FarmId"), GetCookie("NodeId")).Link, GetCookie("UserID"), GetCookie("UserDirectory"), path);
-                QlikAPI qlikAPI = new QlikAPI(farm.centralnode, GetCookie("UserID"), GetCookie("UserDirectory"), path);
+                QlikAPI qlikAPI = new QlikAPI(ambito.centralnode, GetCookie("UserID"), GetCookie("UserDirectory"), path);
                 publishResult = qlikAPI.ReplaceApp(newApp.id, AppToOverwriteId, out errorMessage);
 
-                // Elimino l'app duplicata
                 qlikAPI.DeleteApp(newApp.id);
 
-
-                ////// Allora faccio così  
-
-                //List<SenseApplication> publishedApps;
-                //QlikAPI qlikAPI = new QlikAPI(FarmsUtility.GetFarmNode(GetCookie("FarmId"), GetCookie("NodeId")).Link, GetCookie("UserID"), GetCookie("UserDirectory"), path);
-                //publishResult = qlikAPI.PublishApp(newApp.id, AppName, StreamID, out errorMessage);
-                //qlikAPI.GetPublishedApps(out publishedApps);
-                //string appToDelete = "";
-                //DateTime publishTime = DateTime.MaxValue;
-                //int count = 0;
-                //foreach (var publishedApp in publishedApps)
-                //{
-                //    if (publishedApp.StreamID == StreamID && publishedApp.Name == AppName)
-                //    {
-                //        count++;
-                //        if (publishedApp.PublishDate.CompareTo(publishTime) < 0)
-                //        {
-                //            publishTime = publishedApp.PublishDate;
-                //            appToDelete = publishedApp.AppId;
-                //        }
-                //    }
-                //}
-                //if (count == 2 && !string.IsNullOrEmpty(appToDelete)) { qlikAPI.DeleteApp(appToDelete); }
-
+                
             }
-            //ViewBag.UserID = GetCookie("UserID");
-            //ViewBag.UserDirectory = GetCookie("UserDirectory");
-            //ViewBag.newAppId = newApp.id;
-            //ViewBag.AppName = AppName;
-            //ViewBag.StreamID = StreamID;
-            //ViewBag.distrNode = distrNode.Id.ToString();
-            //ViewBag.OverwriteRequired = AppToOverwriteId;
-            //ViewBag.Link = FarmsUtility.GetFarmNode(GetCookie("FarmId"), distrNode.Id.ToString()).Link;
-            //ViewBag.publishResult = publishResult.ToString();
-            //ViewBag.errorMessage = errorMessage;
-            //return View("ToShare2");
-            return RedirectToAction("Hub", "Home", new { FarmList = FarmList });
+
+            return RedirectToAction("Hub", "Home", new { AmbitoList = AmbitoList });
         }
     }
 }

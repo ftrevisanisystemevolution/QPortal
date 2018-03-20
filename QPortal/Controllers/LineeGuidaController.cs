@@ -13,8 +13,8 @@ namespace QPortal.Controllers
         {
             ViewBag.PageType = "GuideLines";
 
-            SetCookie("FarmName", "");
-            ViewBag.FarmName = "";
+            SetCookie("AmbitoName", "");
+            ViewBag.AmbitoName = "";
 
             ViewBag.UserIdentity = GetCookie("UserIdentity");
             

@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = ViewBag.FarmName;
+    ViewBag.Title = ViewBag.AmbitoName;
 }
 
 <div id="ifr" class="intrinsic-container intrinsic-container-16x9">
@@ -32,7 +32,6 @@
         var myFrame = document.querySelector("#frame");
         myFrame.src = ""; //clear the frame
 
-        //Get Farm attributes from xml configuration file and create the link di the action that call Hub
         var link ="@Url.Action("OpenFrame", "Home")";
         link += "?server=@ViewBag.Server&vp=@ViewBag.VirtualProxy";
 
@@ -65,32 +64,7 @@
         }).resize();
 
 
-        //new method
-        function openIframeV2(element) {
-            var frameId = $(element).attr("data-frame-id");
-            var nodeId = $(element).attr("data-node-id");
-
-            $.ajax({
-                url: "/api/Farms/" + frameId + "/" + nodeId,
-                method: "GET",
-                success: function (data) {
-                    setIframeSize();
-                    var myFrame = document.querySelector("#frame");
-                    myFrame.src = ""; //clear the frame
-
-                    //Get Farm attributes from xml configuration file and create the link di the action that call Hub
-                    var link = myFrame.src = "@Url.Action("Hub", "Home")";
-                    link += "?server=" + data.Server + "&vp=" + data.VirtualProxy;
-
-                    myFrame.src = link;
-                    //myFrame.src = data.Link;
-                },
-                error: function (data) {
-                    toastr.error(data.status + " - " + data.statusText);
-                }
-            });
-        }
-       //}
+        
         </script>
     }
 

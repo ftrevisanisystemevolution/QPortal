@@ -220,7 +220,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CreateReport.cs" />
-    <Compile Include="Models\Farms.cs" />
+    <Compile Include="Models\Ambiti.cs" />
     <Compile Include="Models\FilePaths.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -230,10 +230,10 @@
     <Compile Include="Models\SecondaryNavBarModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Utility\FarmsUtility.cs" />
+    <Compile Include="Utility\AmbitiUtility.cs" />
     <Compile Include="Utility\RolesUtility.cs" />
     <Compile Include="ViewModels\AppToPublishViewModel.cs" />
-    <Compile Include="ViewModels\FarmsViewModel.cs" />
+    <Compile Include="ViewModels\AmbitiViewModel.cs" />
     <Compile Include="ViewModels\ReportViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -467,7 +467,7 @@
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="Docs\README.txt" />
-    <Content Include="Farms.xml">
+    <Content Include="Ambiti.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="favicon.ico" />

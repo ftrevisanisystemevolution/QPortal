@@ -1,4 +1,4 @@
-﻿@model QPortal.ViewModels.FarmsViewModel
+﻿@model QPortal.ViewModels.AmbitiViewModel
 
 
 @{
@@ -33,7 +33,7 @@
                                         @using (Html.BeginForm("Hub", "Home"))
                                         {
                                             <div class="form-group">
-                                                @Html.DropDownListFor(m => m.FarmList, new SelectList(Model.FarmList.SelectMany(m => m.Nodes), "IdFarmNode", "Name"), null, new { @class = "form-control mb-5"})
+                                                @Html.DropDownListFor(m => m.AmbitoList, new SelectList(Model.AmbitoList.SelectMany(m => m.Nodes), "IdAmbitoNode", "Name"), null, new { @class = "form-control mb-5"})
                                             </div>
 
                                             <button href="#" type="submit" class="btn btn-primary center-block w-100">ACCEDI</button>
@@ -107,8 +107,6 @@ else
 @section scripts{
     <script type="text/javascript">
 
-        //$(document).ready(function () {
-
         $("body").css("padding-bottom", "unset");
         $(".navbar-right-button").css("display", "none");
 
@@ -155,32 +153,7 @@ else
         }).resize();
 
 
-        //new method
-        function openIframeV2(element) {
-            var frameId = $(element).attr("data-frame-id");
-            var nodeId = $(element).attr("data-node-id");
-
-            $.ajax({
-                url: "/api/Farms/" + frameId + "/" + nodeId,
-                method: "GET",
-                success: function (data) {
-                    setIframeSize();
-                    var myFrame = document.querySelector("#frame");
-                    myFrame.src = ""; //clear the frame
-
-                    //Get Farm attributes from xml configuration file and create the link di the action that call Hub
-                    var link = myFrame.src = "@Url.Action("Hub", "Home")";
-                    link += "?server=" + data.Server + "&vp=" + data.VirtualProxy;
-
-                    myFrame.src = link;
-                    //myFrame.src = data.Link;
-                },
-                error: function (data) {
-                    toastr.error(data.status + " - " + data.statusText);
-                }
-            });
-        }
-       //}
+        
     </script>
 }
 

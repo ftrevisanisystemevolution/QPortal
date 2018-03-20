@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace QPortal.Utility
 {
-    public class FarmsUtility
+    public class AmbitiUtility
     {
         public static XDocument GetXmlDocument(string path)
         {
@@ -23,26 +23,26 @@ namespace QPortal.Utility
             return root;
         }
 
-        public static List<Farms> GetFarmsById(List<string> farmsId)
+        public static List<Ambiti> GetAmbitiById(List<string> ambitiId)
         {
-            string path = System.Web.Hosting.HostingEnvironment.MapPath(FilePaths.FarmsXML);
+            string path = System.Web.Hosting.HostingEnvironment.MapPath(FilePaths.AmbitiXML);
             XDocument root = GetXmlDocument(path);
 
-            List<Farms> Farms = new List<Farms>();
+            List<Ambiti> Ambiti = new List<Ambiti>();
 
             if (root != null)
             {
 
-                var farms = (from r in root.Elements("farms") select r)
-                                .SelectMany(r => r.Elements("farm"))
-                                .Where(r => r.Attributes("id").Any(x => farmsId.Contains(x.Value)))
+                var ambiti = (from r in root.Elements("ambiti") select r)
+                                .SelectMany(r => r.Elements("ambito"))
+                                .Where(r => r.Attributes("id").Any(x => ambitiId.Contains(x.Value)))
                                 .ToList();
 
-                foreach (var farm in farms)
+                foreach (var ambito in ambiti)
                 {
-                    List<Node> FarmNodes = new List<Node>();
-                    var nodes = (from r in farms.Elements("node") select r)
-                                .Where(el => el.Parent.Attribute("id").Equals(farm.Attribute("id")))
+                    List<Node> AmbitoNodes = new List<Node>();
+                    var nodes = (from r in ambiti.Elements("node") select r)
+                                .Where(el => el.Parent.Attribute("id").Equals(ambito.Attribute("id")))
                                 .ToList();
 
                     foreach (var node in nodes)
@@ -50,61 +50,59 @@ namespace QPortal.Utility
                         Node n = new Node
                         {
                             Id = Convert.ToInt32(node.Attribute("id").Value),
-                            IdFarmNode = farm.Attribute("id").Value + "|" + node.Attribute("id").Value,
+                            IdAmbitoNode = ambito.Attribute("id").Value + "|" + node.Attribute("id").Value,
                             Server = node.Attribute("server").Value,
                             VirtualProxy = node.Attribute("vp").Value,
-                            Name = farm.Attribute("name").Value + " - " + node.Value,
+                            Name = ambito.Attribute("name").Value + " - " + node.Value,
                             UrlWebTicket = node.Attribute("urlWebTicket").Value,
                             Link = node.Attribute("link").Value,
                             NodeType = node.Attribute("type").Value
                         };
 
                         if (n != null)
-                            FarmNodes.Add(n);
+                            AmbitoNodes.Add(n);
                     }
-                    Farms.Add(new Farms
+                    Ambiti.Add(new Ambiti
                     {
-                        Id = farm.Attribute("id").Value,
-                        Name = farm.Attribute("name").Value,
-                        Nodes = FarmNodes,
-                        superuserid = farm.Attribute("superuserid").Value,
-                        superuserdom = farm.Attribute("superuserdom").Value,
-                        centralnode = farm.Attribute("centralnode").Value
+                        Id = ambito.Attribute("id").Value,
+                        Name = ambito.Attribute("name").Value,
+                        Nodes = AmbitoNodes,
+                        superuserid = ambito.Attribute("superuserid").Value,
+                        superuserdom = ambito.Attribute("superuserdom").Value,
+                        centralnode = ambito.Attribute("centralnode").Value
                     }
                     );
                 }
             }
 
-            return Farms;
+            return Ambiti;
         }
 
-        public static Farms GetFarmById(string farmId)
+        public static Ambiti GetAmbitoById(string ambitoId)
         {
-            return GetFarmsById(new List<string>() { farmId }).FirstOrDefault();
+            return GetAmbitiById(new List<string>() { ambitoId }).FirstOrDefault();
         }
 
-        public static Node GetFarmNode(string id, string node)
+        public static Node GetAmbitoNode(string id, string node)
         {
-            return GetFarmNode(Convert.ToInt32(id), Convert.ToInt32(node));
+            return GetAmbitoNode(Convert.ToInt32(id), Convert.ToInt32(node));
         }
 
-        public static Node GetFarmNode(int id, int node)
+        public static Node GetAmbitoNode(int id, int node)
         {
             Node result = new Node();
 
-            string path = System.Web.Hosting.HostingEnvironment.MapPath(FilePaths.FarmsXML);
+            string path = System.Web.Hosting.HostingEnvironment.MapPath(FilePaths.AmbitiXML);
             XDocument root = GetXmlDocument(path);
 
             if (root != null)
             {
-                result = (from f in root.Elements("farms").Elements("farm").Elements("node")
+                result = (from f in root.Elements("ambiti").Elements("ambito").Elements("node")
                              where f.Parent.Attribute("id").Value.Equals(id.ToString())
                              select f)
                           .Where(f => f.Attribute("id").Value.Equals(node.ToString()))
                           .Select(f => new Node
                           {
-                              //IdFarmNode = farm.Attribute("id").Value + "|" + node.Attribute("id").Value,
-                              //UrlWebTicket = node.Attribute("UrlWebTicket").Value,
                               Id = Convert.ToInt32(f.Attribute("id").Value),
                               Name = f.Value,
                               Server = f.Attribute("server").Value,
@@ -118,20 +116,20 @@ namespace QPortal.Utility
             return result;
         }
 
-        public static string GetFarmIdByName(string farmName)
+        public static string GetAmbitoIdByName(string ambitoName)
         {
-            string path = System.Web.Hosting.HostingEnvironment.MapPath(FilePaths.FarmsXML);
-            XDocument root = FarmsUtility.GetXmlDocument(path);
+            string path = System.Web.Hosting.HostingEnvironment.MapPath(FilePaths.AmbitiXML);
+            XDocument root = AmbitiUtility.GetXmlDocument(path);
 
-            string farmId = null;
+            string ambitoId = null;
             if (root != null)
             {
-                farmId = (from f in root.Elements("farms").Elements("farm").Elements("node")
-                          where f.Value.Equals(farmName)
+                ambitoId = (from f in root.Elements("ambiti").Elements("ambito").Elements("node")
+                          where f.Value.Equals(ambitoName)
                           select f)
                          .Select(f => f.Parent.Attribute("id").Value).SingleOrDefault();
             }
-            return farmId;
+            return ambitoId;
         }
     }
 }

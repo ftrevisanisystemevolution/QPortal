@@ -30,7 +30,7 @@
                 </div>
                 @Html.Hidden("streamid", Model.Streams[0].Id)
                 @Html.Hidden("streamdes", Model.Streams[0].Name)
-                @Html.Hidden("FarmList", (string)ViewBag.FarmList)
+                @Html.Hidden("AmbitoList", (string)ViewBag.AmbitiList)
             }
             else
             {
@@ -43,7 +43,7 @@
             <div class="row">
                 <div class="float-right">
                     <div class="btn-group" role="group" aria-label="crea report">
-                        <a href="@Url.Action("Hub", "Home", new { FarmList = ViewBag.FarmList })" type="button" class="btn btn-primary equalsize">Annulla</a>
+                        <a href="@Url.Action("Hub", "Home", new { AmbitoList = ViewBag.AmbitoList })" type="button" class="btn btn-primary equalsize">Annulla</a>
                     </div>
                 </div>
             </div>

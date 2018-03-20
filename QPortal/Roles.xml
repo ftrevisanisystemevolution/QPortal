@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<farms>
-  <role id="YA2C04" farm="0" priority="1">user</role>
-  <role id="YA2C05" farm="0" priority="2">developer</role>
-  <role id="YA2C03" farm="0" priority="3">supervisor</role>
-  <role id="YA2C02" farm="0" priority="4">certifier</role>
-</farms>
+<ambiti>
+  <role id="YA2C04" ambito="1" priority="1">user</role>
+  <role id="YA2C05" ambito="1" priority="2">developer</role>
+  <role id="YA2C03" ambito="1" priority="3">supervisor</role>
+  <role id="YA2C02" ambito="1" priority="4">certifier</role>
+</ambiti>
 

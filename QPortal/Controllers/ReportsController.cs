@@ -24,21 +24,21 @@ namespace QPortal.Controllers
         {
             ViewBag.PageType = "InternalAction";
 
-            ViewBag.FarmName = GetCookie("FarmName");
+            ViewBag.AmbitoName = GetCookie("AmbitoName");
             ViewBag.UserIdentity = GetCookie("UserIdentity");
-            ViewBag.FarmList = GetCookie("FarmId") + "|" + GetCookie("NodeId");
+            ViewBag.AmbitoList = GetCookie("AmbitoId") + "|" + GetCookie("NodeId");
 
             CreateReport model = new CreateReport() { Name = "", Description = "" };
             model.TemplateItems = new List<ReportTemplate>();
             string path = Server.MapPath("~/cert/client.pfx");
-            var farm = FarmsUtility.GetFarmById(GetCookie("FarmId"));
-            QRSQlikAPI qrsQlikApi = new QRSQlikAPI(FarmsUtility.GetFarmNode(GetCookie("FarmId"), GetCookie("NodeId")).Server, path);
+            var ambito = AmbitiUtility.GetAmbitoById(GetCookie("AmbitoId"));
+            QRSQlikAPI qrsQlikApi = new QRSQlikAPI(AmbitiUtility.GetAmbitoNode(GetCookie("AmbitoId"), GetCookie("NodeId")).Server, path);
             List<SenseStream> myStreams;
             string errorMessage = "";
             qrsQlikApi.GetStreamsByCustomProperty(GetCookie("UserID"), GetCookie("UserDirectory"), "StreamType", "Template", out myStreams, out errorMessage);
             if (myStreams != null && myStreams.Count > 0)
             {
-                QlikAPI qlikApi = new QlikAPI(FarmsUtility.GetFarmNode(GetCookie("FarmId"), GetCookie("NodeId")).Link, farm.superuserid, farm.superuserdom, path);
+                QlikAPI qlikApi = new QlikAPI(AmbitiUtility.GetAmbitoNode(GetCookie("AmbitoId"), GetCookie("NodeId")).Link, ambito.superuserid, ambito.superuserdom, path);
                 List<SenseApplication> apps = new List<SenseApplication>();
                 if (qlikApi.GetPublishedAppsInSelectedStreams(myStreams.Select(s=>s.Id).ToList(), out apps))
                 {
@@ -56,7 +56,7 @@ namespace QPortal.Controllers
         
 
         [HttpPost]
-        public ActionResult CreateReport(string Name, string Description, string FarmList, string SelectedTemplate)
+        public ActionResult CreateReport(string Name, string Description, string AmbitoList, string SelectedTemplate)
         {
             ViewBag.PageType = "InternalAction";
 
@@ -66,7 +66,7 @@ namespace QPortal.Controllers
 
             if (string.IsNullOrEmpty(SelectedTemplate) || SelectedTemplate == "void")
             {
-                QlikAPI qlikAPI = new QlikAPI(FarmsUtility.GetFarmNode(GetCookie("FarmId"), GetCookie("NodeId")).Link, GetCookie("UserID"), GetCookie("UserDirectory"), path);
+                QlikAPI qlikAPI = new QlikAPI(AmbitiUtility.GetAmbitoNode(GetCookie("AmbitoId"), GetCookie("NodeId")).Link, GetCookie("UserID"), GetCookie("UserDirectory"), path);
                 qlikAPI.CreateApp(Name, Description, out appId);
             }
             else
@@ -74,12 +74,12 @@ namespace QPortal.Controllers
                 // Duplico l'app
                 QRSSenseApp newApp = new QRSSenseApp();
                 string errorMessage = "";
-                QRSQlikAPI QRSqlikAPI = new QRSQlikAPI(FarmsUtility.GetFarmNode(GetCookie("FarmId"), GetCookie("NodeId")).Server, path);
+                QRSQlikAPI QRSqlikAPI = new QRSQlikAPI(AmbitiUtility.GetAmbitoNode(GetCookie("AmbitoId"), GetCookie("NodeId")).Server, path);
                 QRSqlikAPI.CopyApp(GetCookie("UserID"), GetCookie("UserDirectory"), SelectedTemplate, Name, out newApp, out errorMessage);
-                QlikAPI qlikAPI = new QlikAPI(FarmsUtility.GetFarmNode(GetCookie("FarmId"), GetCookie("NodeId")).Link, GetCookie("UserID"), GetCookie("UserDirectory"), path);
+                QlikAPI qlikAPI = new QlikAPI(AmbitiUtility.GetAmbitoNode(GetCookie("AmbitoId"), GetCookie("NodeId")).Link, GetCookie("UserID"), GetCookie("UserDirectory"), path);
                 qlikAPI.RenameApp(newApp.id, Description);
             }
-            return RedirectToAction("Hub", "Home", new { FarmList = FarmList });
+            return RedirectToAction("Hub", "Home", new { AmbitoList = AmbitoList });
         }
 
         //GET: Pubblicazione

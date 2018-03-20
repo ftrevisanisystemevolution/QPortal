@@ -2,7 +2,7 @@
 
 namespace QPortal.Models
 {
-    public class Farms
+    public class Ambiti
     {
         public string Id { get; set; }
         public string Name { get; set; }

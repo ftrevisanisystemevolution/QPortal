@@ -12,9 +12,9 @@
 <nav id="subnav" class="navbar navbar-default navbar-sub" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            @if (!string.IsNullOrEmpty(Model.FarmName))
+            @if (!string.IsNullOrEmpty(Model.AmbitoName))
             {
-                <span class="navbar-brand">@Model.FarmName</span>
+                <span class="navbar-brand">@Model.AmbitoName</span>
             }
             <ul class="nav navbar-nav">
                 <li class="divider-vertical"></li>
@@ -26,8 +26,8 @@
                         <span class="hidden-xs">Home</span>
                     </a>
                 </li>
-                @if (!string.IsNullOrWhiteSpace(Model.FarmName) && 
-                    Model.FarmName.ToUpper().Contains(SelfServiceString) && !string.IsNullOrWhiteSpace(Model.Role))
+                @if (!string.IsNullOrWhiteSpace(Model.AmbitoName) && 
+                    Model.AmbitoName.ToUpper().Contains(SelfServiceString) && !string.IsNullOrWhiteSpace(Model.Role))
                 {
                     if (Model.Role.ToUpper().Equals(SupervisorString) || Model.Role.ToUpper().Equals(DeveloperString))
                     {
@@ -61,7 +61,7 @@
                     }
                 }
 
-                @if (!string.IsNullOrWhiteSpace(Model.FarmName) && Model.FarmName.ToUpper().Contains(ReportDistribuitiString))
+                @if (!string.IsNullOrWhiteSpace(Model.AmbitoName) && Model.AmbitoName.ToUpper().Contains(ReportDistribuitiString))
                 {
                     <li id="archive">
                         <a href="#">
