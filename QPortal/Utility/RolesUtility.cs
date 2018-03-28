@@ -75,7 +75,7 @@ namespace QPortal.Utility
             ambitiId = (from f in AmbitoRoles
                        select f.AmbitoId).ToList();
 
-            AmbitoList = AmbitiUtility.GetAmbitiById(ambitiId);
+            AmbitoList = AmbitiUtility.GetAmbitoById(ambitiId);
 
             foreach (var ambito in AmbitoList)
             {

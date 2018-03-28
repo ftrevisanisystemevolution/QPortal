@@ -1,9 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <ambiti>
-  <role id="YA2C04" ambito="1" priority="1">user</role>
-  <role id="YA2C05" ambito="1" priority="2">developer</role>
-  <role id="YA2C03" ambito="1" priority="3">supervisor</role>
-  <role id="YA2C02" ambito="1" priority="4">certifier</role>
+  <role id="YA2C04" ambito="0" priority="1">user</role>
+  <role id="YA2C05" ambito="0" priority="2">developer</role>
+  <role id="YA2C03" ambito="0" priority="3">supervisor</role>
+  <role id="YA2C02" ambito="0" priority="4">certifier</role>
+  <role id="YA3C04" ambito="1" priority="1">user</role>
+  <role id="YA3C05" ambito="1" priority="2">developer</role>
+  <role id="YA3C03" ambito="1" priority="3">supervisor</role>
+  <role id="YA3C02" ambito="1" priority="4">certifier</role>
 </ambiti>
-

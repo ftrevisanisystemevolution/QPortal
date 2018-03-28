@@ -35,7 +35,8 @@ namespace QPortal.Controllers
             QRSQlikAPI qrsQlikApi = new QRSQlikAPI(AmbitiUtility.GetAmbitoNode(GetCookie("AmbitoId"), GetCookie("NodeId")).Server, path);
             List<SenseStream> myStreams;
             string errorMessage = "";
-            qrsQlikApi.GetStreamsByCustomProperty(GetCookie("UserID"), GetCookie("UserDirectory"), "StreamType", "Template", out myStreams, out errorMessage);
+
+            qrsQlikApi.GetStreamsByCustomProperty(GetCookie("UserID"), GetCookie("UserDirectory"), "StreamType", "Template", ambito.customproperty, out myStreams, out errorMessage);
             if (myStreams != null && myStreams.Count > 0)
             {
                 QlikAPI qlikApi = new QlikAPI(AmbitiUtility.GetAmbitoNode(GetCookie("AmbitoId"), GetCookie("NodeId")).Link, ambito.superuserid, ambito.superuserdom, path);

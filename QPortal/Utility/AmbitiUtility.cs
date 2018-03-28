@@ -23,7 +23,7 @@ namespace QPortal.Utility
             return root;
         }
 
-        public static List<Ambiti> GetAmbitiById(List<string> ambitiId)
+        public static List<Ambiti> GetAmbitoById(List<string> ambitiId)
         {
             string path = System.Web.Hosting.HostingEnvironment.MapPath(FilePaths.AmbitiXML);
             XDocument root = GetXmlDocument(path);
@@ -69,7 +69,8 @@ namespace QPortal.Utility
                         Nodes = AmbitoNodes,
                         superuserid = ambito.Attribute("superuserid").Value,
                         superuserdom = ambito.Attribute("superuserdom").Value,
-                        centralnode = ambito.Attribute("centralnode").Value
+                        centralnode = ambito.Attribute("centralnode").Value,
+                        customproperty = ambito.Attribute("customproperty").Value
                     }
                     );
                 }
@@ -80,7 +81,7 @@ namespace QPortal.Utility
 
         public static Ambiti GetAmbitoById(string ambitoId)
         {
-            return GetAmbitiById(new List<string>() { ambitoId }).FirstOrDefault();
+            return GetAmbitoById(new List<string>() { ambitoId }).FirstOrDefault();
         }
 
         public static Node GetAmbitoNode(string id, string node)

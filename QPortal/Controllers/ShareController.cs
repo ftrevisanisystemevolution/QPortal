@@ -37,7 +37,7 @@ namespace QPortal.Controllers
             List<SenseStream> streams;
             string errorMessage = "";
             //if (QRSqlikAPIMaster.GetStreamsBuCustomProperty(ConfigurationManager.AppSettings["QlikUser"], ConfigurationManager.AppSettings["QlikUserDirectory"], "StreamType", "Production", out streams, out errorMessage))
-            if (QRSqlikAPIMaster.GetStreamsByCustomProperty(GetCookie("UserID"), GetCookie("UserDirectory"), "StreamType", "Production", out streams, out errorMessage))
+            if (QRSqlikAPIMaster.GetStreamsByCustomProperty(GetCookie("UserID"), GetCookie("UserDirectory"), "StreamType", "Production", ambito.customproperty, out streams, out errorMessage))
             {
                 model = ReportViewModel.CreateReportViewModel(publishedApps, streams);
             }
@@ -63,7 +63,10 @@ namespace QPortal.Controllers
 
             // Prendo gli stream di self-service e creo una lista
             QRSQlikAPI QRSqlikAPIMaster = new QRSQlikAPI(AmbitiUtility.GetAmbitoNode(GetCookie("AmbitoId"), GetCookie("NodeId")).Server, path);
-            QRSqlikAPIMaster.GetStreamsByCustomProperty(GetCookie("UserID"), GetCookie("UserDirectory"), "StreamType", "Self-Service", out streams, out errorMessage);
+
+            var ambito = AmbitiUtility.GetAmbitoById(GetCookie("AmbitoId"));
+
+            QRSqlikAPIMaster.GetStreamsByCustomProperty(GetCookie("UserID"), GetCookie("UserDirectory"), "StreamType", "Self-Service", ambito.customproperty, out streams, out errorMessage);
             List<string> streamIdList = new List<string>();
             if (streams != null)
             {
@@ -159,13 +162,13 @@ namespace QPortal.Controllers
             if (OverwriteRequired.ToLower() == "false")
             {                
                 // Pubblico l'app                
-                QlikAPI qlikAPI = new QlikAPI(AmbitiUtility.GetAmbitoNode(GetCookie("AmbitoId"), GetCookie("NodeId")).Link, GetCookie("UserID"), GetCookie("UserDirectory"), path);
+                QlikAPI qlikAPI = new QlikAPI(AmbitiUtility.GetAmbitoNode(GetCookie("AmbitoId"), GetCookie("NodeId")).Link, ambito.superuserid, ambito.superuserdom, path);
                 publishResult = qlikAPI.PublishApp(newApp.id, AppName, StreamID, out errorMessage);                
             }
             else
             {
                 // Rimpiazzo l'app
-                QlikAPI qlikAPI = new QlikAPI(ambito.centralnode, GetCookie("UserID"), GetCookie("UserDirectory"), path);
+                QlikAPI qlikAPI = new QlikAPI(ambito.centralnode, ambito.superuserid, ambito.superuserdom, path);
                 publishResult = qlikAPI.ReplaceApp(newApp.id, AppToOverwriteId, out errorMessage);
 
                 qlikAPI.DeleteApp(newApp.id);

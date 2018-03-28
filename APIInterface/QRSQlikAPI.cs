@@ -59,13 +59,13 @@ namespace APIInterface
             }
         }
 
-        public bool GetStreamsByCustomProperty(string userID, string userDirectory, string customPropName, string customPropValue, out List<SenseStream> myStreams, out string errorMessage)
+        public bool GetStreamsByCustomProperty(string userID, string userDirectory, string customPropName, string customPropValue, string ambitoCustomProperty, out List<SenseStream> myStreams, out string errorMessage)
         {
             myStreams = new List<SenseStream>();
             errorMessage = "";
             try
             {
-                RestClient client = conn.CreateRestClient("stream/full", userID, userDirectory, out restRequest);
+                RestClient client = conn.CreateRestClient("stream/full", userID, userDirectory, ambitoCustomProperty, out restRequest);
 
                 var response = client.Execute<List<QRSSenseStream>>(restRequest);
 
@@ -206,38 +206,38 @@ namespace APIInterface
             }
         }
 
-        public bool ReplaceApp(string userID, string userDirectory, string sourceAppID, string destAppID, out string errorMessage)
-        {
-            errorMessage = "";
-            try
-            {
-                RestClient client = conn.CreateRestClientPut("app/" + sourceAppID + "/replace?app=" + destAppID, userID, userDirectory, out restRequest);
+        //public bool ReplaceApp(string userID, string userDirectory, string sourceAppID, string destAppID, out string errorMessage)
+        //{
+        //    errorMessage = "";
+        //    try
+        //    {
+        //        RestClient client = conn.CreateRestClientPut("app/" + sourceAppID + "/replace?app=" + destAppID, userID, userDirectory, out restRequest);
 
-                var response = client.Execute<QRSSenseApp>(restRequest);
+        //        var response = client.Execute<QRSSenseApp>(restRequest);
 
-                if (!response.IsSuccessful)
-                {
-                    errorMessage = response.ErrorMessage + "  |  ";
-                    errorMessage += response.StatusCode + "  |  ";
-                    errorMessage += response.StatusDescription + "  |  ";
-                    errorMessage += response.ResponseStatus.ToString() + "  |  ";
-                    errorMessage += response.Server + "  |  ";
-                    errorMessage += client.BaseUrl.AbsolutePath + "  |  ";
-                    errorMessage += client.BaseUrl.AbsoluteUri + "  |  ";
-                }
+        //        if (!response.IsSuccessful)
+        //        {
+        //            errorMessage = response.ErrorMessage + "  |  ";
+        //            errorMessage += response.StatusCode + "  |  ";
+        //            errorMessage += response.StatusDescription + "  |  ";
+        //            errorMessage += response.ResponseStatus.ToString() + "  |  ";
+        //            errorMessage += response.Server + "  |  ";
+        //            errorMessage += client.BaseUrl.AbsolutePath + "  |  ";
+        //            errorMessage += client.BaseUrl.AbsoluteUri + "  |  ";
+        //        }
 
-                return response.IsSuccessful;
-            }
-            catch (Exception ex)
-            {
-                errorMessage = ex.Message;
-                while (ex.InnerException != null)
-                {
-                    ex = ex.InnerException;
-                    errorMessage += " -> " + ex.Message;
-                }
-                return false;
-            }
-        }
+        //        return response.IsSuccessful;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        errorMessage = ex.Message;
+        //        while (ex.InnerException != null)
+        //        {
+        //            ex = ex.InnerException;
+        //            errorMessage += " -> " + ex.Message;
+        //        }
+        //        return false;
+        //    }
+        //}
     }
 }

@@ -34,8 +34,9 @@ namespace QPortal.Controllers
             List<SenseApplication> notPublishedApps = new List<SenseApplication>();
             string errorMessage = "";
             ViewBag.Error = "";
+            var ambito = AmbitiUtility.GetAmbitoById(GetCookie("AmbitoId"));
 
-            if (QRSqlikAPI.GetStreamsByCustomProperty(GetCookie("UserID"), GetCookie("UserDirectory"), "StreamType", "Self-Service", out myStreams, out errorMessage))
+            if (QRSqlikAPI.GetStreamsByCustomProperty(GetCookie("UserID"), GetCookie("UserDirectory"), "StreamType", "Self-Service", ambito.customproperty, out myStreams, out errorMessage))
             {
                 model = ReportViewModel.CreateReportViewModel(notPublishedApps, myStreams);
             }
@@ -113,7 +114,7 @@ namespace QPortal.Controllers
         public ActionResult ToPublish(string AppId, string AppName, string OverwriteRequired, string StreamID, string StreamName, string AppToOverwriteId, string checkOverwrite, string AmbitoList)
         {
             string path = Server.MapPath("~/cert/client.pfx");
-
+            var ambito = AmbitiUtility.GetAmbitoById(GetCookie("AmbitoId"));
             if (OverwriteRequired.ToLower() == "false")
             {
                 // Duplico l'app
@@ -123,13 +124,13 @@ namespace QPortal.Controllers
                 QRSqlikAPI.CopyApp(GetCookie("UserID"), GetCookie("UserDirectory"), AppId, AppName, out newApp, out errorMessage);
 
                 // Pubblico l'app
-                QlikAPI qlikAPI = new QlikAPI(AmbitiUtility.GetAmbitoNode(GetCookie("AmbitoId"), GetCookie("NodeId")).Link, GetCookie("UserID"), GetCookie("UserDirectory"), path);
+                QlikAPI qlikAPI = new QlikAPI(AmbitiUtility.GetAmbitoNode(GetCookie("AmbitoId"), GetCookie("NodeId")).Link, ambito.superuserid, ambito.superuserdom, path);
                 qlikAPI.PublishApp(AppId, AppName, StreamID);
             }
             else
             {
                 string errorMessage = "";                
-                QlikAPI qlikAPI = new QlikAPI(AmbitiUtility.GetAmbitoNode(GetCookie("AmbitoId"), GetCookie("NodeId")).Link, GetCookie("UserID"), GetCookie("UserDirectory"), path);
+                QlikAPI qlikAPI = new QlikAPI(AmbitiUtility.GetAmbitoNode(GetCookie("AmbitoId"), GetCookie("NodeId")).Link, ambito.superuserid, ambito.superuserdom, path);
                 qlikAPI.ReplaceApp(AppId, AppToOverwriteId);
             }
             

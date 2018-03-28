@@ -38,8 +38,6 @@ namespace APIInterface
         {
             try
             {
-                // TODO: disabilitare conrollo di versione Qlik
-
                 Uri uri = new Uri(qlikUri + ":4747");
 
                 X509Certificate2 x509 = new X509Certificate2();

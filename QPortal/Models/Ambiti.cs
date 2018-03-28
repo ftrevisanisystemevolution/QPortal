@@ -11,5 +11,6 @@ namespace QPortal.Models
         public string superuserid { get; set; }
         public string superuserdom { get; set; }
         public string centralnode { get; set; }
+        public string customproperty { get; set; }
     }
 }

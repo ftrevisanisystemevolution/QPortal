@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <ambiti>
-  <ambito id="0" name="CFO" superuserid="bixth" superuserdom="DESKTOP-29BA4MU" centralnode="https://DESKTOP-29BA4MU" >
-    <node id="0" type="D" server="DESKTOP-29BA4MU" vp="vp" link="https://desktop-29ba4mu" urlWebTicket="https://{0}:4243/qps/{1}/session">Report Distribuiti</node>
-    <node id="1" type="S" server="DESKTOP-29BA4MU" vp="vp" link="https://desktop-29ba4mu" urlWebTicket="https://{0}:4243/qps/{1}/session">Self-service BI</node>
+  <ambito id="0" name="DOF" customproperty="DOF" superuserid="bixth" superuserdom="DESKTOP-29BA4MU" centralnode="https://DESKTOP-29BA4MU" >
+    <node id="0" type="D" server="DESKTOP-29BA4MU" vp="vp" link="https://DESKTOP-29BA4MU" urlWebTicket="https://{0}:4243/qps/{1}/session">Report Distribuiti</node>
+    <node id="1" type="S" server="DESKTOP-29BA4MU" vp="vp" link="https://DESKTOP-29BA4MU" urlWebTicket="https://{0}:4243/qps/{1}/session">Self-service BI</node>
   </ambito>
-  <ambito id="1" name="CIB" superuserid="bixth" superuserdom="DESKTOP-29BA4MU" centralnode="https://DESKTOP-29BA4MU" >
-    <node id="0" type="D" server="DESKTOP-29BA4MU" vp="vp" link="https://desktop-29ba4mu" urlWebTicket="https://{0}:4243/qps/{1}/session">Report Distribuiti</node>
-    <node id="1" type="S" server="DESKTOP-29BA4MU" vp="vp" link="https://desktop-29ba4mu" urlWebTicket="https://{0}:4243/qps/{1}/session">Self-service BI</node>
+  <ambito id="1" name="CIB" customproperty="CIB" superuserid="bixth" superuserdom="DESKTOP-29BA4MU" centralnode="https://DESKTOP-29BA4MU" >
+    <node id="0" type="D" server="DESKTOP-29BA4MU" vp="vp" link="https://DESKTOP-29BA4MU" urlWebTicket="https://{0}:4243/qps/{1}/session">Report Distribuiti</node>
+    <node id="1" type="S" server="DESKTOP-29BA4MU" vp="vp" link="https://DESKTOP-29BA4MU" urlWebTicket="https://{0}:4243/qps/{1}/session">Self-service BI</node>
   </ambito>
 </ambiti>

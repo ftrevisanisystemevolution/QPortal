@@ -44,6 +44,11 @@ namespace APIInterface
 
         public RestClient CreateRestClient(string APIUrl, string user, string userDirectory, out RestRequest request)
         {
+            return CreateRestClient(APIUrl, user, userDirectory, "", out request);
+        }
+
+        public RestClient CreateRestClient(string APIUrl, string user, string userDirectory, string ambitoCustomProperty, out RestRequest request)
+        {
             string URL = string.Format("https://{0}:4242", Server);
             var client = new RestClient(URL);
 
@@ -51,6 +56,8 @@ namespace APIInterface
             request = new RestRequest(URL, Method.GET);
             request.AddHeader("X-Qlik-xrfkey", xrfkey);
             request.AddHeader("X-Qlik-User", string.Format("UserDirectory={0};UserId={1}", userDirectory, user));
+            request.AddHeader("X-Qlik-Virtual-Proxy-Prefix", "vp");
+            if (!string.IsNullOrEmpty(ambitoCustomProperty)) { request.AddHeader("X-Qlik-Security", "Group=" + ambitoCustomProperty); }
             client.ClientCertificates = new X509CertificateCollection() { SenseCert };
 
             return client;

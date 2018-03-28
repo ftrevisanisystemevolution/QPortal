@@ -20,6 +20,7 @@ namespace QlikSenseSession
         public string UserDirectory { get; private set; }
         public string UrlWebTicket { get; private set; }
         public string SessionID { get; private set; }
+        public string AmbitoCustomProperty { get; private set; }
         public X509Certificate2 CertificateFoo { get; private set; }
         public string ResponseSerialized { get; private set; }
         public string[] GetSessionArray { get; private set; }
@@ -27,7 +28,7 @@ namespace QlikSenseSession
 
         private HttpCookie QCookie = null;
 
-        public QSession(string method, string server, string virtualProxy, string user, string userdirectory, string urlWebTicket)
+        public QSession(string method, string server, string virtualProxy, string user, string userdirectory, string urlWebTicket, string ambitoCustomProperty)
         {
             Method = method;
             Server = server;
@@ -35,11 +36,21 @@ namespace QlikSenseSession
             User = user;
             UserDirectory = userdirectory;
             UrlWebTicket = urlWebTicket;
+            AmbitoCustomProperty = ambitoCustomProperty;
         }
 
         public void OpenSession(HttpContext context)
         {
             SessionID = CreateSession(context);
+
+            //The body message sent to the Qlik Sense Proxy api will add the session to Qlik Sense for authentication
+            string body = "{ 'UserId':'" + User + "','UserDirectory':'" + UserDirectory + "',";
+            body += "'Attributes': [{\"Group\":\"" + AmbitoCustomProperty + "\"}],";
+            body += "'SessionId': '" + SessionID + "'";
+            body += "}";
+            byte[] bodyBytes = Encoding.UTF8.GetBytes(body);
+
+
 #if DEBUG
             CertificateFoo = GetCertificate(StoreLocation.CurrentUser);
 #else
@@ -59,12 +70,7 @@ namespace QlikSenseSession
             request.Accept = "application/json";
             request.Headers.Add("X-Qlik-Xrfkey", Xrfkey);
 
-            //The body message sent to the Qlik Sense Proxy api will add the session to Qlik Sense for authentication
-            string body = "{ 'UserId':'" + User + "','UserDirectory':'" + UserDirectory + "',";
-            body += "'Attributes': [],";
-            body += "'SessionId': '" + SessionID + "'";
-            body += "}";
-            byte[] bodyBytes = Encoding.UTF8.GetBytes(body);
+            
 
             if (!string.IsNullOrEmpty(body))
             {
