@@ -52,27 +52,27 @@ namespace QPortal.Controllers
             // Da utilizzare se NON c'è SWA SWP
             SetCookie("IsAuthenticated", "true");
 
-            ////// Per sviluppi su mia macchina
-            ////SetCookie("IsAuthenticated", "true");
-            //SetCookie("UserID", "Test");
-            //SetCookie("UserDirectory", "desktop-29ba4mu");
-            //SetCookie("UserIdentity", "Test");
-            //Roles = new List<string>();
-            //Roles.Add("YA2C03");
-            //Roles.Add("YA3C03");
-            //SetRolesCookie(Roles);
-            //ViewBag.UserIdentity = GetCookie("UserIdentity");
-            //////
-
-            ////Per sviluppi su macchina Intesa SCWAMOT0027.syssede.systest.sanpaoloimi.com
-            SetCookie("UserID", "U0I4169");
-            SetCookie("UserDirectory", "SYSSPIMI");
-            SetCookie("UserIdentity", "Davide Carbone");
+            //// Per sviluppi su mia macchina
+            //SetCookie("IsAuthenticated", "true");
+            SetCookie("UserID", "Test");
+            SetCookie("UserDirectory", "desktop-29ba4mu");
+            SetCookie("UserIdentity", "Test");
             Roles = new List<string>();
             Roles.Add("YA2C03");
             Roles.Add("YA3C03");
             SetRolesCookie(Roles);
             ViewBag.UserIdentity = GetCookie("UserIdentity");
+            ////
+
+            //////Per sviluppi su macchina Intesa SCWAMOT0027.syssede.systest.sanpaoloimi.com
+            ////SetCookie("UserID", "U0I4169");
+            ////SetCookie("UserDirectory", "SYSSPIMI");
+            ////SetCookie("UserIdentity", "Davide Carbone");
+            ////Roles = new List<string>();
+            ////Roles.Add("YA2C03");
+            ////Roles.Add("YA3C03");
+            ////SetRolesCookie(Roles);
+            ////ViewBag.UserIdentity = GetCookie("UserIdentity");
             //// oppure 
             ////SetCookie("UserID", "U0J1748");
             ////SetCookie("UserDirectory", "SYSSPIMI");

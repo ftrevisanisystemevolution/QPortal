@@ -127,7 +127,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/26/2018 17:37:02</publishTime>
     </File>
     <File Include="bin/QPortal.dll">
-      <publishTime>03/28/2018 11:08:04</publishTime>
+      <publishTime>03/29/2018 15:51:35</publishTime>
     </File>
     <File Include="bin/RestSharp.dll">
       <publishTime>11/19/2017 01:44:00</publishTime>
@@ -1510,7 +1510,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/15/2017 15:46:41</publishTime>
     </File>
     <File Include="Views/Publish/Detail.cshtml">
-      <publishTime>03/16/2018 17:12:05</publishTime>
+      <publishTime>03/29/2018 15:47:25</publishTime>
     </File>
     <File Include="Views/Publish/Detailfancy.cshtml">
       <publishTime>11/27/2017 17:36:37</publishTime>
@@ -1522,7 +1522,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/29/2017 17:37:30</publishTime>
     </File>
     <File Include="Views/Publish/ToPublish.cshtml">
-      <publishTime>03/16/2018 17:12:05</publishTime>
+      <publishTime>03/29/2018 15:50:00</publishTime>
     </File>
     <File Include="Views/Reports/CreateReport.cshtml">
       <publishTime>03/16/2018 17:12:05</publishTime>

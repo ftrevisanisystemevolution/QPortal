@@ -9,6 +9,7 @@ namespace QPortal.ViewModels
     {
         public string AppId { get; set; }
         public string AppName { get; set; }
+        public string AppOldName { get; set; }
         public string StreamID { get; set; }
         public string StreamName { get; set; }
         public bool OverwriteRequired { get; set; }

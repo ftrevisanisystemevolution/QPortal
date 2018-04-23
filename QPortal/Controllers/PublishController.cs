@@ -75,13 +75,14 @@ namespace QPortal.Controllers
         }
 
         [HttpPost]
-        public ActionResult Detail(string AppName, string AppId, string StreamId, string AmbitoList, string StreamName, string dummy)
+        public ActionResult Detail(string AppName, string AppId, string StreamId, string AmbitoList, string StreamName, string AppOldName, string dummy)
         {
             AppToPublishViewModel model = new AppToPublishViewModel();
             model.AppId = AppId;
             model.AppName = AppName;
             model.StreamName = StreamName;
             model.StreamID = StreamId;
+            model.AppOldName = AppOldName;
 
             ViewBag.AmbitoList = AmbitoList;
 
@@ -111,7 +112,7 @@ namespace QPortal.Controllers
 
 
         [HttpPost]
-        public ActionResult ToPublish(string AppId, string AppName, string OverwriteRequired, string StreamID, string StreamName, string AppToOverwriteId, string checkOverwrite, string AmbitoList)
+        public ActionResult ToPublish(string AppId, string AppName, string AppOldName, string OverwriteRequired, string StreamID, string StreamName, string AppToOverwriteId, string checkOverwrite, string AmbitoList)
         {
             string path = Server.MapPath("~/cert/client.pfx");
             var ambito = AmbitiUtility.GetAmbitoById(GetCookie("AmbitoId"));
@@ -121,7 +122,7 @@ namespace QPortal.Controllers
                 QRSSenseApp newApp = new QRSSenseApp();
                 string errorMessage = "";
                 QRSQlikAPI QRSqlikAPI = new QRSQlikAPI(AmbitiUtility.GetAmbitoNode(GetCookie("AmbitoId"), GetCookie("NodeId")).Server, path);
-                QRSqlikAPI.CopyApp(GetCookie("UserID"), GetCookie("UserDirectory"), AppId, AppName, out newApp, out errorMessage);
+                QRSqlikAPI.CopyApp(GetCookie("UserID"), GetCookie("UserDirectory"), AppId, AppOldName, out newApp, out errorMessage);
 
                 // Pubblico l'app
                 QlikAPI qlikAPI = new QlikAPI(AmbitiUtility.GetAmbitoNode(GetCookie("AmbitoId"), GetCookie("NodeId")).Link, ambito.superuserid, ambito.superuserdom, path);
